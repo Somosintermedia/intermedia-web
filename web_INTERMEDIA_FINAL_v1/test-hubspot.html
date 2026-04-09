@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prueba HubSpot · Netlify</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      max-width: 420px;
+      margin: 48px auto;
+      padding: 0 20px;
+      color: #1d2a33;
+    }
+    h1 { font-size: 1.25rem; margin-bottom: 8px; }
+    p { color: #4c5a66; font-size: 14px; margin-bottom: 24px; }
+    label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 16px;
+      border: 1px solid #e8e1d6;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+    button {
+      width: 100%;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 12px;
+      background: #3f5f54;
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    button:hover { filter: brightness(1.05); }
+    button:disabled { opacity: 0.6; cursor: not-allowed; }
+    #mensaje {
+      margin-top: 20px;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+      display: none;
+    }
+    #mensaje.ok {
+      display: block;
+      background: #e8f5e9;
+      border: 1px solid #a5d6a7;
+      color: #1b5e20;
+    }
+    #mensaje.err {
+      display: block;
+      background: #ffebee;
+      border: 1px solid #ef9a9a;
+      color: #b71c1c;
+    }
+  </style>
+</head>
+<body>
+  <h1>Prueba envío a HubSpot</h1>
+  <p>Formulario de prueba (Netlify Function <code>hubspot-contact</code>).</p>
+
+  <form id="form-hubspot" novalidate>
+    <label for="nombre">Nombre</label>
+    <input id="nombre" name="nombre" type="text" autocomplete="name" />
+
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" autocomplete="email" required />
+
+    <label for="telefono">Teléfono</label>
+    <input id="telefono" name="telefono" type="tel" autocomplete="tel" />
+
+    <button type="submit" id="btn-enviar">Enviar</button>
+  </form>
+
+  <div id="mensaje" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      var form = document.getElementById("form-hubspot");
+      var btn = document.getElementById("btn-enviar");
+      var msg = document.getElementById("mensaje");
+
+      function showOk(text) {
+        msg.className = "ok";
+        msg.textContent = text;
+      }
+
+      function showErr(text) {
+        msg.className = "err";
+        msg.textContent = text;
+      }
+
+      function hideMsg() {
+        msg.className = "";
+        msg.textContent = "";
+        msg.removeAttribute("style");
+      }
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        hideMsg();
+
+        if (!form.email.value.trim()) {
+          showErr("Indica un email.");
+          return;
+        }
+
+        btn.disabled = true;
+        var payload = {
+          nombre: form.nombre.value.trim(),
+          email: form.email.value.trim(),
+          telefono: form.telefono.value.trim(),
+        };
+
+        try {
+          var res = await fetch("/.netlify/functions/hubspot-contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+
+          var data = {};
+          try {
+            data = await res.json();
+          } catch (_) {}
+
+          if (res.ok) {
+            var idText = data.id ? " ID de contacto: " + data.id + "." : "";
+            showOk("Contacto creado correctamente en HubSpot." + idText);
+            form.reset();
+          } else {
+            var err =
+              data.error ||
+              data.message ||
+              ("Error HTTP " + res.status);
+            if (data.details && typeof data.details === "object") {
+              err += " " + JSON.stringify(data.details);
+            }
+            showErr(err);
+          }
+        } catch (err) {
+          showErr(
+            "No se pudo conectar con el servidor: " +
+              (err && err.message ? err.message : String(err))
+          );
+        } finally {
+          btn.disabled = false;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

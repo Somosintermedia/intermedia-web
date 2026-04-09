@@ -1,0 +1,1184 @@
+
+:root{
+  --ink:#1d2a33;
+  --muted:#4c5a66;
+  --bg:#ffffff;
+  --paper:#EDE6DC;
+  --paper2:#EDE6DC;
+  --line:#e8e1d6;
+  --brand:#3F5F54;
+  --brand2:#c9a66b;
+  --radius:18px;
+  --shadow: 0 12px 30px rgba(0,0,0,.08);
+  --max:1120px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;color:var(--ink);background:var(--bg)}
+a{color:inherit;text-decoration:none}
+p{line-height:1.6;color:var(--muted)}
+h1,h2,h3{line-height:1.15;margin:0 0 .6rem 0}
+small{color:var(--muted)}
+.container{max-width:var(--max);margin:0 auto;padding:0 18px}
+.badge{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border:1px solid var(--line);background:var(--paper2);border-radius:999px;font-size:14px;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 16px;border-radius:14px;border:1px solid transparent;background:var(--brand);color:#fff;font-weight:600;box-shadow:0 8px 18px rgba(63,95,84,.22)}
+.btn.secondary{background:transparent;color:var(--brand);border-color:rgba(63,95,84,.25);box-shadow:none}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line);box-shadow:none}
+.btn:active{transform:translateY(1px)}
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.75);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid rgba(232,225,214,.7)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0}
+.brand{display:flex;align-items:center;gap:12px;min-width:220px}
+.brand img{height:40px;width:auto}
+.brand .tag{font-size:12px;color:var(--muted);margin-top:2px}
+nav ul{display:flex;gap:16px;align-items:center;list-style:none;margin:0;padding:0}
+nav a{font-size:14px;color:var(--muted);padding:10px 10px;border-radius:12px}
+nav a:hover{background:var(--paper)}
+.nav-cta{display:flex;gap:10px;align-items:center}
+.menu-btn{display:none;border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px}
+.menu{display:none}
+.hero{
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg, #ffffff 0%, var(--paper2) 100%);
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:center;padding:44px 0}
+.hero h1{font-size:44px;letter-spacing:-.02em}
+.hero .lead{font-size:18px}
+.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.kpi .card{padding:14px 14px;border:1px solid var(--line);border-radius:16px;background:#fff}
+.kpi .card b{display:block;font-size:16px;margin-bottom:6px}
+.hero-img{border-radius:24px;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,.05)}
+.hero-img img{width:100%;height:100%;object-fit:cover;display:block}
+.section{padding:56px 0}
+.section.alt{background:var(--paper)}
+.section .head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:18px}
+.section .head h2{font-size:30px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:0 6px 14px rgba(0,0,0,.04)}
+.card.soft{background:var(--paper2)}
+.icon{width:18px;height:18px;display:inline-block}
+.feature{display:flex;gap:12px}
+.feature .i{width:40px;height:40px;border-radius:14px;background:rgba(63,95,84,.10);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.feature h3{font-size:16px;margin:0}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
+.photo{border-radius:24px;overflow:hidden;border:1px solid rgba(0,0,0,.05);box-shadow:var(--shadow);min-height:320px}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.steps{display:flex;flex-direction:column;gap:12px}
+.step{display:flex;gap:12px;padding:14px;border:1px solid var(--line);border-radius:18px;background:#fff}
+.step .n{width:34px;height:34px;border-radius:999px;background:rgba(201,166,107,.22);display:flex;align-items:center;justify-content:center;font-weight:700;color:#6b4d1b;flex:0 0 auto}
+.step .t b{display:block;margin-bottom:4px}
+.faq{display:flex;flex-direction:column;gap:10px}
+details{border:1px solid var(--line);border-radius:16px;background:#fff;padding:12px 14px}
+summary{cursor:pointer;font-weight:650}
+
+/* Por qué Intermedia: ocultar la franja oscura inferior del JPG */
+#por-que + .section .photo{
+  position: relative;
+}
+#por-que + .section .photo img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 8px);
+  object-fit: cover;
+  object-position: center 30%;
+}
+footer{background:#243C36;color:#e9f1f6}
+footer a{color:#e9f1f6}
+.footer{padding:30px 0}
+.footer-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+.footer small{color:rgba(233,241,246,.7)}
+/* Pages */
+.page-hero{padding:36px 0 18px;border-bottom:1px solid var(--line);background:linear-gradient(180deg, #fff 0%, var(--paper2) 100%)}
+.page-hero h1{font-size:36px}
+.breadcrumb{font-size:13px;color:var(--muted)}
+.form{display:grid;gap:12px}
+.field{display:grid;gap:6px}
+input, select, textarea{
+  width:100%; padding:12px 12px; border:1px solid var(--line); border-radius:14px; font-size:14px; background:#fff;
+}
+textarea{min-height:110px;resize:vertical}
+.helper{display:flex;align-items:flex-start;gap:8px;font-size:0.78rem;color:#6b7280;line-height:1.4;}
+.notice{padding:14px;border:1px solid #ECE9E4;background:#FBF9F6;border-radius:18px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{padding:8px 10px;border:1px solid var(--line);background:#fff;border-radius:999px;font-size:13px;color:var(--muted)}
+/* Mobile */
+
+/* Contacto: la foto debe llenar el cajetín (evita franja blanca inferior) */
+#contacto + .section .photo{
+  height: 240px;
+  min-height: 240px;
+}
+
+/* Contacto (escritorio): la foto de la derecha rellena la altura del cajetín */
+@media (min-width: 921px){
+  #contacto + .section .contact-side{
+    display: flex;
+    flex-direction: column;
+  }
+  #contacto + .section .contact-side .photo{
+    flex: 1 1 auto;
+    height: 100%;
+    min-height: 240px;
+  }
+}
+
+/* --- Brand / Logo --- */
+.logo-text .brand{
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-size: 1.35rem;
+  line-height: 1;
+  color: var(--ink);
+}
+.logo-text .brand-dot{
+  display:inline-block;
+  margin: 0 .18em;
+  color: var(--primary);
+}
+
+/* Tablet/intermedio: evitar fotos “altas y estrechas” solo en Qué ofrecemos y Por qué Intermedia */
+@media (max-width: 1100px) and (min-width: 921px){
+  #que-ofrecemos + .section .split,
+  #por-que + .section .split{
+    align-items: start;
+  }
+
+  #que-ofrecemos + .section .photo,
+  #por-que + .section .photo{
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* Tablet/vertical (600–920): dar más altura a las fotos de Qué ofrecemos y Por qué Intermedia */
+@media (max-width: 920px) and (min-width: 601px){
+  #que-ofrecemos + .section .photo,
+  #por-que + .section .photo{
+    min-height: 0;
+    height: clamp(360px, 55vw, 520px);
+  }
+}
+
+/* 630–920 px: Qué ofrecemos + Contacto — proporción menos panorámica */
+@media (max-width: 920px) and (min-width: 630px) {
+  #que-ofrecemos + .section .photo {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 3 / 4;
+  }
+  #contacto + .section .photo {
+    height: auto;
+    min-height: 0 !important;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* --- Mobile navigation --- */
+.mobile-panel{ display:none; }
+.mobile-panel.open{ display:block; }
+
+@media (max-width: 920px){
+  .hero-grid{grid-template-columns:1fr;gap:18px;padding:32px 0}
+  .hero h1{font-size:36px}
+  .kpi{grid-template-columns:1fr}
+  .grid3{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+  nav ul{display:none}
+  .menu-btn{display:inline-flex;align-items:center;gap:8px}
+  .menu{display:block}
+  .mobile-panel{display:none;position:absolute;left:0;right:0;top:64px;background:#fff;border-bottom:1px solid var(--line);padding:10px 18px}
+  .mobile-panel a{display:block;padding:12px 10px;border-radius:12px;color:var(--muted)}
+  .mobile-panel a:hover{background:var(--paper)}
+
+  footer .footer-grid{
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    padding-right: 0 !important;
+    justify-content: start !important;
+    align-items: start !important;
+  }
+
+  footer .footer-grid > div{
+    position: static !important;
+    left: auto !important;
+    min-width: 0;
+  }
+
+  /* Evitar recortes por nowrap inline en la columna izquierda */
+  footer .footer-grid [style*="white-space:nowrap"]{
+    white-space: normal !important;
+  }
+}
+
+
+/* --- Header / Brand (v3.1) --- */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid #eef1f4}
+.nav-wrap{display:flex;align-items:center;gap:18px;padding:14px 0}
+.brand{display:flex;flex-direction:column;gap:4px;text-decoration:none;min-width:220px}
+.brand .logo-text{font-weight:700;letter-spacing:0.02em;font-size:26px;line-height:1;color:var(--ink)}
+.brand .logo-text .logo-i{font-weight:800}
+.brand .logo-text .dot{display:inline-block;transform:translateY(-1px);margin:0 2px;color:var(--brand)}
+.brand .brand-sub{font-size:13px;line-height:1.2;color:var(--muted);max-width:320px}
+.desktop-nav{display:flex;align-items:center;gap:18px;margin-left:auto}
+.desktop-nav a{color:var(--ink);text-decoration:none;font-size:15px;padding:10px 6px;border-radius:10px}
+.desktop-nav a:hover{background:#f4f7fa}
+.cta{white-space:nowrap;margin-left:4px}
+
+/* Mobile menu */
+.nav-toggle{display:none;margin-left:auto;background:transparent;border:1px solid #e6ecf2;border-radius:14px;padding:10px 12px}
+.nav-toggle-bars{display:block;width:18px;height:2px;background:var(--ink);position:relative}
+.nav-toggle-bars:before,.nav-toggle-bars:after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink)}
+.nav-toggle-bars:before{top:-6px}
+.nav-toggle-bars:after{top:6px}
+.mobile-menu{border-bottom:1px solid #eef1f4;background:#fff}
+.mobile-menu-inner{display:flex;flex-direction:column;gap:10px;padding:16px 0}
+.mobile-menu a{color:var(--ink);text-decoration:none;padding:10px 12px;border-radius:12px;background:#f7f9fb}
+.mobile-menu a:hover{background:#eef3f8}
+.mobile-menu a.btn{
+  background: var(--brand);
+  color: #fff;
+  border-color: transparent;
+}
+.mobile-menu a.btn:hover{
+  background: var(--brand);
+}
+.mobile-menu a.btn.secondary{
+  background:#fff;
+  color:var(--brand);
+  border:1px solid rgba(63,95,84,.25);
+  box-shadow:none;
+}
+.mobile-menu a.btn.secondary:hover{
+  background:#fff;
+}
+.mobile-cta{margin-top:6px}
+
+/* Responsive */
+@media (max-width: 980px){
+  .desktop-nav{display:none}
+  .cta{display:none}
+  .nav-toggle{display:inline-flex}
+  .brand{min-width:auto}
+  .brand .brand-sub{display:none}
+  .nav-wrap{gap:12px}
+  .site-header .brand img{margin-left:0!important;margin-top:0!important}
+}
+/* Header: rango intermedio (antes del menú móvil). Evita recorte del logo sin tocar nada más */
+@media (max-width: 1100px) and (min-width: 981px){
+  .site-header .brand img{margin-left:0!important;margin-top:0!important}
+  header.site-header .nav-wrap > a.btn.btn-primary.cta{left:0!important}
+  header.site-header .nav-wrap > a.btn.btn-primary.cta{padding:10px 12px!important}
+  .desktop-nav{gap:12px}
+  .desktop-nav a{padding:8px 4px}
+}
+/* Header: en pantallas intermedias/grandes, evita que vuelvan los offsets que cortan el menú */
+@media (max-width: 1400px) and (min-width: 981px){
+  .site-header .brand img{margin-left:0!important;margin-top:0!important}
+  header.site-header .nav-wrap > a.btn.btn-primary.cta{left:0!important}
+}
+@media (max-width: 520px){
+  .brand .logo-text{font-size:22px}
+}
+
+
+/* --- One-page v3 additions (scoped) --- */
+.site-header .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+.site-header .brand img{height:53px;width:auto;object-fit:contain;margin-top:10px;margin-left:-200px;}
+.site-header .brand-text{display:flex;flex-direction:column;line-height:1.1}
+.site-header .brand-title{font-weight:800;letter-spacing:0.18em;font-size:14px}
+.site-header .brand-subtitle{font-size:12px;opacity:.75;margin-top:4px}
+
+#home .kicker{letter-spacing:.18em;font-size:12px;opacity:.75;margin-bottom:10px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+#home .hero-card{border:1px solid rgba(255,255,255,.25);border-radius:18px;backdrop-filter: blur(8px);padding:18px;max-width:420px;margin-left:auto}
+#home .hero-card-title{font-weight:600;margin-bottom:8px}
+#home .hero-card-sub{font-size:12px;opacity:.75}
+
+#home-intro .notice{border:1px solid #ECE9E4;background:#FBF9F6;padding:12px 14px;border:1px solid #ECE9E4;margin:14px 0}
+
+
+
+
+
+@media (max-width: 860px){
+  #home .hero-card{max-width:none;margin-left:0}
+}
+
+
+/* --- One-page v4 home image --- */
+#home .hero-banner{width:100vw;margin-left:calc(50% - 50vw);margin-top:24px;}
+#home .hero-banner img{display:block;width:100%;height:340px;object-fit:cover;}
+@media (max-width: 860px){
+  #home .hero-banner img{height:240px;}
+}
+
+/* --- Contrast update inspired by Velayos (requested) --- */
+/* 1) Stronger color band for page headers (e.g., "Quiénes somos") */
+.page-hero{
+  background: linear-gradient(180deg, rgba(63,95,84,.96) 0%, rgba(63,95,84,.86) 100%);
+  border-bottom: none;
+  color: #fff;
+}
+.page-hero .breadcrumb{color: rgba(255,255,255,.78)}
+.page-hero p{color: rgba(255,255,255,.88)}
+.page-hero h1{color:#fff}
+
+/* 2) More contrast on the bands that introduce the main blocks (e.g., "Principios de trabajo") */
+.section.alt{
+  background: linear-gradient(180deg, #F6F2EB 0%, #EDE6DC 100%);
+}
+.section.alt .head h2{color: var(--ink)}
+
+/* 3) Optional wider feel without breaking layout: make hero/banner truly full-bleed (already used in HOME) */
+#home .hero-banner{width:100vw; margin-left:calc(50% - 50vw);}
+
+
+/* --- Home background full version (fixed) --- */
+#home.home-bg {
+  background-image: url('intermedia_home_bg_fixed_v2-home-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+
+  height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;}
+
+
+
+#home.home-bg .container {
+  position: relative;
+  z-index: 2;
+}
+
+#home.home-bg .hero-grid{
+display:flex;
+flex-direction:column;
+align-items:flex-start;
+justify-content:center;
+text-align:left;
+min-height:520px;
+}
+
+#home.home-bg h1,
+#home.home-bg p,
+#home.home-bg .kicker {
+  color: #ffffff;
+}
+
+@media (max-width: 860px){
+  #home.home-bg {
+    height: auto;
+    min-height: calc(100vh - 72px);
+    overflow: visible !important;
+  }
+  #home.home-bg .hero-grid{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    min-height: 360px;
+  }
+  #home.home-bg .hero-text {
+    overflow: visible;
+    max-width: 100%;
+  }
+  #home.home-bg .hero-text h1 {
+    font-size: 32px !important;
+    letter-spacing: 2px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+  #home.home-bg .hero-text .hero-wrap-mobile {
+    display: block;
+  }
+  #home.home-bg .hero-text p {
+    font-size: 17px !important;
+  }
+  #home.home-bg .hero-text p:first-of-type {
+    font-size: 16px !important;
+  }
+  .home-bg > .container {
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow: visible;
+  }
+}
+
+
+/* --- Visual clean-up tweaks (no content changes) --- */
+:root{
+  --radius-soft: 14px;
+  --radius-pill: 999px;
+}
+
+/* A bit wider, without going full-bleed */
+.container{max-width: 1200px;}
+
+/* Reduce the “many rounded boxes” feeling */
+.card,
+.form,
+.notice,
+.pill,
+.step .n{
+  border-radius: var(--radius-soft) !important;
+}
+
+.card{
+  border: 1px solid rgba(0,0,0,.08) !important;
+  box-shadow: none !important;
+}
+
+.card.soft{
+  border: 1px solid rgba(0,0,0,.06) !important;
+  background: rgba(255,255,255,.65) !important;
+}
+
+/* Buttons keep rounded but less bubble-like */
+.btn{
+  border-radius: var(--radius-soft) !important;
+}
+
+/* Make section headings breathe a bit more */
+.head h2, .page-hero h1{letter-spacing: .01em;}
+.section{padding-top: 64px; padding-bottom: 64px;}
+@media (max-width: 860px){
+  .section{padding-top: 48px; padding-bottom: 48px;}
+}
+
+/* Improve icon/number legibility (where used) */
+.step .n{
+  font-size: 16px !important;
+  width: 38px !important;
+  height: 38px !important;
+}
+
+/* Home hero: keep centered and clean */
+#home.home-bg .hero-grid{
+display:flex;
+flex-direction:column;
+align-items:flex-start;
+justify-content:center;
+text-align:left;
+min-height:520px;
+}
+
+
+/* --- Home intro section refresh (style only, no content changes) --- */
+#home-intro{
+  background: rgba(0,0,0,.03);
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+
+/* Make the two blocks feel like one clean section: fewer boxes */
+#home-intro .card{
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Recreate “clean cards” with subtle separators instead of borders */
+#home-intro .split{
+  gap: 56px;
+}
+#home-intro h2{
+  margin-bottom: 12px;
+}
+#home-intro p{
+  max-width: 60ch;
+}
+
+/* Important notice: keep it, but simpler */
+#home-intro .notice{
+  border:1px solid #ECE9E4;
+  background:#FBF9F6;
+  border:1px solid #ECE9E4;
+  padding: 14px 16px !important;
+}
+
+/* Steps: remove “boxed rows”, make icon-driven rows like the reference */
+
+
+
+
+
+
+
+/* Buttons in this block: keep but slightly cleaner */
+#home-intro .hero-actions{
+  margin-top: 16px;
+}
+#home-intro .btn.secondary{
+  background: transparent !important;
+}
+
+/* Give the section a “full width band” feel without breaking layout */
+#home-intro{
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+#home-intro .container{
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Mobile tuning */
+@media (max-width: 860px){
+  #home-intro{padding-top: 44px; padding-bottom: 44px;}
+  #home-intro .split{gap: 28px;}
+}
+
+
+/* --- HOME fix: keep background image hero, make it look clean again --- */
+#home.home-bg{
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+}
+
+#home.home-bg .hero-grid{
+display:flex;
+flex-direction:column;
+align-items:flex-start;
+justify-content:center;
+text-align:left;
+min-height:520px;
+}
+#home.home-bg h1{
+  max-width: 20ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+#home.home-bg .lead{
+  max-width: 62ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* HOME INTRO: clean but not flat */
+#home-intro{
+  background: rgba(0,0,0,.03) !important;
+}
+#home-intro .split{
+  gap: 44px !important;
+}
+#home-intro .card{
+  background: rgba(255,255,255,.75) !important;
+  border: none !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,.06) !important;
+  border-radius: 18px !important;
+  padding: 28px !important;
+}
+#home-intro .notice{
+  border:1px solid #ECE9E4;
+  background:#FBF9F6;
+  border:1px solid #ECE9E4;
+}
+
+/* Steps: separators + teal number circles */
+
+
+
+
+
+
+#home-intro .btn{border-radius: 14px !important;}
+
+
+/* === HOME INTRO clean editorial (no nested boxes) === */
+#home-intro{
+  /* full-width band feel */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  background: rgba(0,0,0,.03);
+  padding: 64px 0;
+}
+#home-intro .container{
+  max-width: 1180px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Remove “cards inside cards” look ONLY here */
+#home-intro .card{
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+/* Two clean columns with air */
+#home-intro .split{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+@media (max-width: 860px){
+  #home-intro{padding: 48px 0;}
+  #home-intro .split{grid-template-columns: 1fr; gap: 32px;}
+}
+
+/* Typographic hierarchy: calmer, easier reading */
+#home-intro h2{
+  margin: 0 0 14px;
+  position: relative;
+  padding-bottom: 12px;
+}
+#home-intro h2::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width: 120px;
+  height: 3px;
+  background: #5ec4bf;
+}
+#home-intro p{
+  max-width: 62ch;
+  line-height: 1.75;
+}
+
+/* “Importante” becomes a simple strip (not a box) */
+#home-intro .notice{
+  margin: 18px 0 0;
+  padding: 10px 0 0 14px;
+  background:#FBF9F6;
+  border:1px solid #ECE9E4;
+  border:1px solid #ECE9E4;
+}
+
+/* Keep action buttons (existing) but make them less “boxed” feeling */
+#home-intro .hero-actions{
+  margin-top: 18px;
+}
+#home-intro .btn{
+  border-radius: 12px !important;
+}
+
+/* Steps: list style (no boxes), subtle separators, clear numbers */
+
+
+
+
+
+
+
+
+/* VARIANT-variantB: icon grid home-intro (NO boxes) */
+#home-intro{background: transparent !important; padding:56px 0 !important;}
+#home-intro .card{background:transparent !important;border:none !important;box-shadow:none !important;border-radius:0 !important;padding:0 !important;}
+#home-intro .notice{background:#FBF9F6;border:1px solid #ECE9E4;border:1px solid #ECE9E4;border:1px solid #ECE9E4;}
+
+@media (max-width: 860px){}
+
+
+
+
+
+
+
+
+
+/* HOME intro: remove underline on the two column titles only */
+#home-intro h2.no-underline::after{
+  display: none !important;
+}
+
+/* HOME intro “Importante” box: match notice style of rest of site (grey dashed box) */
+#home-intro .notice{
+  margin: 18px 0;
+  padding: 14px 16px;
+  background:#FBF9F6;
+  border:1px solid #ECE9E4;
+  border:1px solid #ECE9E4;
+}
+
+
+/* HOME intro steps: align with rest of site (vertical list with numbered circles) */
+
+
+
+
+
+
+
+
+
+
+/* HOME intro: steps estilo “Qué pasa después” (tarjeta blanca + círculo beige) */
+
+
+
+
+
+
+
+
+
+/* HOME intro steps: ajuste fino para que el texto arranque a la altura del número
+   y el marcador sea un cuadrado con esquinas redondeadas (no círculo perfecto). */
+
+
+
+
+
+
+
+/* HOME intro: distribuir contenido de la columna izquierda para que el bloque de botones
+   quede alineado con el final del bloque de pasos de la derecha */
+#home-intro .left-col{
+  display: flex;
+  flex-direction: column;
+}
+
+#home-intro .left-col > *:nth-child(2){
+  /* párrafo principal */
+  margin-top: 10px;
+}
+
+#home-intro .left-col .notice{
+  margin-top: 14px;
+}
+
+#home-intro .left-col .hero-actions{
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+
+/* LOGO EXACTAMENTE 6x SIN TOCAR NADA MAS */
+
+
+
+/* HEADER: altura fija independiente del logo (aprox 1/3 de lo actual) */
+.site-header{
+  height: 72px !important;   /* franja más baja */
+  overflow: visible !important;
+}
+
+/* Centrar verticalmente el contenido dentro de la franja estrecha */
+.nav-wrap{
+  align-items: center !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  height: 100% !important;
+}
+
+
+/* LOGO reducido un 10% (264px → 238px). No se toca nada más. */
+
+
+
+/* LOGO reducido otro 10% y centrado verticalmente */
+
+
+/* Centrado vertical dentro de la franja */
+.site-header .brand {
+  display:flex !important;
+  align-items:center !important;
+  height:100% !important;
+}
+
+
+/* MOVER LOGO HACIA ARRIBA SIN CAMBIAR TAMAÑO NI LA FRANJA */
+
+
+
+/* MOVER LOGO UN POCO MÁS ARRIBA */
+
+
+
+/* Ajuste de espaciado en la columna izquierda de la HOME
+   para compensar el texto más largo del cajetín Importante */
+#home-intro .left-col p{
+  margin-bottom:8px;
+}
+#home-intro .left-col .notice{
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+/* Offset for fixed header */
+.page-hero { padding-top: 110px; }
+
+
+.site-header .brand img
+
+.site-header .brand img { height: 60px !important; }
+
+.cta-group{margin-left:120px !important;}
+
+/* Desplazar botón "Hacer diagnóstico" 200px a la derecha sin tocar el resto */
+header.site-header .nav-wrap > a.btn.btn-primary.cta{
+  position: relative;
+  left:120px;
+}
+
+
+/* --- TEST: Stretch section images 40px outward --- */
+
+#quienes-somos .hero-img img{
+  width: calc(100%  + 150px);
+  margin-left: -150px;
+}
+
+#que-ofrecemos .hero-img img{
+  width: calc(100%  + 150px);
+  margin-right: -150px;
+}
+
+#como-funciona .hero-img img{
+  width: calc(100%  + 150px);
+  margin-left: -150px;
+}
+
+#por-que .hero-img img{
+  width: calc(100%  + 150px);
+  margin-right: -150px;
+}
+
+#test-diagnostico .hero-img img{
+  width: calc(100%  + 150px);
+  margin-left: -150px;
+}
+
+#contacto .hero-img img{
+  width: calc(100%  + 150px);
+  margin-right: -150px;
+}
+
+
+/* --- TEST v2: Stretch section PHOTO blocks 40px outward (based on page-hero id + next section) --- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Cookie consent */
+.cookie-banner{
+  position:fixed;
+  left:16px;
+  right:16px;
+  bottom:16px;
+  z-index:9999;
+  background:rgba(18, 30, 36, 0.96);
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.18);
+  border-radius:16px;
+  padding:14px 14px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.25);
+}
+.cookie-banner .cookie-row{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+.cookie-banner p{
+  margin:0;
+  font-size:13px;
+  line-height:1.35;
+  color:rgba(255,255,255,0.85);
+  max-width:720px;
+}
+.cookie-actions{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.cookie-btn{
+  border-radius:999px;
+  padding:10px 12px;
+  font-size:13px;
+  line-height:1;
+  border:1px solid rgba(255,255,255,0.22);
+  background:transparent;
+  color:#fff;
+  cursor:pointer;
+}
+.cookie-btn.primary{
+  background:#EDE6DC;
+  color:#1f2e2a;
+  border-color:transparent;
+}
+.cookie-btn.link{
+  border:0;
+  padding:10px 6px;
+  text-decoration:underline;
+  background:transparent;
+  color:rgba(255,255,255,0.9);
+}
+.cookie-modal-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+  z-index:10000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+}
+.cookie-modal{
+  width:min(640px, 100%);
+  background:#0f1d23;
+  border:1px solid rgba(255,255,255,0.18);
+  border-radius:18px;
+  padding:18px;
+  color:#fff;
+}
+.cookie-modal h3{ margin:0 0 10px 0; font-size:16px; }
+.cookie-modal .cookie-opt{ display:flex; justify-content:space-between; gap:10px; padding:10px 0; border-top:1px solid rgba(255,255,255,0.12); }
+.cookie-modal .cookie-opt:first-of-type{ border-top:0; }
+.cookie-modal small{ color:rgba(255,255,255,0.75); }
+.cookie-toggle{
+  display:flex; align-items:center; gap:10px;
+}
+.cookie-toggle input{ width:18px; height:18px; }
+
+/* force menu color same as main site */
+.site-header .nav a{
+color:#1d2a33;
+}
+.site-header .nav a:hover{
+color:#1d2a33;
+}
+
+/* legal page titles color */
+.hero h1{
+color: var(--brand);
+}
+
+.hero-text{
+max-width:760px;
+color:white;
+text-align:left;
+line-height:1.4;
+letter-spacing:1.5px;
+margin-left:0;
+}
+
+
+/* v30 HERO alignment fix: remove forced centering on the home hero text */
+#home.home-bg h1{
+  max-width:none !important;
+  margin-left:0 !important;
+  margin-right:0 !important;
+}
+
+#home.home-bg .hero-text p{
+  margin-left:0 !important;
+  margin-right:0 !important;
+}
+
+#home.home-bg .hero-text{
+  margin-left:0 !important;
+  padding-left:0 !important;
+  max-width:760px;
+}
+
+
+/* v31 HERO width fix */
+.home-bg > .container{
+  width:100% !important;
+}
+
+
+.checkline{
+  display:flex;
+  align-items:flex-start;
+  justify-content:flex-start;
+  gap:10px;
+  width:100%;
+  margin:10px 0;
+  text-align:left;
+}
+.checkline input[type="checkbox"]{width:14px;height:14px;margin-top:3px;}
+.checkline span{font-size:0.8rem;color:#6b7280;}
+
+.form-small{font-size:0.8rem;color:#6b7280;}
+.checkline span{font-size:0.8rem;color:#6b7280;}
+
+
+.diag-info{
+background:#f5f6f7;
+border:1px solid #e2e4e7;
+border-radius:12px;
+padding:14px 16px;
+font-size:0.9rem;
+line-height:1.5;
+color:#374151;
+max-width:100%;
+}
+
+/* precise 4-card layout (solo cuando se use grid4) */
+
+.grid4{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+@media (max-width: 900px){
+  .grid4{ grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 600px){
+  .grid4{ grid-template-columns: 1fr; }
+}
+
+
+/* Lo que NO hacemos: 4 tarjetas en una fila */
+.no-grid,
+.cards,
+.card-grid,
+.grid.cards {
+  grid-template-columns: repeat(4, 1fr) !important;
+}
+
+@media (max-width: 900px) {
+  .no-grid,
+  .cards,
+  .card-grid,
+  .grid.cards {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .no-grid,
+  .cards,
+  .card-grid,
+  .grid.cards {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Contacto: alineación icono correo y ancho botón (columna derecha) */
+.contact-side .pills .pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.contact-side a.btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+/* Quiénes somos y Cómo funciona: la altura la marca el cajetín, la foto se adapta */
+#quienes-somos + .section .split,
+#como-funciona + .section .split {
+  display: flex;
+  align-items: stretch;
+  gap: 18px;
+}
+#quienes-somos + .section .split > .card,
+#como-funciona + .section .split > .card {
+  align-self: flex-start;
+  flex: 1 1 0;
+  min-width: 0;
+  padding-bottom: 18px;
+}
+#quienes-somos + .section .photo-full-mobile,
+#como-funciona + .section .photo-full-mobile {
+  flex: 1 1 0;
+  min-height: 0;
+  min-width: 0;
+  align-self: stretch;
+  position: relative;
+}
+/* Imagen fuera del flujo para que la altura la marque solo el cajetín; luego la img rellena el contenedor */
+#quienes-somos + .section .photo-full-mobile img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+/* Cómo funciona (escritorio): la altura la marca el texto; encuadre arriba/derecha para ver la cabeza */
+#como-funciona + .section .photo-full-mobile img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right top;
+  display: block;
+}
+/* Cómo funciona: la foto móvil solo aparece en móvil */
+#como-funciona + .section .process-mobile{display:none;}
+
+/* Imágenes Quiénes somos y Cómo funciona: sin franjas en móvil (imagen como fondo) */
+@media (max-width: 920px) {
+  /* Quiénes somos: apilar imagen + texto cuando ya no cabe */
+  #quienes-somos + .section .split{
+    flex-direction: column-reverse;
+  }
+  /* Cómo funciona: en móvil apilar para que la foto no se “pierda” */
+  #como-funciona + .section .split{
+    flex-direction: column;
+  }
+  /* Cómo funciona: en móvil, usar la foto dentro del contenido (no a sangre) */
+  #como-funciona + .section .process-desktop{display:none;}
+  #como-funciona + .section .process-mobile{
+    display:block;
+    width:100% !important;
+    max-width:100% !important;
+    margin-left:0 !important;
+    border-radius:24px !important;
+    margin-top: 16px !important;
+    height: auto !important;
+    min-height: 220px !important;
+    aspect-ratio: 4 / 3;
+  }
+  /* Quiénes somos: en móvil, la imagen respeta márgenes del container (no full-bleed) */
+  #quienes-somos + .section .photo-full-mobile{
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    border-radius: 24px !important;
+  }
+  .photo-full-mobile {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    box-sizing: border-box !important;
+    height: 280px !important;
+    min-height: 280px !important;
+    border-radius: 0 !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+  .photo-mobile-about {
+    background-image: url('about.png') !important;
+  }
+  .photo-mobile-process {
+    background-image: url('process.png') !important;
+  }
+  .photo-full-mobile img {
+    display: none !important;
+  }
+}
