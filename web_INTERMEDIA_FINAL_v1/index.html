@@ -745,7 +745,7 @@ El análisis es confidencial y orientativo y no constituye asesoramiento financi
          1. ¿Cuál es tu situación actual con la hipoteca?
         </b>
        </label>
-       <select required="">
+       <select name="situacion_de_pago" required="">
         <option value="">
          Selecciona…
         </option>
@@ -772,7 +772,7 @@ El análisis es confidencial y orientativo y no constituye asesoramiento financi
          2. ¿Has recibido alguna comunicación formal relacionada con la deuda?
         </b>
        </label>
-       <select>
+       <select name="has_recibido_alguna_comunicacion_formal_relacionada_con_la_deuda">
         <option value="">
          Selecciona…
         </option>
@@ -799,7 +799,7 @@ El análisis es confidencial y orientativo y no constituye asesoramiento financi
          3. La vivienda relacionada con la hipoteca es/está…
         </b>
        </label>
-       <select>
+       <select name="la_vivienda_relacionada_con_la_hipoteca_esesta">
         <option value="">
          Selecciona…
         </option>
@@ -832,7 +832,7 @@ El análisis es confidencial y orientativo y no constituye asesoramiento financi
          4. ¿Qué te gustaría que pudiera ocurrir?
         </b>
        </label>
-       <select>
+       <select name="que_te_gustaria_que_pudiera_ocurrir">
         <option value="">
          Selecciona…
         </option>
@@ -859,7 +859,7 @@ El análisis es confidencial y orientativo y no constituye asesoramiento financi
        <p class="form-small">
         Esta pregunta nos ayuda a entender mejor tu situación. No es necesario que las cifras sean exactas.
        </p>
-       <select>
+       <select name="cual_es_aproximadamente_la_deuda_pendiente_de_tu_hipoteca">
         <option value="">
          Selecciona…
         </option>
@@ -892,7 +892,7 @@ El análisis es confidencial y orientativo y no constituye asesoramiento financi
        <p class="form-small">
         Esta pregunta nos ayuda a entender mejor tu situación. No es necesario que las cifras sean exactas.
        </p>
-       <select>
+       <select name="cual_crees_que_podria_ser_el_valor_aproximado_de_tu_vivienda_hoy">
         <option value="">
          Selecciona…
         </option>
@@ -922,7 +922,7 @@ El análisis es confidencial y orientativo y no constituye asesoramiento financi
          7. ¿En qué ciudad o municipio se encuentra la vivienda?
         </b>
        </label>
-       <input placeholder="Ciudad o municipio"/>
+       <input name="ciudad_o_municipio_de_la_vivienda" placeholder="Ciudad o municipio"/>
       </div>
       <div class="field">
        <label>
@@ -930,7 +930,7 @@ El análisis es confidencial y orientativo y no constituye asesoramiento financi
          8. ¿Qué es lo que más necesitas en este momento?
         </b>
        </label>
-       <select>
+       <select name="que_es_lo_que_mas_necesitas_en_este_momento">
         <option value="">
          Selecciona…
         </option>
@@ -1330,13 +1330,23 @@ form.addEventListener("submit",function(e){
 e.preventDefault();
 var btn=form.querySelector('button[type="submit"]');
 if(btn && btn.disabled) return;
-var fn=form.querySelector('[name="firstname"]');
-var em=form.querySelector('[name="email"]');
-var ph=form.querySelector('[name="phone"]');
+function field(name){
+var el=form.elements[name];
+if(!el) return '';
+return String(el.value||'').trim();
+}
 var payload={
-nombre: fn && fn.value ? fn.value.trim() : '',
-email: em && em.value ? em.value.trim() : '',
-telefono: ph && ph.value ? ph.value.trim() : ''
+nombre: field('firstname'),
+email: field('email'),
+telefono: field('phone'),
+situacion_de_pago: field('situacion_de_pago'),
+has_recibido_alguna_comunicacion_formal_relacionada_con_la_deuda: field('has_recibido_alguna_comunicacion_formal_relacionada_con_la_deuda'),
+la_vivienda_relacionada_con_la_hipoteca_esesta: field('la_vivienda_relacionada_con_la_hipoteca_esesta'),
+que_te_gustaria_que_pudiera_ocurrir: field('que_te_gustaria_que_pudiera_ocurrir'),
+cual_es_aproximadamente_la_deuda_pendiente_de_tu_hipoteca: field('cual_es_aproximadamente_la_deuda_pendiente_de_tu_hipoteca'),
+cual_crees_que_podria_ser_el_valor_aproximado_de_tu_vivienda_hoy: field('cual_crees_que_podria_ser_el_valor_aproximado_de_tu_vivienda_hoy'),
+ciudad_o_municipio_de_la_vivienda: field('ciudad_o_municipio_de_la_vivienda'),
+que_es_lo_que_mas_necesitas_en_este_momento: field('que_es_lo_que_mas_necesitas_en_este_momento')
 };
 if(!payload.email){
 return;
