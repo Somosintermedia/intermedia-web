@@ -738,7 +738,7 @@ Este diagnóstico nos permite entender mejor tu situación y valorar si podría 
 El análisis es confidencial y orientativo y no constituye asesoramiento financiero ni jurídico.</div>
  
      </p>
-     <form class="form" onsubmit="event.preventDefault(); ">
+     <form id="form-diagnostico" class="form" onsubmit="event.preventDefault(); ">
       <div class="field">
        <label>
         <b>
@@ -958,7 +958,7 @@ El análisis es confidencial y orientativo y no constituye asesoramiento financi
          Nombre
         </b>
        </label>
-       <input required=""/>
+       <input name="firstname" required=""/>
       </div>
       <div class="field">
        <label>
@@ -966,7 +966,7 @@ El análisis es confidencial y orientativo y no constituye asesoramiento financi
          Teléfono
         </b>
        </label>
-       <input placeholder="opcional" />
+       <input name="phone" placeholder="opcional" />
       </div>
       <div class="field">
        <label>
@@ -974,7 +974,7 @@ El análisis es confidencial y orientativo y no constituye asesoramiento financi
          Email
         </b>
        </label>
-       <input type="email"/>
+       <input name="email" type="email" required=""/>
       </div>
       <label class="checkline"><input type="checkbox" required> <span>He leído y acepto la Política de privacidad</span></label>
       <label class="checkline"><input type="checkbox" required> <span>Entiendo que este diagnóstico es orientativo y que no todos los casos tienen una solución viable</span></label>
@@ -1305,20 +1305,68 @@ El análisis es confidencial y orientativo y no constituye asesoramiento financi
   </div>
 </div>
 
+<div id="mensaje-envio-error" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:#fff;padding:28px;border-radius:14px;max-width:520px;margin:auto;text-align:left;box-shadow:0 10px 30px rgba(0,0,0,.2);">
+    <p><strong>No se ha podido completar el envío.</strong></p>
+    <p id="mensaje-envio-error-texto"></p>
+    <button onclick="cerrarMensajeError()" style="margin-top:14px;padding:10px 16px;border-radius:8px;border:none;background:#1f4f46;color:#fff;cursor:pointer;">Cerrar</button>
+  </div>
+</div>
+
 
 <script>
 function cerrarMensaje(){
 document.getElementById('mensaje-envio').style.display='none';
 }
+function cerrarMensajeError(){
+var el=document.getElementById('mensaje-envio-error');
+if(el) el.style.display='none';
+}
 
 document.addEventListener("DOMContentLoaded",function(){
-const form=document.querySelector("form");
-if(form){
+var form=document.getElementById('form-diagnostico');
+if(!form) return;
 form.addEventListener("submit",function(e){
 e.preventDefault();
-document.getElementById('mensaje-envio').style.display='flex';
-});
+var btn=form.querySelector('button[type="submit"]');
+if(btn && btn.disabled) return;
+var fn=form.querySelector('[name="firstname"]');
+var em=form.querySelector('[name="email"]');
+var ph=form.querySelector('[name="phone"]');
+var payload={
+nombre: fn && fn.value ? fn.value.trim() : '',
+email: em && em.value ? em.value.trim() : '',
+telefono: ph && ph.value ? ph.value.trim() : ''
+};
+if(!payload.email){
+return;
 }
+if(btn){ btn.disabled=true; }
+fetch('/.netlify/functions/hubspot-contact',{
+method:'POST',
+headers:{'Content-Type':'application/json'},
+body:JSON.stringify(payload)
+}).then(function(res){
+return res.json().then(function(data){ return { res: res, data: data }; });
+}).then(function(r){
+if(r.res.ok){
+document.getElementById('mensaje-envio').style.display='flex';
+form.reset();
+}else{
+var t=document.getElementById('mensaje-envio-error-texto');
+if(t) t.textContent=(r.data && (r.data.error || r.data.message)) ? (r.data.error || r.data.message) : ('Error ' + r.res.status);
+var box=document.getElementById('mensaje-envio-error');
+if(box) box.style.display='flex';
+}
+}).catch(function(err){
+var t=document.getElementById('mensaje-envio-error-texto');
+if(t) t.textContent=err && err.message ? err.message : 'Error de conexión';
+var box=document.getElementById('mensaje-envio-error');
+if(box) box.style.display='flex';
+}).finally(function(){
+if(btn) btn.disabled=false;
+});
+});
 });
 </script>
 
