@@ -619,7 +619,7 @@ min-height:520px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 64px;
-  align-items: start;
+  align-items: stretch;
 }
 @media (max-width: 860px){
   #home-intro{padding: 48px 0;}
@@ -820,6 +820,16 @@ min-height:520px;
 header.site-header .nav-wrap > a.btn.btn-primary.cta{
   position: relative;
   left:120px;
+}
+
+@media (min-width: 981px){
+  .site-header .desktop-nav{
+    margin-left: 0;
+    margin-right: 0;
+    flex: 1 1 auto;
+    width: auto;
+    justify-content: space-evenly;
+  }
 }
 
 
@@ -1071,12 +1081,64 @@ max-width:100%;
   }
 }
 
-/* Contacto: alineación icono correo y ancho botón (columna derecha) */
-.contact-side .pills .pill {
+/* Contacto: tres vías alineadas (columna derecha) */
+#contacto + .section .contact-side .contact-ways {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+}
+#contacto + .section .contact-side .contact-ways .pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: flex-start;
 }
+
+/* Contacto: mini formulario solicitud de llamada (primer cajetín) */
+#contacto + .section .contact-side .contact-ways details.contact-call {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+}
+#contacto + .section .contact-side .contact-ways .contact-call__summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  font-size: 13px;
+  color: var(--muted);
+}
+#contacto + .section .contact-side .contact-ways .contact-call__summary::-webkit-details-marker {
+  display: none;
+}
+#contacto + .section .contact-side .contact-ways .contact-call__form {
+  padding: 0 10px 12px;
+  border-top: 1px solid var(--line);
+}
+#contacto + .section .contact-side .contact-ways .contact-call__form .field {
+  margin-top: 10px;
+}
+#contacto + .section .contact-side .contact-ways .contact-call__form .field:first-of-type {
+  margin-top: 8px;
+}
+#contacto + .section .contact-side .contact-ways .contact-call__form .btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 4px;
+}
+
 .contact-side a.btn {
   display: block;
   width: 100%;

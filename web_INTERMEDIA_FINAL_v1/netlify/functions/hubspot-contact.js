@@ -1,13 +1,26 @@
 /**
- * Netlify Function: crea un contacto en HubSpot (CRM v3).
+ * Netlify Function: crea o actualiza un contacto en HubSpot (CRM v3).
  * Variables de entorno: HUBSPOT_TOKEN (Private App access token)
  *
- * POST JSON: { "nombre": "...", "email": "...", "telefono": "..." }
+ * POST JSON: nombre, email, telefono + respuestas del test (propiedades personalizadas)
+ * Email o teléfono obligatorio (p. ej. solicitud de llamada sin email).
  *
- * Si el contacto ya existe (409), actualiza firstname y phone con PATCH.
+ * Si el contacto ya existe (409), actualiza firstname, phone y respuestas con PATCH.
  */
 
 const HUBSPOT_URL = "https://api.hubapi.com/crm/v3/objects/contacts";
+
+/** Nombres internos en HubSpot (deben existir como propiedades de contacto) */
+const TEST_PROP_KEYS = [
+  "situacion_de_pago",
+  "has_recibido_alguna_comunicacion_formal_relacionada_con_la_deuda",
+  "la_vivienda_relacionada_con_la_hipoteca_esesta",
+  "que_te_gustaria_que_pudiera_ocurrir",
+  "cual_es_aproximadamente_la_deuda_pendiente_de_tu_hipoteca",
+  "cual_crees_que_podria_ser_el_valor_aproximado_de_tu_vivienda_hoy",
+  "ciudad_o_municipio_de_la_vivienda",
+  "que_es_lo_que_mas_necesitas_en_este_momento",
+];
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -15,6 +28,38 @@ const corsHeaders = {
   "Access-Control-Allow-Methods": "POST, OPTIONS",
   "Content-Type": "application/json",
 };
+
+function str(v) {
+  if (v == null) return "";
+  return String(v).trim();
+}
+
+/**
+ * @param {object} payload
+ * @param {{ includeEmail: boolean }} opts
+ */
+function buildContactProperties(payload, opts) {
+  const props = {};
+  if (opts.includeEmail) {
+    const email = str(payload.email);
+    const telefono = str(payload.telefono);
+    if (email) {
+      props.email = email;
+    } else if (telefono) {
+      const digits = telefono.replace(/\D/g, "") || "0";
+      props.email = `solicitud-llamada+${digits}@somosintermedia.com`;
+    }
+  }
+  const nombre = str(payload.nombre);
+  if (nombre) props.firstname = nombre;
+  const telefono = str(payload.telefono);
+  if (telefono) props.phone = telefono;
+  for (const key of TEST_PROP_KEYS) {
+    const val = str(payload[key]);
+    if (val) props[key] = val;
+  }
+  return props;
+}
 
 /** HubSpot 409: extrae el ID del contacto existente del cuerpo de error */
 function extractExistingContactId(data) {
@@ -40,8 +85,7 @@ function extractExistingContactId(data) {
     }
   }
 
-  const msg =
-    typeof data.message === "string" ? data.message : "";
+  const msg = typeof data.message === "string" ? data.message : "";
   const match = msg.match(/Existing ID:\s*(\d+)/i);
   if (match) return match[1];
 
@@ -57,10 +101,7 @@ function isDuplicateContactError(status, data) {
   const msg = (data.message || "").toLowerCase();
   const cat = (data.category || "").toUpperCase();
   const errCode = (data.error || "").toUpperCase();
-  if (
-    cat === "OBJECT_ALREADY_EXISTS" ||
-    errCode === "CONTACT_EXISTS"
-  ) {
+  if (cat === "OBJECT_ALREADY_EXISTS" || errCode === "CONTACT_EXISTS") {
     return true;
   }
   if (msg.includes("already exists") || msg.includes("ya existe")) {
@@ -103,24 +144,19 @@ exports.handler = async (event) => {
     };
   }
 
-  const nombre = payload.nombre != null ? String(payload.nombre).trim() : "";
-  const email = payload.email != null ? String(payload.email).trim() : "";
-  const telefono =
-    payload.telefono != null ? String(payload.telefono).trim() : "";
-
-  if (!email) {
+  const email = str(payload.email);
+  const telefono = str(payload.telefono);
+  if (!email && !telefono) {
     return {
       statusCode: 400,
       headers: corsHeaders,
-      body: JSON.stringify({ error: "email es obligatorio" }),
+      body: JSON.stringify({
+        error: "Se requiere email o teléfono",
+      }),
     };
   }
 
-  const properties = {
-    email,
-    ...(nombre && { firstname: nombre }),
-    ...(telefono && { phone: telefono }),
-  };
+  const properties = buildContactProperties(payload, { includeEmail: true });
 
   try {
     const res = await fetch(HUBSPOT_URL, {
@@ -160,9 +196,9 @@ exports.handler = async (event) => {
         };
       }
 
-      const patchProps = {};
-      if (nombre) patchProps.firstname = nombre;
-      if (telefono) patchProps.phone = telefono;
+      const patchProps = buildContactProperties(payload, {
+        includeEmail: false,
+      });
 
       if (Object.keys(patchProps).length === 0) {
         return {
