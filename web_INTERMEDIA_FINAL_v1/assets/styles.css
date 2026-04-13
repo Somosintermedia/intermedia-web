@@ -224,7 +224,11 @@ textarea{min-height:110px;resize:vertical}
 .desktop-nav{display:flex;align-items:center;gap:18px;margin-left:auto}
 .desktop-nav a{color:var(--ink);text-decoration:none;font-size:15px;padding:10px 6px;border-radius:10px}
 .desktop-nav a:hover{background:#f4f7fa}
-.cta{white-space:nowrap;margin-left:4px}
+/* Separación respecto al nav solo en cabecera (no en CTAs del cuerpo) */
+header.site-header .cta {
+  white-space: nowrap;
+  margin-left: 4px;
+}
 
 /* Mobile menu */
 .nav-toggle{display:none;margin-left:auto;background:transparent;border:1px solid #e6ecf2;border-radius:14px;padding:10px 12px}
@@ -398,9 +402,6 @@ min-height:520px;
   }
   #home.home-bg .hero-text p {
     font-size: 17px !important;
-  }
-  #home.home-bg .hero-text p:first-of-type {
-    font-size: 16px !important;
   }
   .home-bg > .container {
     padding-left: 20px;
@@ -1005,6 +1006,42 @@ margin-left:0;
   max-width:760px;
 }
 
+#home.home-bg .hero-text h1 {
+  margin: 2px 0 24px 0;
+  text-align: left;
+  color: #fff;
+  font-size: 48px;
+  letter-spacing: 4px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
+}
+
+#home.home-bg .hero-text > p:first-of-type {
+  margin: 0 0 12px 0;
+  text-align: left;
+  color: #fff;
+  font-size: 21px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  width: fit-content;
+  max-width: 100%;
+}
+
+#home.home-bg .hero-text h1 + p {
+  margin: 0 0 18px 0;
+  text-align: left;
+  color: #fff;
+  font-size: 20px;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+}
+
+@media (min-width: 861px) {
+  #home.home-bg .hero-text h1 + p {
+    white-space: nowrap;
+  }
+}
 
 /* v31 HERO width fix */
 .home-bg > .container{
@@ -1081,6 +1118,91 @@ max-width:100%;
   }
 }
 
+/* CTA “Analizamos tu caso” + helper: ancho del bloque de contenido (100% columna); hero principal excluido abajo */
+.hero-actions.cta-analizamos-wrap,
+.cta-analizamos-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.hero.home-bg .hero-text .cta-analizamos-wrap {
+  width: 415.66px;
+  max-width: 100%;
+  margin-top: 2px;
+  margin-left: 0;
+  margin-right: auto;
+}
+.cta-analizamos-wrap > .btn.btn-primary.cta {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: center;
+  padding: 12px 14px;
+}
+.hero.home-bg .hero-text .cta-analizamos-wrap > .btn.btn-primary.cta {
+  padding: 12px 16px;
+}
+.cta-analizamos-wrap .helper {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 10px 0 0;
+  padding: 0;
+  text-align: center;
+}
+
+#home.home-bg .hero-text .cta-analizamos-wrap .helper {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+@media (min-width: 861px) {
+  #home.home-bg .hero-text .cta-analizamos-wrap .helper {
+    white-space: nowrap;
+  }
+}
+
+/* Contacto: placeholders izquierda = misma tipografía que .contact-ways .pill (derecha) */
+#contacto + .section .split > .card:first-child .form input::placeholder,
+#contacto + .section .split > .card:first-child .form textarea::placeholder {
+  color: var(--muted) !important;
+  -webkit-text-fill-color: var(--muted);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  font-style: normal;
+  line-height: 1.35 !important;
+  letter-spacing: normal;
+  opacity: 1 !important;
+}
+#contacto + .section .split > .card:first-child .form input::-webkit-input-placeholder,
+#contacto + .section .split > .card:first-child .form textarea::-webkit-input-placeholder {
+  color: var(--muted) !important;
+  -webkit-text-fill-color: var(--muted);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  line-height: 1.35 !important;
+  letter-spacing: normal;
+  opacity: 1 !important;
+}
+#contacto + .section .split > .card:first-child .form input::-moz-placeholder,
+#contacto + .section .split > .card:first-child .form textarea::-moz-placeholder {
+  color: var(--muted) !important;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  line-height: 1.35 !important;
+  letter-spacing: normal;
+  opacity: 1 !important;
+}
+
 /* Contacto: tres vías alineadas (columna derecha) */
 #contacto + .section .contact-side .contact-ways {
   margin-top: 10px;
@@ -1096,16 +1218,28 @@ max-width:100%;
   width: 100%;
   box-sizing: border-box;
   justify-content: flex-start;
+  font-size: 13px;
+  line-height: 1.35;
+  font-weight: 400;
+  color: var(--muted);
+}
+#contacto + .section .contact-side .contact-ways .pill .icon {
+  flex-shrink: 0;
 }
 
 /* Contacto: mini formulario solicitud de llamada (primer cajetín) */
 #contacto + .section .contact-side .contact-ways details.contact-call {
   width: 100%;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   border: 1px solid var(--line);
   background: #fff;
-  border-radius: 14px;
+  border-radius: var(--radius-soft) !important;
   overflow: hidden;
+}
+#contacto + .section .contact-side .contact-ways details.contact-call[open] {
+  border-radius: var(--radius-soft) !important;
 }
 #contacto + .section .contact-side .contact-ways .contact-call__summary {
   list-style: none;
@@ -1117,7 +1251,12 @@ max-width:100%;
   box-sizing: border-box;
   padding: 8px 10px;
   font-size: 13px;
+  line-height: 1.35;
+  font-weight: 400;
   color: var(--muted);
+}
+#contacto + .section .contact-side .contact-ways .contact-call__summary .icon {
+  flex-shrink: 0;
 }
 #contacto + .section .contact-side .contact-ways .contact-call__summary::-webkit-details-marker {
   display: none;
