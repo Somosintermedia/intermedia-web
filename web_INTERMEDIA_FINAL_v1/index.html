@@ -1014,14 +1014,14 @@ El análisis es confidencial y orientativo y no constituye asesoramiento financi
      <h2>
       Déjanos tus datos y te contactaremos para resolver todas tus dudas.
      </h2>
-     <form class="form" onsubmit="event.preventDefault(); ">
+    <form id="form-contacto-principal" class="form" onsubmit="event.preventDefault(); ">
       <div class="field">
        <label>
         <b>
          Nombre
         </b>
        </label>
-       <input required=""/>
+      <input name="nombre" required=""/>
       </div>
       <div class="field">
        <label>
@@ -1037,7 +1037,7 @@ El análisis es confidencial y orientativo y no constituye asesoramiento financi
          Email
         </b>
        </label>
-       <input type="email"/>
+      <input name="email" type="email"/>
       </div>
       <div class="field">
       <label>
@@ -1045,7 +1045,7 @@ El análisis es confidencial y orientativo y no constituye asesoramiento financi
         Mensaje
        </b>
       </label>
-      <textarea placeholder="Cuéntanos tu caso"></textarea>
+     <textarea name="mensaje" placeholder="Cuéntanos tu caso"></textarea>
      </div>
      
       <button class="btn" type="submit">
@@ -1342,6 +1342,64 @@ return res.json().then(function(data){ return { res: res, data: data }; });
 if(r.res.ok){
 document.getElementById('mensaje-envio').style.display='flex';
 form.reset();
+}else{
+var t=document.getElementById('mensaje-envio-error-texto');
+if(t) t.textContent=(r.data && (r.data.error || r.data.message)) ? (r.data.error || r.data.message) : ('Error ' + r.res.status);
+var box=document.getElementById('mensaje-envio-error');
+if(box) box.style.display='flex';
+}
+}).catch(function(err){
+var t=document.getElementById('mensaje-envio-error-texto');
+if(t) t.textContent=err && err.message ? err.message : 'Error de conexión';
+var box=document.getElementById('mensaje-envio-error');
+if(box) box.style.display='flex';
+}).finally(function(){
+if(btn) btn.disabled=false;
+});
+});
+});
+
+document.addEventListener("DOMContentLoaded",function(){
+var formContacto=document.getElementById('form-contacto-principal');
+if(!formContacto) return;
+formContacto.addEventListener("submit",function(e){
+e.preventDefault();
+var btn=formContacto.querySelector('button[type="submit"]');
+if(btn && btn.disabled) return;
+function field(name){
+var el=formContacto.elements[name];
+if(!el) return '';
+return String(el.value||'').trim();
+}
+var payload={
+nombre: field('nombre'),
+email: field('email'),
+telefono: field('phone'),
+mensaje: field('mensaje')
+};
+if(!payload.email){
+var tReq=document.getElementById('mensaje-envio-error-texto');
+if(tReq) tReq.textContent='Indica un email válido.';
+var boxReq=document.getElementById('mensaje-envio-error');
+if(boxReq) boxReq.style.display='flex';
+return;
+}
+if(btn){ btn.disabled=true; }
+fetch('/.netlify/functions/hubspot-contact',{
+method:'POST',
+headers:{'Content-Type':'application/json'},
+body:JSON.stringify(payload)
+}).then(function(res){
+return res.json().then(function(data){ return { res: res, data: data }; });
+}).then(function(r){
+if(r.res.ok){
+var ok=document.getElementById('mensaje-envio');
+if(ok){
+var p=ok.querySelector('p');
+if(p) p.textContent='Gracias por escribirnos. Te responderemos lo antes posible.';
+ok.style.display='flex';
+}
+formContacto.reset();
 }else{
 var t=document.getElementById('mensaje-envio-error-texto');
 if(t) t.textContent=(r.data && (r.data.error || r.data.message)) ? (r.data.error || r.data.message) : ('Error ' + r.res.status);
