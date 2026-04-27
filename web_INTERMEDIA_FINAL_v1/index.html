@@ -1302,6 +1302,36 @@ function cerrarMensajeError(){
 var el=document.getElementById('mensaje-envio-error');
 if(el) el.style.display='none';
 }
+function configurarMensajeEnvio(tipo){
+var box=document.getElementById('mensaje-envio');
+if(!box) return;
+var panel=box.firstElementChild;
+if(!panel) return;
+var ps=panel.querySelectorAll('p');
+if(!ps || ps.length===0) return;
+
+if(tipo==='diagnostico'){
+if(ps[0]) ps[0].style.display='';
+if(ps[1]) ps[1].style.display='';
+if(ps[2]) ps[2].style.display='';
+if(ps[3]) ps[3].style.display='';
+if(ps[4]) ps[4].style.display='';
+if(ps[1]) ps[1].textContent='Gracias por compartir tu situación con nosotros. Sabemos que hablar de estas situaciones no es fácil.';
+return;
+}
+
+if(ps[0]) ps[0].style.display='none';
+if(ps[2]) ps[2].style.display='none';
+if(ps[3]) ps[3].style.display='none';
+if(ps[4]) ps[4].style.display='none';
+if(ps[1]) ps[1].style.display='';
+
+if(tipo==='contacto'){
+ps[1].textContent='Gracias por escribirnos. Te responderemos lo antes posible.';
+}else if(tipo==='llamada'){
+ps[1].textContent='Gracias por ponerte en contacto. Te llamaremos lo antes posible.';
+}
+}
 
 document.addEventListener("DOMContentLoaded",function(){
 var form=document.getElementById('form-diagnostico');
@@ -1340,6 +1370,7 @@ body:JSON.stringify(payload)
 return res.json().then(function(data){ return { res: res, data: data }; });
 }).then(function(r){
 if(r.res.ok){
+configurarMensajeEnvio('diagnostico');
 document.getElementById('mensaje-envio').style.display='flex';
 form.reset();
 }else{
@@ -1393,12 +1424,8 @@ body:JSON.stringify(payload)
 return res.json().then(function(data){ return { res: res, data: data }; });
 }).then(function(r){
 if(r.res.ok){
-var ok=document.getElementById('mensaje-envio');
-if(ok){
-var p=ok.querySelector('p');
-if(p) p.textContent='Gracias por escribirnos. Te responderemos lo antes posible.';
-ok.style.display='flex';
-}
+configurarMensajeEnvio('contacto');
+document.getElementById('mensaje-envio').style.display='flex';
 formContacto.reset();
 }else{
 var t=document.getElementById('mensaje-envio-error-texto');
@@ -1445,6 +1472,7 @@ body:JSON.stringify(payload)
 return res.json().then(function(data){ return { res: res, data: data }; });
 }).then(function(r){
 if(r.res.ok){
+configurarMensajeEnvio('llamada');
 document.getElementById('mensaje-envio').style.display='flex';
 formCall.reset();
 }else{
