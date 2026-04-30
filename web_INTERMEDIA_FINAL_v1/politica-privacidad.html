@@ -1,142 +1,213 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5RR27562');</script>
-<!-- End Google Tag Manager -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Política de privacidad · Intermedia</title>
-<link rel="stylesheet" href="assets/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <title>Política de privacidad · Intermedia</title>
 <style>
-.logo-home img{height:40px;width:auto;display:block;}
-</style>
+    :root{--green:#2D5C45;--green-hover:#235039;--cream:#F7F4EE;--text:#1C1C1A;--muted:#6B6860;--border:rgba(28,28,26,0.1);--white:#fff}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-size:16px}
+    h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.2}
+    nav{position:sticky;top:0;z-index:100;background:rgba(247,244,238,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 5%}
+    .nav-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--text);text-decoration:none;letter-spacing:0.04em}
+    .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;transition:color .2s}
+    .nav-links a:hover{color:var(--text)}
+    .nav-cta{background:var(--green);color:var(--white)!important;padding:9px 20px;border-radius:6px;font-weight:500!important;font-size:13px!important;transition:background .2s!important}
+    .nav-cta:hover{background:var(--green-hover)!important}
+    .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+    .nav-burger span{display:block;width:22px;height:1.5px;background:var(--text);transition:all .3s}
+    @media(max-width:768px){
+      .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--cream);border-bottom:1px solid var(--border);flex-direction:column;padding:16px 5%;gap:0}
+      .nav-links.open{display:flex}
+      .nav-links li{width:100%;border-bottom:1px solid var(--border)}
+      .nav-links a{display:block;padding:13px 0;font-size:15px}
+      .nav-cta{margin:10px 0;text-align:center;border-radius:6px;padding:12px 0!important}
+      .nav-burger{display:flex}
+    }
+    .page-hero{background:var(--green);padding:80px 5% 48px}
+    .page-hero-inner{max-width:1120px;margin:0 auto}
+    .breadcrumb{font-size:13px;color:rgba(255,255,255,0.65);margin-bottom:20px}
+    .breadcrumb a{color:rgba(255,255,255,0.65);text-decoration:none}
+    .breadcrumb a:hover{color:#fff}
+    .breadcrumb span{margin:0 8px;opacity:0.5}
+    .page-hero h1{font-size:clamp(32px,5vw,52px);color:#fff;font-weight:500}
+    .page-hero p{font-size:15px;color:rgba(255,255,255,0.75);margin-top:12px;max-width:560px;line-height:1.65}
+    .legal-body{max-width:760px;margin:0 auto;padding:64px 5% 80px}
+    .legal-section{margin-bottom:40px}
+    .legal-section h2{font-size:20px;font-weight:500;color:var(--text);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+    .legal-section p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:12px}
+    .legal-section ul{padding-left:20px;margin-bottom:12px}
+    .legal-section ul li{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:4px}
+    .legal-section a{color:var(--green);text-decoration:none}
+    .legal-section a:hover{text-decoration:underline}
+    .legal-note{background:var(--cream);border-left:3px solid var(--green);border-radius:0 6px 6px 0;padding:16px 20px;margin:24px 0;font-size:14px;color:var(--muted);line-height:1.7}
+    footer{background:var(--text);color:rgba(255,255,255,0.7);padding:48px 5% 32px}
+    .footer-inner{max-width:1120px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:28px}
+    .footer-brand p{font-size:14px;line-height:1.7;margin-top:12px;max-width:280px}
+    .footer-col h4{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#fff;margin-bottom:14px;letter-spacing:0.04em;text-transform:uppercase}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .footer-col a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;transition:color .2s}
+    .footer-col a:hover{color:#fff}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:13px}
+    .footer-logo-text{font-family:'Cormorant Garamond',serif;font-size:22px;color:#fff;font-weight:500;letter-spacing:0.06em}
+    @media(max-width:640px){.footer-top{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:8px;text-align:center}}
+  </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5RR27562"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
-<header class="site-header">
-   <div class="container nav-wrap">
-    <a aria-label="Ir a inicio" class="brand" href="index.html">
-     <img class="brand-logo" src="assets/INTERMEDIA.svg"/>
-    </a>
-    <nav aria-label="Principal" class="nav desktop-nav">
-     <a href="#quienes-somos">
-      Quiénes somos
-     </a>
-     <a href="#que-ofrecemos">
-      Qué ofrecemos
-     </a>
-     <a href="#como-funciona">
-      Cómo funciona
-     </a>
-     <a href="#por-que">
-      Porqué intermedia
-     </a>
-     <a href="#test-diagnostico">
-      Test diagnóstico
-     </a>
-     <a class="cta btn secondary" href="#contacto">
-      Contacto
-     </a>
-    </nav>
-    <a class="btn btn-primary cta" href="diagnostico.html">
-     Hacer diagnóstico
-    </a>
-    <button aria-controls="mobileMenu" aria-expanded="false" aria-label="Abrir menú" class="nav-toggle" type="button">
-     <span aria-hidden="true" class="nav-toggle-bars">
-     </span>
-    </button>
-   </div>
-   <div class="mobile-menu" hidden="" id="mobileMenu">
-    <div class="container mobile-menu-inner">
-     <a href="#quienes-somos">
-      Quiénes somos
-     </a>
-     <a href="#que-ofrecemos">
-      Qué ofrecemos
-     </a>
-     <a href="#como-funciona">
-      Cómo funciona
-     </a>
-     <a href="#por-que">
-      Porqué intermedia
-     </a>
-     <a href="#test-diagnostico">
-      Test diagnóstico
-     </a>
-     <a class="btn" href="#contacto">
-      Contacto
-     </a>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">INTERMEDIA</a>
+    <div class="nav-burger" id="burger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
     </div>
-   </a></div></header>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html#quienes-somos">Quiénes somos</a></li>
+      <li><a href="index.html#que-ofrecemos">Qué ofrecemos</a></li>
+      <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+      <li><a href="index.html#por-que">Por qué Intermedia</a></li>
+      <li><a href="index.html#test-diagnostico" class="nav-cta">Analizamos tu caso</a></li>
+    </ul>
+  </div>
+</nav>
 
-<section class="hero" style="padding:80px 0 40px; background:#3F5F54;">
-
-<div style="max-width:1120px;margin:0 auto;padding:10px 18px;color:white;font-size:14px;">
-<a href="index.html" style="color:white;text-decoration:none;">← Volver a la página de inicio</a>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="breadcrumb"><a href="index.html">Inicio</a><span>›</span>Política de privacidad</p>
+    <h1>Política de privacidad</h1>
+    <p>Cómo tratamos los datos personales que nos facilitas a través de este sitio web.</p>
+  </div>
 </div>
 
-<div class="container">
-<h1 style="color:#ffffff; font-size:36px;">Política de privacidad</h1>
-</div>
-</section>
+<div class="legal-body">
 
-<section style="padding:40px 0;">
-<div class="container" style="max-width:760px;line-height:1.7;">
-POLÍTICA DE PRIVACIDAD<br> <br>1. Responsable del tratamiento<br>En cumplimiento del Reglamento General de Protección de Datos (RGPD) y de la Ley Orgánica de<br>Protección de Datos y Garantía de Derechos Digitales (LOPDGDD), se informa que los datos<br>personales facilitados a través de este sitio web serán tratados por: Titular del sitio web: Profesional<br>autónomo bajo la marca INTERMEDIA<br>Responsable del sitio: Marta Capella<br>Domicilio profesional: Barcelona, España<br>Correo electrónico: contacto@intermedia.es En adelante, Intermedia.<br>2. Finalidad del tratamiento de los datos<br>Los datos personales facilitados por los usuarios a través del sitio web serán utilizados<br>exclusivamente para: - gestionar las consultas enviadas a través del formulario de contacto<br>- analizar de forma preliminar la situación planteada por el usuario<br>- valorar si puede existir una posible solución viable para el caso planteado<br>- responder a las solicitudes de información realizadas por los usuarios Intermedia no utiliza los<br>datos personales para el envío de comunicaciones comerciales ni para fines publicitarios.<br>3. Datos que se recogen<br>Intermedia podrá recoger los siguientes datos a través del sitio web: - nombre<br>- dirección de correo electrónico<br>- número de teléfono<br>- información proporcionada voluntariamente por el usuario sobre su situación hipotecaria o<br>patrimonial La información facilitada por el usuario será tratada únicamente con el fin de analizar la<br>consulta realizada.<br>4. Base legal del tratamiento<br>La base jurídica que legitima el tratamiento de los datos es el consentimiento del usuario, que se<br>otorga al enviar voluntariamente los formularios disponibles en el sitio web. El usuario puede retirar<br>su consentimiento en cualquier momento.<br>5. Naturaleza del análisis realizado<br>La información proporcionada por los usuarios se utiliza únicamente para realizar un análisis<br>preliminar y orientativo de la situación planteada. El análisis realizado por Intermedia no constituye<br>asesoramiento financiero, legal ni fiscal, ni implica garantía de que exista una solución viable para<br>el caso concreto.<br>6. Conservación de los datos<br>Los datos personales se conservarán únicamente durante el tiempo necesario para: - gestionar la<br>consulta realizada<br><br>- analizar la situación planteada por el usuario<br>- mantener la comunicación necesaria con el usuario en relación con dicha consulta<br>Posteriormente, los datos podrán ser eliminados de forma segura.<br>7. Destinatarios de los datos<br>Con carácter general, los datos personales no serán cedidos a terceros. No obstante, en<br>determinados casos y solo cuando resulte necesario para analizar posibles soluciones, y siempre<br>con conocimiento del usuario, los datos podrán ser compartidos con profesionales o entidades<br>implicadas en la posible solución del caso.<br>8. Derechos de los usuarios<br>El usuario puede ejercer en cualquier momento los siguientes derechos: - acceso a sus datos<br>personales<br>- rectificación de datos inexactos<br>- supresión de los datos<br>- limitación del tratamiento<br>- oposición al tratamiento<br>- portabilidad de los datos Para ejercer estos derechos, el usuario puede enviar una solicitud al<br>correo electrónico contacto@intermedia.es. Asimismo, el usuario tiene derecho a presentar una<br>reclamación ante la Agencia Española de Protección de Datos si considera que el tratamiento de<br>sus datos no se ajusta a la normativa vigente.<br>9. Confidencialidad y seguridad de los datos<br>Intermedia se compromete a tratar la información facilitada por los usuarios con la máxima<br>confidencialidad y a adoptar las medidas técnicas y organizativas necesarias para evitar su pérdida,<br>alteración o acceso no autorizado.<br>10. Cambios en la política de privacidad<br>Intermedia podrá actualizar la presente Política de Privacidad cuando sea necesario para adaptarla<br>a cambios legislativos o a modificaciones en el funcionamiento del sitio web.<br><br>
+      <div class="legal-section">
+        <p>En cumplimiento del Reglamento General de Protección de Datos (RGPD) y de la Ley Orgánica de Protección de Datos y Garantía de Derechos Digitales (LOPDGDD), te informamos sobre el tratamiento de tus datos personales.</p>
+        <div class="legal-note">
+          <strong>Titular 1:</strong> Marta Capella Elizalde · DNI: 36518458R<br>
+          <strong>Titular 2:</strong> Silvina Beatriz Manzotti Bordi · DNI: 60246605Z<br>
+          <br>
+          <strong>Domicilio profesional:</strong> Barcelona, España<br>
+          <strong>Contacto:</strong> <a href="mailto:contacto@somosintermedia.com">contacto@somosintermedia.com</a>
+        </div>
+      </div>
+
+      <div class="legal-section">
+        <h2>Finalidad del tratamiento</h2>
+        <p>Los datos facilitados a través de los formularios de este sitio web se utilizarán exclusivamente para:</p>
+        <ul>
+          <li>Gestionar las consultas enviadas a través del formulario de contacto</li>
+          <li>Analizar de forma preliminar la situación planteada por el usuario</li>
+          <li>Valorar si puede existir una posible solución viable para el caso</li>
+          <li>Responder a las solicitudes de información realizadas</li>
+        </ul>
+        <p>Intermedia no utiliza los datos personales para el envío de comunicaciones comerciales ni para fines publicitarios.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>Datos que se recogen</h2>
+        <p>Podemos recoger los siguientes datos a través del sitio web:</p>
+        <ul>
+          <li>Nombre</li>
+          <li>Dirección de correo electrónico</li>
+          <li>Número de teléfono</li>
+          <li>Información proporcionada voluntariamente sobre la situación hipotecaria o patrimonial</li>
+        </ul>
+        <p>La información facilitada será tratada únicamente con el fin de analizar la consulta realizada.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>Base legal del tratamiento</h2>
+        <p>La base jurídica que legitima el tratamiento es el consentimiento del usuario, otorgado al enviar voluntariamente los formularios disponibles en el sitio web. El usuario puede retirar su consentimiento en cualquier momento.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>Naturaleza del análisis realizado</h2>
+        <div class="legal-note">La información proporcionada se utiliza únicamente para realizar un análisis preliminar y orientativo de la situación planteada. El análisis de Intermedia <strong>no constituye asesoramiento financiero, legal ni fiscal</strong>, ni implica garantía de que exista una solución viable para el caso concreto.</div>
+      </div>
+
+      <div class="legal-section">
+        <h2>Conservación de los datos</h2>
+        <p>Los datos personales se conservarán únicamente durante el tiempo necesario para gestionar la consulta y mantener la comunicación necesaria con el usuario. Posteriormente, los datos podrán ser eliminados de forma segura.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>Destinatarios de los datos</h2>
+        <p>Con carácter general, los datos personales no serán cedidos a terceros. En determinados casos y solo cuando resulte necesario para analizar posibles soluciones, y siempre con conocimiento del usuario, los datos podrán ser compartidos con profesionales o entidades implicadas en la posible solución del caso.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>Derechos de los usuarios</h2>
+        <p>En cualquier momento puedes ejercer los siguientes derechos:</p>
+        <ul>
+          <li>Acceso a tus datos personales</li>
+          <li>Rectificación de datos inexactos</li>
+          <li>Supresión de los datos</li>
+          <li>Limitación u oposición al tratamiento</li>
+          <li>Portabilidad de los datos</li>
+        </ul>
+        <p>Para ejercer estos derechos, envía una solicitud a <a href="mailto:contacto@somosintermedia.com">contacto@somosintermedia.com</a>. También tienes derecho a presentar una reclamación ante la <a href="https://www.aepd.es" target="_blank" rel="noopener">Agencia Española de Protección de Datos</a>.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>Confidencialidad y seguridad</h2>
+        <p>Intermedia se compromete a tratar la información facilitada con la máxima confidencialidad y a adoptar las medidas técnicas y organizativas necesarias para evitar su pérdida, alteración o acceso no autorizado.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>Cambios en la política</h2>
+        <p>Intermedia podrá actualizar esta Política de Privacidad cuando sea necesario para adaptarla a cambios legislativos o modificaciones en el funcionamiento del sitio web.</p>
+      </div>
 </div>
-</section>
 
 <footer>
-  <div class="container footer" style="padding-top:18px;padding-bottom:18px;">
-    <div class="footer-grid" style="grid-template-columns:1.6fr auto auto; gap:42px; justify-content:flex-end; align-items:center; padding-right:68px;">
-      
-      <div>
-        <h3 style="color:white;margin-bottom:10px;" style="font-size:18px;margin-bottom:6px;">INTERMEDIA</h3>
-        <p style="color:rgba(233,241,246,.9);margin-left:0;">
-        
-<div style="color:#ffffff;font-size:13px;display:flex;flex-direction:column;gap:6px;margin-left:0;">
-  <div style="display:flex;align-items:center;gap:6px;white-space:nowrap;font-size:14px;font-weight:500;"><span style="font-size:15px;display:inline-block;width:16px;text-align:center;position:relative;top:1px;">✓</span> Acompañamiento y soluciones hipotecarias</div>
-  <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:14px;display:inline-block;width:16px;text-align:center;position:relative;top:1px;">✓</span> Diagnóstico confidencial y gratuito</div>
-  <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:14px;display:inline-block;width:16px;text-align:center;position:relative;top:1px;">✓</span> Respondemos en menos de 24 hs</div>
-</div>
-
-        </p>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo-text">INTERMEDIA</span>
+        <p>Acompañamiento y soluciones hipotecarias.<br>Diagnóstico confidencial y gratuito.<br>Barcelona · España.</p>
       </div>
-
-      <div style="position:relative; left:-30px;">
-        <h4 style="font-size:15px;margin-bottom:6px;">Sobre nosotros</h4>
-        <p style="margin:4px 0;font-size:14px;line-height:1.3;"><a href="#quienes-somos">Quiénes somos</a></p>
-        <p style="margin:4px 0;font-size:14px;line-height:1.3;"><a href="#que-ofrecemos">Qué ofrecemos</a></p>
-        <p style="margin:4px 0;font-size:14px;line-height:1.3;"><a href="#como-funciona">Cómo funciona</a></p>
-        <p style="margin:4px 0;font-size:14px;line-height:1.3;"><a href="#por-que">Por qué Intermedia</a></p>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html#quienes-somos">Quiénes somos</a></li>
+          <li><a href="index.html#que-ofrecemos">Qué ofrecemos</a></li>
+          <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+          <li><a href="index.html#por-que">Por qué Intermedia</a></li>
+          <li><a href="index.html#faq">Preguntas frecuentes</a></li>
+        </ul>
       </div>
-
-      <div>
-        <h4 style="font-size:15px;margin-bottom:6px;">Legal</h4>
-        <p style="margin:4px 0;font-size:14px;line-height:1.3;"><a href="#contacto">Contacto</a></p>
-        <p style="margin:4px 0;font-size:14px;line-height:1.3;">Aviso legal</p>
-        <p style="margin:4px 0;font-size:14px;line-height:1.3;">Política de privacidad</p>
-        <p style="margin:4px 0;font-size:14px;line-height:1.3;">Política de cookies</p>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="aviso-legal.html">Aviso legal</a></li>
+          <li><a href="politica-privacidad.html">Política de privacidad</a></li>
+          <li><a href="politica-cookies.html">Política de cookies</a></li>
+          <li><a href="mailto:contacto@somosintermedia.com">contacto@somosintermedia.com</a></li>
+        </ul>
       </div>
     </div>
-  </div>
-
-  <div style="width:100%;border-top:1px solid rgba(255,255,255,0.15);margin-top:18px;">
-    <div class="container footer" style="padding-top:10px;padding-bottom:0;text-align:left;font-size:13px;color:rgba(255,255,255,0.75);letter-spacing:.3px;">
-      © 2026 INTERMEDIA · Barcelona · Cataluña · España
+    <div class="footer-bottom">
+      <span>© 2026 INTERMEDIA · Todos los derechos reservados</span>
+      <span>Intermedia no presta asesoramiento financiero ni jurídico</span>
     </div>
-  </div>
   </div>
 </footer>
-
+<script>
+  function toggleMenu(){document.getElementById('nav-links').classList.toggle('open')}
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.addEventListener('click',()=>document.getElementById('nav-links').classList.remove('open'))
+  })
+  window.addEventListener('scroll',()=>{
+    const nav=document.getElementById('nav')
+    nav.style.boxShadow=window.scrollY>20?'0 1px 20px rgba(0,0,0,0.08)':'none'
+  })
+</script>
 </body>
 </html>
