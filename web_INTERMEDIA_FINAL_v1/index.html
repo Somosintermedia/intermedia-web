@@ -135,8 +135,8 @@
     .porque-exito{background:var(--green);color:var(--white);border-radius:8px;padding:22px 24px;margin-top:8px}
     .porque-exito p{font-size:15px;line-height:1.6;color:#fff;opacity:0.92}
     .porque-exito strong{opacity:1;font-weight:500;color:#fff}
-    .porque-img{border-radius:8px;overflow:hidden;aspect-ratio:3/4;background:#3a3028}
-    .porque-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+    .porque-img{border-radius:8px;overflow:hidden;aspect-ratio:3/4;background:var(--cream);line-height:0}
+    .porque-img img{width:100%;height:100%;object-fit:cover;object-position:61% top;display:block;transform:scale(1.02);transform-origin:center top}
     @media(max-width:768px){.porque-grid{grid-template-columns:1fr}.porque-img{aspect-ratio:16/9;order:-1}}
 
     /* ── FORMULARIO ── */
@@ -154,6 +154,7 @@
     .form-group{margin-bottom:18px}
     .form-group label{display:block;font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px}
     .form-group select,.form-group input,.form-group textarea{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);background:var(--white);transition:border-color .2s;appearance:none;-webkit-appearance:none}
+    .form-group input[type="checkbox"]{appearance:auto;-webkit-appearance:checkbox;width:16px;height:16px;padding:0;cursor:pointer}
     .form-group select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6860' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
     .form-group select:focus,.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--green)}
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -813,7 +814,13 @@
     e.preventDefault();
     if(!validatePhone())return;
     document.getElementById('diagnostico-form').style.display='none';
-    document.getElementById('form-success').style.display='block';
+    const successBox=document.getElementById('form-success');
+    successBox.style.display='block';
+    const section=document.getElementById('test-diagnostico');
+    const nav=document.getElementById('nav');
+    const navHeight=nav?nav.offsetHeight:0;
+    const targetY=section.getBoundingClientRect().top+window.scrollY-navHeight-12;
+    window.scrollTo({top:Math.max(targetY,0),behavior:'smooth'});
   }
 
   // Smooth nav background
