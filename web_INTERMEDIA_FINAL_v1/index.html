@@ -1,1567 +1,826 @@
 <!DOCTYPE html>
 <html lang="es">
- <head>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-5RR27562');</script>
-  <!-- End Google Tag Manager -->
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <title>
-   Intermedia · Acompañamiento y soluciones hipotecarias
-  </title>
-  <link href="assets/styles.css" rel="stylesheet"/>
- </head>
- <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5RR27562"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-  <header class="site-header">
-   <div class="container nav-wrap">
-    <a aria-label="Ir a inicio" class="brand" href="#home">
-     <img class="brand-logo" src="assets/INTERMEDIA.svg"/>
-    </a>
-    <nav aria-label="Principal" class="nav desktop-nav">
-     <a href="#quienes-somos">
-      Quiénes somos
-     </a>
-     <a href="#que-ofrecemos">
-      Qué ofrecemos
-     </a>
-     <a href="#como-funciona">
-      Cómo funciona
-     </a>
-     <a href="#por-que">
-      Porqué intermedia
-     </a>
-     <a class="cta btn secondary" href="#contacto">
-      Contáctanos
-     </a>
-    </nav>
-    <a class="btn btn-primary cta" href="#test-diagnostico">
-     Analizamos tu caso
-    </a>
-    <button aria-controls="mobileMenu" aria-expanded="false" aria-label="Abrir menú" class="nav-toggle" type="button">
-     <span aria-hidden="true" class="nav-toggle-bars">
-     </span>
-    </button>
-   </div>
-   <div class="mobile-menu" hidden="" id="mobileMenu">
-    <div class="container mobile-menu-inner">
-     <a href="#quienes-somos">
-      Quiénes somos
-     </a>
-     <a href="#que-ofrecemos">
-      Qué ofrecemos
-     </a>
-     <a href="#como-funciona">
-      Cómo funciona
-     </a>
-     <a href="#por-que">
-      Porqué intermedia
-     </a>
-     <a class="btn secondary" href="#contacto">
-      Contáctanos
-     </a>
-    <a class="btn btn-primary cta" href="#test-diagnostico">
-     Analizamos tu caso
-     </a>
-    </div>
-   </div>
-  </header>
-  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intermedia · Soluciones hipotecarias</title>
+  <meta name="description" content="Te ayudamos a encontrar una salida hipotecaria para cerrar esta etapa. Diagnóstico confidencial y gratuito. No somos un fondo ni un despacho.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #2D5C45;
+      --green-dark: #1e3d2f;
+      --green-hover: #235039;
+      --cream: #F7F4EE;
+      --warm: #EDE8DE;
+      --text: #1C1C1A;
+      --muted: #6B6860;
+      --border: rgba(28,28,26,0.1);
+      --white: #fff;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-size:16px}
+    h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.15}
 
-<section class="hero home-bg" id="home">
-  <div class="container">
-    <div class="hero-grid">
-     <div class="hero-text">
-      <p>Diagnóstico confidencial y gratuito</p>
-      <h1>
-        Salir de una situación hipotecaria difícil es posible
-      </h1>
-      <p>
-        Te ayudamos a encontrar una salida para cerrar esta etapa y empezar de nuevo.
-      </p>
-      <div class="cta-analizamos-wrap">
-       <a class="btn btn-primary cta" href="#test-diagnostico">
-        Analizamos tu caso
-       </a>
-       <div class="helper">
-        8 preguntas · menos de 1 minuto · sin compromiso
-       </div>
+    /* ── NAV ── */
+    nav{position:sticky;top:0;z-index:100;background:rgba(247,244,238,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 5%}
+    .nav-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--text);text-decoration:none;letter-spacing:0.04em}
+    .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:400;transition:color .2s}
+    .nav-links a:hover{color:var(--text)}
+    .nav-cta{background:var(--green);color:var(--white)!important;padding:9px 20px;border-radius:6px;font-weight:500!important;font-size:13px!important;transition:background .2s!important}
+    .nav-cta:hover{background:var(--green-hover)!important}
+    .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+    .nav-burger span{display:block;width:22px;height:1.5px;background:var(--text);transition:all .3s}
+    @media(max-width:768px){
+      .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--cream);border-bottom:1px solid var(--border);flex-direction:column;padding:16px 5%;gap:0}
+      .nav-links.open{display:flex}
+      .nav-links li{width:100%;border-bottom:1px solid var(--border)}
+      .nav-links a{display:block;padding:13px 0;font-size:15px}
+      .nav-cta{margin:10px 0;text-align:center;border-radius:6px;padding:12px 0!important}
+      .nav-burger{display:flex}
+    }
+
+    /* ── HERO ── */
+    .hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;background:#3a3028}
+    .hero-bg{position:absolute;inset:0;background:url('https://somosintermedia.com/assets/why.jpg') center/cover no-repeat;opacity:0.35}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,40,30,0.72) 0%,rgba(45,60,45,0.45) 60%,rgba(20,30,25,0.6) 100%)}
+    .hero-content{position:relative;max-width:1120px;margin:0 auto;padding:100px 5% 80px;width:100%}
+    .hero-eyebrow{font-size:12px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:20px}
+    .hero h1{font-size:clamp(40px,6vw,72px);color:var(--white);max-width:720px;margin-bottom:22px;font-weight:500}
+    .hero-sub{font-size:clamp(16px,2vw,20px);color:rgba(255,255,255,0.88);max-width:580px;margin-bottom:14px;font-weight:300;line-height:1.6}
+    .hero-differentiator{font-size:14px;color:rgba(255,255,255,0.7);max-width:500px;padding:10px 0 10px 14px;border-left:2px solid rgba(255,255,255,0.3);margin-bottom:36px;line-height:1.5}
+    .btn{display:inline-block;padding:15px 36px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s;border:none;letter-spacing:0.01em}
+    .btn-primary{background:var(--green);color:var(--white)}
+    .btn-primary:hover{background:var(--green-hover);transform:translateY(-1px)}
+    .btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,0.5)}
+    .btn-outline:hover{background:rgba(255,255,255,0.1)}
+    .hero-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .hero-friction{font-size:12.5px;color:rgba(255,255,255,0.55);margin-top:14px;letter-spacing:0.02em}
+
+    /* ── MINI BLOQUE ── */
+    .mini-bloque{background:var(--green);padding:32px 5%}
+    .mini-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;text-align:center}
+    .mini-item{color:var(--white);padding:0 24px;border-right:1px solid rgba(255,255,255,0.2)}
+    .mini-item:last-child{border-right:none}
+    .mini-item p{font-size:14px;opacity:0.85;margin-top:4px}
+    .mini-item strong{font-size:17px;font-family:'Cormorant Garamond',serif;font-weight:500;display:block}
+    @media(max-width:640px){.mini-inner{grid-template-columns:1fr}.mini-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.2);padding:16px 0}.mini-item:last-child{border-bottom:none}}
+
+    /* ── SECTIONS ── */
+    section{padding:88px 5%}
+    .section-inner{max-width:1120px;margin:0 auto}
+    .section-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+    .section-title{font-size:clamp(30px,4vw,48px);margin-bottom:16px;color:var(--text)}
+    .section-sub{font-size:16px;color:var(--muted);max-width:560px;line-height:1.7;margin-bottom:48px}
+    .bg-cream{background:var(--cream)}
+
+    /* ── SITUACIONES CONCRETAS ── */
+    .sit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .sit-card{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--green);border-radius:8px;padding:24px 22px;transition:box-shadow .2s,transform .2s}
+    .sit-card:hover{box-shadow:0 8px 32px rgba(45,92,69,0.1);transform:translateY(-2px)}
+    .sit-tag{display:inline-block;font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--green);background:rgba(45,92,69,0.08);border-radius:4px;padding:4px 10px;margin-bottom:12px}
+    .sit-card h3{font-size:17px;margin-bottom:8px;line-height:1.35;color:var(--text)}
+    .sit-card p{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:14px}
+    .sit-signal{font-size:13px;color:var(--green);line-height:1.45;padding-left:10px;border-left:2px solid rgba(45,92,69,0.3)}
+    @media(max-width:900px){.sit-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.sit-grid{grid-template-columns:1fr}}
+
+    /* ── QUIÉNES SOMOS ── */
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+    .about-img{border-radius:8px;overflow:hidden;aspect-ratio:4/5}
+    .about-img img{width:100%;height:100%;object-fit:cover}
+    .about-text p{font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:20px}
+    .about-text strong{color:var(--text);font-weight:500}
+    .principles{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:32px}
+    .principle{background:var(--cream);border-radius:6px;padding:14px 16px}
+    .principle h4{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;margin-bottom:4px;color:var(--text)}
+    .principle p{font-size:13px;color:var(--muted)}
+    @media(max-width:768px){.about-grid{grid-template-columns:1fr}.about-img{aspect-ratio:16/9}}
+
+    /* ── QUÉ OFRECEMOS ── */
+    .offer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:16px}
+    .offer-card{border:1px solid var(--border);border-radius:8px;padding:28px 24px;position:relative}
+    .offer-num{font-family:'Cormorant Garamond',serif;font-size:48px;color:rgba(45,92,69,0.12);font-weight:500;line-height:1;margin-bottom:12px}
+    .offer-card h3{font-size:20px;margin-bottom:10px}
+    .offer-card p{font-size:14px;color:var(--muted);line-height:1.65}
+    .offer-note{margin-top:36px;padding:20px 24px;background:var(--cream);border-radius:8px;border-left:3px solid var(--green)}
+    .offer-note p{font-size:14px;color:var(--muted);line-height:1.6}
+    .offer-note strong{color:var(--text);font-weight:500}
+    @media(max-width:768px){.offer-grid{grid-template-columns:1fr}}
+
+    /* ── CÓMO FUNCIONA ── */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-bottom:56px}
+    .steps::before{content:'';position:absolute;top:28px;left:12.5%;right:12.5%;height:1px;background:var(--border);z-index:0}
+    .step{text-align:center;padding:0 12px;position:relative;z-index:1}
+    .step-num{width:56px;height:56px;border-radius:50%;background:var(--green);color:var(--white);font-family:'Cormorant Garamond',serif;font-size:22px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+    .step h3{font-size:17px;margin-bottom:8px}
+    .step p{font-size:14px;color:var(--muted);line-height:1.6}
+    .no-hacemos{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:8px}
+    .no-item{display:flex;gap:12px;padding:16px;background:var(--cream);border-radius:6px;align-items:flex-start}
+    .no-icon{width:20px;height:20px;border-radius:50%;background:rgba(45,92,69,0.15);color:var(--green);font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+    .no-item h4{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;margin-bottom:3px}
+    .no-item p{font-size:13px;color:var(--muted);line-height:1.5}
+    @media(max-width:768px){.steps{grid-template-columns:repeat(2,1fr)}.steps::before{display:none}.step{margin-bottom:28px}.no-hacemos{grid-template-columns:1fr}}
+    @media(max-width:480px){.steps{grid-template-columns:1fr}}
+
+    /* ── POR QUÉ ── */
+    .porque-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+    .porque-text p{font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:20px}
+    .porque-badges{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}
+    .badge{font-size:12px;padding:7px 14px;border-radius:20px;background:rgba(45,92,69,0.1);color:var(--green);font-weight:500}
+    .porque-exito{background:var(--green);color:var(--white);border-radius:8px;padding:22px 24px;margin-top:8px}
+    .porque-exito p{font-size:15px;line-height:1.6;color:#fff;opacity:0.92}
+    .porque-exito strong{opacity:1;font-weight:500;color:#fff}
+    .porque-img{border-radius:8px;overflow:hidden;aspect-ratio:3/4;background:#3a3028}
+    .porque-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+    @media(max-width:768px){.porque-grid{grid-template-columns:1fr}.porque-img{aspect-ratio:16/9;order:-1}}
+
+    /* ── FORMULARIO ── */
+    #test-diagnostico{background:var(--cream)}
+    .form-wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:64px;align-items:start}
+    .form-left h2{font-size:clamp(28px,4vw,44px);margin-bottom:16px}
+    .form-left p{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:24px}
+    .form-steps{list-style:none;display:flex;flex-direction:column;gap:14px}
+    .form-steps li{display:flex;gap:14px;align-items:flex-start}
+    .fs-num{width:28px;height:28px;border-radius:50%;background:var(--green);color:var(--white);font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .form-steps li p{font-size:14px;color:var(--muted);line-height:1.5;padding-top:4px}
+    .form-steps li strong{font-size:14px;color:var(--text);font-weight:500;display:block;margin-bottom:2px}
+    .form-card{background:var(--white);border-radius:10px;padding:36px 32px;border:1px solid var(--border)}
+    .form-title{font-family:'Cormorant Garamond',serif;font-size:22px;margin-bottom:24px;color:var(--text)}
+    .form-group{margin-bottom:18px}
+    .form-group label{display:block;font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px}
+    .form-group select,.form-group input,.form-group textarea{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);background:var(--white);transition:border-color .2s;appearance:none;-webkit-appearance:none}
+    .form-group select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6860' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+    .form-group select:focus,.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--green)}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .form-legal{font-size:12px;color:var(--muted);margin:16px 0;line-height:1.5}
+    .form-legal a{color:var(--green)}
+    .form-submit{width:100%;padding:15px;background:var(--green);color:var(--white);border:none;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;transition:background .2s}
+    .form-submit:hover{background:var(--green-hover)}
+    .form-note{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+    @media(max-width:840px){.form-wrap{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+
+    /* ── FAQ ── */
+    .faq-list{max-width:720px;margin:0 auto}
+    .faq-item{border-bottom:1px solid var(--border)}
+    .faq-q{width:100%;background:none;border:none;text-align:left;padding:20px 0;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:400;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+    .faq-q:hover{color:var(--green)}
+    .faq-icon{width:20px;height:20px;border:1.5px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s;font-size:14px;color:var(--muted)}
+    .faq-item.open .faq-icon{background:var(--green);border-color:var(--green);color:var(--white);transform:rotate(45deg)}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+    .faq-item.open .faq-a{max-height:300px;padding-bottom:20px}
+    .faq-a p{font-size:14.5px;color:var(--muted);line-height:1.75}
+
+    /* ── CONTACTO ── */
+    .contacto-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+    .contacto-info p{font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:28px}
+    .contacto-dato{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--text);margin-bottom:12px;text-decoration:none}
+    .contacto-dato span{color:var(--green)}
+    .contact-form{background:var(--cream);border-radius:10px;padding:32px}
+    @media(max-width:768px){.contacto-grid{grid-template-columns:1fr}}
+
+    /* ── FOOTER ── */
+    footer{background:var(--text);color:rgba(255,255,255,0.7);padding:48px 5% 32px}
+    .footer-inner{max-width:1120px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:28px}
+    .footer-brand p{font-size:14px;line-height:1.7;margin-top:12px;max-width:280px}
+    .footer-col h4{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--white);margin-bottom:14px;letter-spacing:0.04em;text-transform:uppercase}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .footer-col a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;transition:color .2s}
+    .footer-col a:hover{color:var(--white)}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:13px}
+    .footer-logo-text{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--white);font-weight:500;letter-spacing:0.06em}
+    @media(max-width:640px){.footer-top{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:8px;text-align:center}}
+
+    /* ── ANIMATIONS ── */
+    .fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+    .fade-in.visible{opacity:1;transform:none}
+
+    /* ── CTA FLOATING STRIP ── */
+    .strip{background:var(--green);padding:20px 5%;text-align:center}
+    .strip p{color:var(--white);font-size:15px;margin-bottom:12px;opacity:0.9}
+    .strip .btn{background:var(--white);color:var(--green);font-weight:500}
+    .strip .btn:hover{background:var(--cream)}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">INTERMEDIA</a>
+    <div class="nav-burger" id="burger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#quienes-somos">Quiénes somos</a></li>
+      <li><a href="#que-ofrecemos">Qué ofrecemos</a></li>
+      <li><a href="#como-funciona">Cómo funciona</a></li>
+      <li><a href="#por-que">Por qué Intermedia</a></li>
+      <li><a href="#test-diagnostico" class="nav-cta">Analizamos tu caso</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content fade-in">
+    <p class="hero-eyebrow">Diagnóstico confidencial y gratuito</p>
+    <h1>Salir de una situación hipotecaria difícil es posible</h1>
+    <p class="hero-sub">Te ayudamos a encontrar una salida para cerrar esta etapa y empezar de nuevo.</p>
+    <p class="hero-differentiator">No somos un fondo de inversión ni un despacho.<br>Equipo independiente — para ti, siempre gratuito.</p>
+    <div class="hero-actions">
+      <a href="#test-diagnostico" class="btn btn-primary">Analizamos tu caso</a>
+      <a href="#como-funciona" class="btn btn-outline">Cómo funciona</a>
+    </div>
+    <p class="hero-friction">8 preguntas · menos de 1 minuto · sin compromiso</p>
+  </div>
+</section>
+
+<!-- MINI BLOQUE -->
+<div class="mini-bloque">
+  <div class="mini-inner">
+    <div class="mini-item">
+      <strong>Análisis confidencial</strong>
+      <p>Tu situación se trata con discreción desde el primer momento</p>
+    </div>
+    <div class="mini-item">
+      <strong>Sin coste ni promesas</strong>
+      <p>Solo participamos si hay una solución viable y el caso avanza</p>
+    </div>
+    <div class="mini-item">
+      <strong>Más opciones de las que crees</strong>
+      <p>Incluso con ejecución iniciada puede haber margen real</p>
+    </div>
+  </div>
+</div>
+
+<!-- SITUACIONES CONCRETAS -->
+<section id="situaciones" class="bg-cream">
+  <div class="section-inner">
+    <p class="section-label fade-in">¿Te reconoces en alguna de estas situaciones?</p>
+    <h2 class="section-title fade-in">Estudiamos casos como el tuyo</h2>
+    <p class="section-sub fade-in">No todas las situaciones tienen salida. Pero muchas sí. Analizamos sin compromiso y te decimos lo que es posible.</p>
+    <div class="sit-grid">
+      <div class="sit-card fade-in">
+        <span class="sit-tag">Deuda vendida a fondo</span>
+        <h3>Llevas años sin poder pagar y ya no sabes ni con quién hablas</h3>
+        <p>Tu hipoteca cambió de manos. Ahora te gestiona una empresa de recobro y cada llamada es más presión. Estás agotado y quieres cerrar esto de una vez.</p>
+        <p class="sit-signal">Estos casos suelen tener margen para una salida pactada</p>
       </div>
-     </div>
+      <div class="sit-card fade-in">
+        <span class="sit-tag">Subasta notificada</span>
+        <h3>Te han notificado la subasta y no quieres llegar a ese punto</h3>
+        <p>Tienes fecha. No quieres que llegue. Si hay una salida ordenada antes de que el juzgado decida, quieres explorarla con calma y tiempo suficiente.</p>
+        <p class="sit-signal">La fase pre-subasta es el momento óptimo para actuar</p>
+      </div>
+      <div class="sit-card fade-in">
+        <span class="sit-tag">Segunda residencia o vivienda vacía</span>
+        <h3>Tienes una vivienda que no usas y la deuda ya no tiene sentido</h3>
+        <p>No es tu casa principal. Lleva tiempo vacía o alquilada. La deuda sigue corriendo y mantenerla ya no encaja en tu situación actual.</p>
+        <p class="sit-signal">Sin carga de vivienda habitual, la salida suele ser más directa</p>
+      </div>
+      <div class="sit-card fade-in">
+        <span class="sit-tag">Divorcio o herencia</span>
+        <h3>La vivienda está en medio de un proceso familiar y bloquea todo</h3>
+        <p>Una separación, una herencia complicada. Varios implicados, nadie de acuerdo. La hipoteca es el nudo que impide cerrar el proceso.</p>
+        <p class="sit-signal">Cerrando la deuda hipotecaria se desbloquea el resto</p>
+      </div>
+      <div class="sit-card fade-in">
+        <span class="sit-tag">Impago prolongado</span>
+        <h3>Llevas más de un año sin pagar y el banco no negocia</h3>
+        <p>Has intentado hablar con el banco. No hay refinanciación posible, no hay quita. La deuda crece y la situación no mejora sola.</p>
+        <p class="sit-signal">Cuando el banco no negocia, hay otras vías que explorar</p>
+      </div>
+      <div class="sit-card fade-in">
+        <span class="sit-tag">Quiero cerrar esta etapa</span>
+        <h3>Ya tomaste la decisión: quieres acabar con esto de forma ordenada</h3>
+        <p>No buscas quedarte. Buscas salir con la deuda cancelada, sin dejar flecos. Si existe una salida viable para tu caso, quieres conocerla antes de decidir.</p>
+        <p class="sit-signal">Cuéntanos tu situación y analizamos qué opciones hay</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px">
+      <a href="#test-diagnostico" class="btn btn-primary">Analizamos tu caso</a>
+      <p style="font-size:13px;color:var(--muted);margin-top:10px">8 preguntas · menos de 1 minuto · sin compromiso</p>
     </div>
   </div>
 </section>
 
+<!-- QUIÉNES SOMOS -->
+<section id="quienes-somos">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-img fade-in">
+        <img src="https://somosintermedia.com/assets/about.png" alt="Equipo Intermedia" loading="lazy">
+      </div>
+      <div class="about-text fade-in">
+        <p class="section-label">Quiénes somos</p>
+        <h2 class="section-title">Un enfoque humano y riguroso para situaciones difíciles</h2>
+        <p>Intermedia acompaña a personas que atraviesan situaciones hipotecarias complejas y que, a menudo, ya han intentado encontrar soluciones sin éxito.</p>
+        <p>Creemos que detrás de cada deuda hay una historia personal y familiar, y que ninguna decisión importante debería tomarse desde el miedo o la presión.</p>
+        <p>Nuestro enfoque combina rigor profesional y acompañamiento humano. <strong>Intermedia no presta asesoramiento financiero ni jurídico.</strong> Nuestro papel es analizar cada situación y valorar si existe una posible solución, sin prometer resultados imposibles.</p>
+        <div class="principles">
+          <div class="principle">
+            <h4>Confidencialidad</h4>
+            <p>Tu información se trata con discreción y respeto</p>
+          </div>
+          <div class="principle">
+            <h4>Rigor</h4>
+            <p>Validamos datos y evitamos pasos que empeoren la situación</p>
+          </div>
+          <div class="principle">
+            <h4>Acompañamiento</h4>
+            <p>Te ayudamos a valorar opciones y decidir con claridad</p>
+          </div>
+          <div class="principle">
+            <h4>Sin presión</h4>
+            <p>Las decisiones importantes requieren calma, no urgencia</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section class="section" id="home-intro">
-   <div class="container">
-    <div class="split">
-     <div class="card left-col">
-      <h2 class="no-underline">
-       Deuda hipotecaria:<br>
-       hay más opciones de las que crees
-      </h2>
-      <p style="margin:0;line-height:1.45;">
-       Acompañamos a personas con hipotecas impagadas o en proceso de ejecución. El primer paso es analizar tu caso con calma y sin comprometerte a nada.
-       <span style="display:block;margin-top:.45rem;">Sin falsas expectativas. Con claridad desde el principio.</span>
-      </p>
-      <div class="hero-actions cta-analizamos-wrap"><a class="btn btn-primary cta" href="#test-diagnostico">
-        Analizamos tu caso
-       </a><div class="helper">
-        8 preguntas · menos de 1 minuto · sin compromiso
-       </div>
+<!-- QUÉ OFRECEMOS -->
+<section id="que-ofrecemos" class="bg-cream">
+  <div class="section-inner">
+    <p class="section-label fade-in">Qué ofrecemos</p>
+    <h2 class="section-title fade-in">Alternativas reales según tu situación</h2>
+    <p class="section-sub fade-in">Cada caso es distinto. Analizamos con rigor qué margen real existe y qué opciones pueden plantearse.</p>
+    <div class="offer-grid">
+      <div class="offer-card fade-in">
+        <div class="offer-num">01</div>
+        <h3>Cierre ordenado</h3>
+        <p>Buscar una salida que reduzca desgaste y permita cerrar etapa con el mayor control posible. Incluye análisis de dación en pago cuando el caso lo permite.</p>
       </div>
-     </div>
-     <div class="card right-col" style="padding:22px">
-      <h2 class="no-underline">
-       Qué hacemos
-      </h2>
-      <div class="steps" style="margin-top:12px">
-       <div class="step">
-        <div class="n">
-         1
-        </div>
-        <div class="t">
-         <b>
-          Escuchamos
-         </b>
-         <small>
-          Sin juicios y sin presión.
-         </small>
-        </div>
-       </div>
-       <div class="step">
-        <div class="n">
-         2
-        </div>
-        <div class="t">
-         <b>
-          Ordenamos
-         </b>
-         <small>
-          Ponemos claridad donde hoy hay confusión.
-         </small>
-        </div>
-       </div>
-       <div class="step">
-        <div class="n">
-         3
-        </div>
-        <div class="t">
-         <b>
-          Acompañamos
-         </b>
-         <small>
-          Paso a paso, con un plan y con calma.
-         </small>
-        </div>
-       </div>
+      <div class="offer-card fade-in">
+        <div class="offer-num">02</div>
+        <h3>Venta asistida</h3>
+        <p>Organizar una venta con acompañamiento, evitando improvisación y escenarios de peor resultado. La opción cuando existe margen entre deuda y valor.</p>
       </div>
-     </div>
+      <div class="offer-card fade-in">
+        <div class="offer-num">03</div>
+        <h3>Solución con pago parcial</h3>
+        <p>Si hay capacidad económica parcial, estudiar una vía que haga viable una salida equilibrada para ambas partes.</p>
+      </div>
     </div>
-   </div>
-  </section>
-  <section class="page-hero" id="quienes-somos">
-   <div class="container">
-    <h1 style="font-size:38px; text-align:left; color:white; letter-spacing:4px;">Quiénes somos</h1>
-    <p>
-     Un enfoque humano y riguroso para situaciones&nbsp;hipotecarias&nbsp;difíciles.
-    </p>
-   </div>
-  </section>
-  <section class="section">
-   <div class="container split">
-    <div aria-hidden="true" class="photo photo-full-mobile photo-mobile-about">
-     <img alt="" src="assets/about.png"/>
+    <div class="offer-note fade-in">
+      <p><strong>Si tras el análisis vemos que no hay una solución viable para tu caso, te lo diremos con honestidad.</strong> Preferimos ser claros desde el principio y no generar expectativas incorrectas.</p>
     </div>
-    <div class="card" style="padding:22px">
-     <div class="badge">
-      <svg aria-hidden="true" class="icon" fill="none" viewBox="0 0 24 24">
-       <path d="M8 11V6a2 2 0 114 0v5" stroke="currentColor" stroke-linecap="round" stroke-width="1.8">
-       </path>
-       <path d="M12 11V5a2 2 0 114 0v7" stroke="currentColor" stroke-linecap="round" stroke-width="1.8">
-       </path>
-       <path d="M16 12V7a2 2 0 114 0v9c0 3-2 5-5 5H12c-2.8 0-4.8-2-6-4l-1-2a2 2 0 113-2l1 1z" stroke="currentColor" stroke-linecap="round" stroke-width="1.8">
-       </path>
-      </svg>
-      <span>
-       Acompañamiento real · Sin presión
-      </span>
-     </div>
-     <h2 style="margin-top:10px">
-      Intermedia nace para acompañar
-     </h2>
-     <p>
-      Intermedia acompaña a personas que atraviesan situaciones hipotecarias complejas y que, a menudo, ya han intentado encontrar soluciones sin éxito.
-     </p>
-     <p>
-      Creemos que detrás de cada deuda hay una historia personal y familiar, y que ninguna decisión importante debería tomarse desde el miedo o la presión.
-     </p>
-     <p>
-      Nuestro enfoque combina rigor profesional y acompañamiento humano.
+  </div>
+</section>
 
-Intermedia no presta asesoramiento financiero ni jurídico. Nuestro papel es analizar cada situación y valorar si existe una posible solución, sin prometer resultados imposibles.
-     </p>
-     <div class="notice" style="margin-top:12px">
-      Te escuchamos y analizamos tu caso sin compromiso.
-      <strong>Trabajamos a éxito</strong>: si tu no ganas, nosotros tampoco.
-     </div>
-     <div class="cta-analizamos-wrap" style="margin-top:14px;"><a class="btn btn-primary cta" href="#test-diagnostico">
-      Analizamos tu caso
-      </a><div class="helper">
-       8 preguntas · menos de 1 minuto · sin compromiso
+<!-- CÓMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="section-inner">
+    <p class="section-label fade-in">Cómo funciona</p>
+    <h2 class="section-title fade-in">Un proceso simple, sin tecnicismos innecesarios</h2>
+    <p class="section-sub fade-in">De la incertidumbre a un plan claro. Cuatro pasos, a tu ritmo.</p>
+    <div class="steps">
+      <div class="step fade-in">
+        <div class="step-num">1</div>
+        <h3>Diagnóstico confidencial</h3>
+        <p>Un formulario breve para entender tu situación. 8 preguntas, menos de 1 minuto.</p>
       </div>
-     </div>
-    </div>
-   </div>
-  </section>
-  <section class="section alt">
-   <div class="container">
-   <div class="head">
-     <div>
-      <h2>
-       Principios de trabajo
-      </h2>
-      <p>
-       Lo que puedes esperar de nosotros desde el primer contacto.
-      </p>
-     </div>
-    </div>
-    <div class="grid3">
-     <div class="card">
-      <div class="feature">
-       <div class="i">
-        <svg aria-hidden="true" class="icon" fill="none" viewBox="0 0 24 24">
-         <path d="M12 2l8 4v7c0 5-3.4 9.4-8 9.9C7.4 22.4 4 18 4 13V6l8-4z" stroke="currentColor" stroke-width="1.8">
-         </path>
-        </svg>
-       </div>
-       <div>
-        <h3>
-         Confidencialidad
-        </h3>
-        <p>
-         Tu información se trata con discreción y respeto.
-        </p>
-       </div>
+      <div class="step fade-in">
+        <div class="step-num">2</div>
+        <h3>Primera llamada</h3>
+        <p>Escuchamos tu contexto y confirmamos datos clave del procedimiento. Sin presión.</p>
       </div>
-     </div>
-     <div class="card">
-      <div class="feature">
-       <div class="i">
-        <svg aria-hidden="true" class="icon" fill="none" viewBox="0 0 24 24">
-         <path d="M10.5 18a7.5 7.5 0 110-15 7.5 7.5 0 010 15z" stroke="currentColor" stroke-width="1.8">
-         </path>
-         <path d="M21 21l-4.2-4.2" stroke="currentColor" stroke-linecap="round" stroke-width="1.8">
-         </path>
-        </svg>
-       </div>
-       <div>
-        <h3>
-         Rigor
-        </h3>
-        <p>
-         Validamos datos y evitamos pasos que empeoren la situación.
-        </p>
-       </div>
+      <div class="step fade-in">
+        <div class="step-num">3</div>
+        <h3>Análisis y opciones</h3>
+        <p>Revisamos la situación y exploramos qué alternativas podrían ser viables para tu caso concreto.</p>
       </div>
-     </div>
-     <div class="card">
-      <div class="feature">
-       <div class="i">
-        <svg aria-hidden="true" class="icon" fill="none" viewBox="0 0 24 24">
-         <path d="M8 11V6a2 2 0 114 0v5" stroke="currentColor" stroke-linecap="round" stroke-width="1.8">
-         </path>
-         <path d="M12 11V5a2 2 0 114 0v7" stroke="currentColor" stroke-linecap="round" stroke-width="1.8">
-         </path>
-         <path d="M16 12V7a2 2 0 114 0v9c0 3-2 5-5 5H12c-2.8 0-4.8-2-6-4l-1-2a2 2 0 113-2l1 1z" stroke="currentColor" stroke-linecap="round" stroke-width="1.8">
-         </path>
-        </svg>
-       </div>
-       <div>
-        <h3>
-         Acompañamiento
-        </h3>
-        <p>
-         Te ayudamos a valorar tus opciones y decidir con claridad.
-        </p>
-       </div>
-      </div>
-     </div>
-    </div>
-   </div>
-  </section>
-  <section class="page-hero" id="que-ofrecemos">
-   <div class="container">
-    <h1 style="font-size:38px; text-align:left; color:white; letter-spacing:4px;">Qué ofrecemos</h1>
-    <p>
-     Alternativas a estudiar según el estado del procedimiento y tu situación.
-    </p>
-   </div>
-  </section>
-  <section class="section">
-   <div class="container split">
-    <div class="card" style="padding:22px">
-     <div class="badge">
-      <svg aria-hidden="true" class="icon" fill="none" viewBox="0 0 24 24">
-       <path d="M12 2l1.3 5.2L18 9l-4.7 1.8L12 16l-1.3-5.2L6 9l4.7-1.8L12 2z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8">
-       </path>
-      </svg>
-      <span>
-       Opciones reales, sin promesas
-      </span>
-     </div>
-     <h2 style="margin-top:10px">
-      Tu caso no es “uno más”
-     </h2>
-     <p>
-      Cada situación es distinta. Analizamos con rigor la realidad del caso y las alternativas posibles. Sabemos que una deuda afecta a tu día a día y a tus decisiones, y por eso evaluamos tu situación para entender qué margen real puede existir y qué opciones podrían plantearse.
-     </p>
-     <div class="pills" style="margin-top:10px">
-      <span class="pill">
-       <svg aria-hidden="true" class="icon" fill="none" viewBox="0 0 24 24">
-        <path d="M20 7l-9 10-4-4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        </path>
-       </svg>
-       Claridad
-      </span>
-      <span class="pill">
-       <svg aria-hidden="true" class="icon" fill="none" viewBox="0 0 24 24">
-        <path d="M20 7l-9 10-4-4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        </path>
-       </svg>
-       Orden
-      </span>
-      <span class="pill">
-       <svg aria-hidden="true" class="icon" fill="none" viewBox="0 0 24 24">
-        <path d="M20 7l-9 10-4-4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        </path>
-       </svg>
-       Confidencialidad
-      </span>
-     </div>
-     <div class="notice" style="margin-top:14px">
-      Este servicio está pensado para propietarios con
-      <b>
-       dificultades para pagar su hipoteca
-      </b>
-      o con
-      <b>
-       riesgo de ejecución hipotecaria
-      </b>
-      .
-     </div>
-    </div>
-    <div aria-hidden="true" class="photo">
-     <img alt="" src="assets/services.jpg"/>
-    </div>
-   </div>
-  </section>
-  <section class="section alt">
-   <div class="container">
-    <div class="head">
-     <div>
-      <h2>
-       Tipos de soluciones que se pueden valorar
-      </h2>
-      <p>
-       Dependiendo del caso, puede existir más de una vía posible. Analizamos cada situación para valorar qué alternativas pueden aplicarse.
-      </p>
-     </div>
-    </div>
-    <div class="grid3">
-     <div class="card">
-      <h3>
-       Cierre ordenado
-      </h3>
-      <p>
-       Buscar una salida que reduzca desgaste y permita cerrar etapa con el mayor control posible.
-      </p>
-     </div>
-     <div class="card">
-      <h3>
-       Venta asistida
-      </h3>
-      <p>
-       Organizar una venta con acompañamiento, evitando improvisación y escenarios de peor resultado.
-      </p>
-     </div>
-     <div class="card">
-      <h3>
-       Solución con pago parcial
-      </h3>
-      <p>
-       Si hay capacidad económica parcial, estudiar una vía que haga viable una salida equilibrada.
-      </p>
-     </div>
-    </div>
-    <div class="notice" style="margin-top:16px">
-     Si tras el análisis vemos que
-     <b>
-      no hay una solución viable
-     </b>
-     para tu caso, te lo diremos con honestidad.
-    </div>
-   </div>
-  </section>
-  <section class="page-hero" id="como-funciona">
-   <div class="container">
-    <h1 style="font-size:38px; text-align:left; color:white; letter-spacing:4px;">Cómo funciona</h1>
-    <p>
-     Un proceso simple, sin tecnicismos innecesarios.
-    </p>
-   </div>
-  </section>
-  <section class="section">
-   <div class="container split">
-    <div aria-hidden="true" class="photo photo-full-mobile photo-mobile-process process-desktop">
-     <img alt="" src="assets/process.png"/>
-    </div>
-    <div>
-     <div class="badge">
-      <svg aria-hidden="true" class="icon" fill="none" viewBox="0 0 24 24">
-       <path d="M20 15a4 4 0 01-4 4H8l-4 3V7a4 4 0 014-4h8a4 4 0 014 4v8z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8">
-       </path>
-      </svg>
-      <span>
-       De la incertidumbre a un plan
-      </span>
-     </div>
-     <h2 style="margin-top:10px">
-      Pasos del acompañamiento
-     </h2>
-     <div class="steps" style="margin-top:12px">
-      <div class="step">
-       <div class="n">
-        1
-       </div>
-       <div class="t">
-        <b>
-         Diagnóstico confidencial
-        </b>
-        <span>
-         Un formulario breve para entender tu situación.
-        </span>
-       </div>
-      </div>
-      <div class="step">
-       <div class="n">
-        2
-       </div>
-       <div class="t">
-        <b>
-         Primera llamada
-        </b>
-        <span>
-         Escuchamos tu contexto y confirmamos datos clave del procedimiento.
-        </span>
-       </div>
-      </div>
-      <div class="step">
-       <div class="n">
-        3
-       </div>
-       <div class="t">
-        <b>
-         Análisis y opciones
-        </b>
-        <span>
-         Revisamos la situación y exploramos qué alternativas podrían ser viables.
-        </span>
-       </div>
-      </div>
-      <div class="step">
-       <div class="n">
-        4
-       </div>
-       <div class="t">
-        <b>
-         Si hay encaje, avanzamos
-        </b>
-        <span>
-         Solo damos pasos con tu acuerdo y con objetivos claros.
-        </span>
-       </div>
-      </div>
-     </div>
-     <div class="cta-analizamos-wrap" style="margin-top:14px;"><a class="btn btn-primary cta" href="#test-diagnostico">
-      Analizamos tu caso
-      </a><div class="helper">
-       8 preguntas · menos de 1 minuto · sin compromiso
-      </div>
-     </div>
-     <div aria-hidden="true" class="photo photo-full-mobile photo-mobile-process process-mobile">
-      <img alt="" src="assets/process.png"/>
-     </div>
-    </div>
-   </div>
-  </section>
-  <section class="section alt">
-   <div class="container">
-    <div class="head">
-     <div>
-      <h2>
-       Lo que NO hacemos
-      </h2>
-      <p>
-       Para no crear expectativas incorrectas.
-      </p>
-     </div>
-    </div>
-    <div class="grid4">
-     <div class="card">
-      <h3>
-       No prometemos resultados
-      </h3>
-      <p>
-       Te diremos lo posible y lo improbable, sin adornos.
-      </p>
-     </div>
-     <div class="card">
-      <h3>
-       No trabajamos con presión
-      </h3>
-      <p>
-       Las decisiones importantes requieren calma y claridad.
-      </p>
-     </div>
-     <div class="card">
-      <h3>
-       No todos los casos encajan
-      </h3>
-      <p>
-       Si no podemos ayudar, lo diremos desde el principio.
-      </p>
-     </div>
-    
-      <div class="card">
-        <h3>No damos asesoramiento financiero</h3>
-        <p>Analizamos cada caso para valorar posibles soluciones, pero no ofrecemos asesoramiento financiero ni jurídico.</p>
+      <div class="step fade-in">
+        <div class="step-num">4</div>
+        <h3>Si hay encaje, avanzamos</h3>
+        <p>Solo damos pasos con tu acuerdo y con objetivos claros. Si no hay encaje, te lo decimos.</p>
       </div>
     </div>
+    <p class="section-label" style="margin-bottom:20px">Lo que no hacemos</p>
+    <div class="no-hacemos">
+      <div class="no-item fade-in">
+        <div class="no-icon">✗</div>
+        <div>
+          <h4>No prometemos resultados</h4>
+          <p>Te diremos lo posible y lo improbable, sin adornos.</p>
+        </div>
+      </div>
+      <div class="no-item fade-in">
+        <div class="no-icon">✗</div>
+        <div>
+          <h4>No trabajamos con presión</h4>
+          <p>Las decisiones importantes requieren calma y claridad.</p>
+        </div>
+      </div>
+      <div class="no-item fade-in">
+        <div class="no-icon">✗</div>
+        <div>
+          <h4>No todos los casos encajan</h4>
+          <p>Si no podemos ayudar, lo diremos desde el principio.</p>
+        </div>
+      </div>
+      <div class="no-item fade-in">
+        <div class="no-icon">✗</div>
+        <div>
+          <h4>No damos asesoramiento financiero</h4>
+          <p>Analizamos cada caso para valorar soluciones, sin sustituir a abogados ni entidades.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-   </div>
-  </section>
-  <section class="page-hero" id="por-que">
-   <div class="container">
-    <h1 style="font-size:38px; text-align:left; color:white; letter-spacing:4px;">Por qué Intermedia</h1>
-    <p>
-     Porque muchas personas llegan agotadas y sin una explicación clara de sus opciones.
-    </p>
-   </div>
-  </section>
-  <section class="section">
-   <div class="container split">
-    <div>
-     <div class="badge">
-      <svg aria-hidden="true" class="icon" fill="none" viewBox="0 0 24 24">
-       <path d="M12 2l8 4v7c0 5-3.4 9.4-8 9.9C7.4 22.4 4 18 4 13V6l8-4z" stroke="currentColor" stroke-width="1.8">
-       </path>
-      </svg>
-      <span>
-       Trato humano y discreto
-      </span>
-     </div>
-     <h2 style="margin-top:10px">
-      Aquí se baja el ruido
-     </h2>
-     <p>
-      Muchas personas que llegan hasta aquí ya han hablado con su banco, han pedido facilidades o han intentado negociar, pero sienten que no se les ofrecen alternativas claras.
-     </p>
-     <p>
-      En esos casos, nuestro papel es parar, entender la situación y acompañar en la toma de decisiones, con calma y sin juicios.
-     </p>
-     <div class="pills" style="margin-top:12px">
-      <span class="pill">
-       <svg aria-hidden="true" class="icon" fill="none" viewBox="0 0 24 24">
-        <path d="M20 7l-9 10-4-4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        </path>
-       </svg>
-       Claridad
-      </span>
-      <span class="pill">
-       <svg aria-hidden="true" class="icon" fill="none" viewBox="0 0 24 24">
-        <path d="M20 7l-9 10-4-4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        </path>
-       </svg>
-       Confidencialidad
-      </span>
-      <span class="pill">
-       <svg aria-hidden="true" class="icon" fill="none" viewBox="0 0 24 24">
-        <path d="M20 7l-9 10-4-4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        </path>
-       </svg>
-       Orden
-      </span>
-     </div>
-     <div class="notice" style="margin-top:14px">
-      No aplicamos honorarios. Nuestra participación depende únicamente de que tu caso llegue a un acuerdo viable. Si tu ganas, nosotros ganamos.
-     </div>
-     <div class="cta-analizamos-wrap" style="margin-top:14px;"><a class="btn btn-primary cta" href="#test-diagnostico">
-      Analizamos tu caso
-      </a><div class="helper">
-       8 preguntas · menos de 1 minuto · sin compromiso
-      </div>
-     </div>
-    </div>
-    <div aria-hidden="true" class="photo">
-     <img alt="" src="assets/why.jpg"/>
-    </div>
-   </div>
-  </section>
-  <section class="page-hero" id="test-diagnostico">
-   <div class="container">
-    <h1 style="font-size:38px; text-align:left; color:white; letter-spacing:4px;">Diagnóstico confidencial de tu situación</h1>
-    <p>
-     Antes de hablar, entendamos tu situación. No es vinculante y no te compromete a nada.
-    </p>
-   </div>
-  </section>
-  <section class="section">
-   <div class="container split">
-    <div class="card" style="padding:22px">
-     <h2>
-      Empezar diagnóstico confidencial
-     </h2>
-     <p class="form-helper">
-      <span class="form-small">Diagnóstico en 8 preguntas — menos de 1 minuto</span></p>
-<p style="margin-top:6px;font-size:15px;"><div style='margin-top:10px;padding:14px 16px;border-radius:14px;background:#FBF9F6;border:1px solid #ECE9E4;line-height:1.5;'>
-Este diagnóstico nos permite entender mejor tu situación y valorar si podría existir alguna opción viable.<br>
-El análisis es confidencial y orientativo y no constituye asesoramiento financiero ni jurídico.</div>
- 
-     </p>
-     <form id="form-diagnostico" class="form" onsubmit="event.preventDefault(); ">
-      <div class="field">
-       <label>
-        <b>
-         1. ¿Cuál es tu situación actual con la hipoteca?
-        </b>
-       </label>
-       <select name="situacion_de_pago" required="">
-        <option value="">
-         Selecciona…
-        </option>
-        <option>
-         He dejado de pagar algunas cuotas recientemente
-        </option>
-        <option>
-         Llevo bastante tiempo sin poder pagar la hipoteca
-        </option>
-        <option>
-         Estoy recibiendo reclamaciones o requerimientos de pago
-        </option>
-        <option>
-         Estoy en proceso judicial (demanda, ejecución, monitorio)
-        </option>
-        <option>
-         Me han notificado subasta o desahucio
-        </option>
-       </select>
-      </div>
-      <div class="field">
-       <label>
-        <b>
-         2. ¿Has recibido alguna comunicación formal relacionada con la deuda?
-        </b>
-       </label>
-       <select name="has_recibido_alguna_comunicacion_formal_relacionada_con_la_deuda">
-        <option value="">
-         Selecciona…
-        </option>
-        <option>
-         Sí, del banco o entidad que reclama la deuda
-        </option>
-        <option>
-         Sí, de un despacho o empresa de recobro
-        </option>
-        <option>
-         Sí, del juzgado
-        </option>
-        <option>
-         He recibido comunicaciones pero no sé exactamente de quién
-        </option>
-        <option>
-         No, todavía no
-        </option>
-       </select>
-      </div>
-      <div class="field">
-       <label>
-        <b>
-         3. La vivienda relacionada con la hipoteca es/está…
-        </b>
-       </label>
-       <select name="la_vivienda_relacionada_con_la_hipoteca_esesta">
-        <option value="">
-         Selecciona…
-        </option>
-        <option>
-         Mi vivienda habitual
-        </option>
-        <option>
-         Vivienda heredada
-        </option>
-        <option>
-         Okupada
-        </option>
-        <option>
-         Segunda residencia
-        </option>
-        <option>
-         Inmueble alquilado (actualmente alquilado a un tercero)
-        </option>
-        <option>
-         Vivienda de un familiar (padres, hermanos, etc.)
-        </option>
-        <option>
-         Otra situación
-        </option>
-       </select>
-      </div>
-      <div class="field">
-       <label>
-        <b>
-         4. ¿Qué te gustaría que pudiera ocurrir?
-        </b>
-       </label>
-       <select name="que_te_gustaria_que_pudiera_ocurrir">
-        <option value="">
-         Selecciona…
-        </option>
-        <option>
-         Poder mantener mi vivienda si existe alguna solución viable
-        </option>
-        <option>
-         Vender la vivienda para cancelar la deuda
-        </option>
-        <option>
-         Renunciar a la vivienda para cancelar mis deudas y empezar de nuevo
-        </option>
-        <option>
-         Entender bien todas las opciones antes de tomar una decisión
-        </option>
-       </select>
-      </div>
-      <div class="field">
-       <label>
-        <b>
-         5. ¿Cuál es aproximadamente la deuda pendiente de tu hipoteca?
-        </b>
-       </label>
-       <p class="form-small">
-        Esta pregunta nos ayuda a entender mejor tu situación. No es necesario que las cifras sean exactas.
-       </p>
-       <select name="cual_es_aproximadamente_la_deuda_pendiente_de_tu_hipoteca">
-        <option value="">
-         Selecciona…
-        </option>
-        <option>
-         Menos de 50.000 €
-        </option>
-        <option>
-         Entre 50.000 y 100.000 €
-        </option>
-        <option>
-         Entre 100.000 y 200.000 €
-        </option>
-        <option>
-         Entre 200.000 y 400.000 €
-        </option>
-        <option>
-         Más de 400.000 €
-        </option>
-        <option>
-         No lo sé exactamente
-        </option>
-       </select>
-      </div>
-      <div class="field">
-       <label>
-        <b>
-         6. ¿Cuál crees que podría ser el valor aproximado de tu vivienda hoy?
-        </b>
-       </label>
-       <p class="form-small">
-        Esta pregunta nos ayuda a entender mejor tu situación. No es necesario que las cifras sean exactas.
-       </p>
-       <select name="cual_crees_que_podria_ser_el_valor_aproximado_de_tu_vivienda_hoy">
-        <option value="">
-         Selecciona…
-        </option>
-        <option>
-         Menos de 100.000 €
-        </option>
-        <option>
-         Entre 100.000 y 200.000 €
-        </option>
-        <option>
-         Entre 200.000 y 300.000 €
-        </option>
-        <option>
-         Entre 300.000 y 500.000 €
-        </option>
-        <option>
-         Más de 500.000 €
-        </option>
-        <option>
-         No lo sé
-        </option>
-       </select>
-      </div>
-      <div class="field">
-       <label>
-        <b>
-         7. ¿En qué ciudad o municipio se encuentra la vivienda?
-        </b>
-       </label>
-       <input name="ciudad_o_municipio_de_la_vivienda" placeholder="Ciudad o municipio"/>
-      </div>
-      <div class="field">
-       <label>
-        <b>
-         8. ¿Qué es lo que más necesitas en este momento?
-        </b>
-       </label>
-       <select name="que_es_lo_que_mas_necesitas_en_este_momento">
-        <option value="">
-         Selecciona…
-        </option>
-        <option>
-         Entender qué opciones tengo
-        </option>
-        <option>
-         Parar el proceso o ganar tiempo
-        </option>
-        <option>
-         Vender la vivienda de la mejor forma posible
-        </option>
-        <option>
-         Encontrar una solución para cancelar la deuda
-        </option>
-        <option>
-         Hablar con alguien que analice mi caso
-        </option>
-       </select>
-      </div>
-      <hr style="border:0;border-top:1px solid var(--line);margin:6px 0"/>
-      <div class="field">
-       <label>
-        <b>
-         Nombre
-        </b>
-       </label>
-       <input name="firstname" required=""/>
-      </div>
-      <div class="field">
-       <label>
-        <b>
-         Teléfono
-        </b>
-       </label>
-       <input name="phone" placeholder="opcional" />
-      </div>
-      <div class="field">
-       <label>
-        <b>
-         Email
-        </b>
-       </label>
-       <input name="email" type="email" required=""/>
-      </div>
-      <label class="checkline"><input type="checkbox" required> <span>He leído y acepto la Política de privacidad</span></label>
-      <button class="btn" type="submit">
-       <svg aria-hidden="true" class="icon" fill="none" viewBox="0 0 24 24">
-        <path d="M5 12h12" stroke="currentColor" stroke-linecap="round" stroke-width="2">
-        </path>
-        <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        </path>
-       </svg>Enviar para análisis confidencial</button>
-      <div class="helper">
-       La información que nos envíes será tratada de forma confidencial y utilizada únicamente para valorar tu consulta.
-      </div>
-     </form>
-    </div>
-    <div class="card" style="padding:22px">
-     <h2>
-      Qué pasa después
-     </h2>
-     <div class="steps" style="margin-top:12px">
-      <div class="step">
-       <div class="n">
-        1
-       </div>
-       <div class="t">
-        <b>
-         Revisamos lo esencial
-        </b>
-        <span>
-         Si falta algún dato clave, lo pedimos por e-mail o teléfono.
-        </span>
-       </div>
-      </div>
-      <div class="step">
-       <div class="n">
-        2
-       </div>
-       <div class="t">
-        <b>
-         Llamada tranquila
-        </b>
-        <span>
-         Sin presión. Para entender el contexto y los objetivos.
-        </span>
-       </div>
-      </div>
-      <div class="step">
-       <div class="n">
-        3
-       </div>
-       <div class="t">
-        <b>
-         Te decimos si hay encaje
-        </b>
-        <span>
-         Si no lo hay, también. Preferimos ser honestos.
-        </span>
-       </div>
-      </div>
-     </div>
-     <h2 style="margin-top:52px">
-      Preguntas frecuentes
-     </h2>
-     <p class="form-helper">
-      <span class="form-small">Respuestas rápidas para reducir dudas.</span>
-     </p>
-     <div class="faq">
-      <details>
-       <summary>
-        ¿El diagnóstico me compromete?
-       </summary>
-       <p>
-        No. Es confidencial, gratuito y sin compromiso. Sirve solo para entender tu situación y ver si tiene sentido avanzar.
-       </p>
-      </details>
-      <details>
-       <summary>
-        ¿Cuánto cuesta nuestro servicio?
-       </summary>
-       <p>
-        No hay coste por el diagnóstico. Solo participamos si hay una solución viable y el proceso avanza. Si no, no tiene sentido para ninguna de las partes.
-       </p>
-      </details>
-      <details>
-       <summary>
-        ¿Y si ya es demasiado tarde?
-       </summary>
-       <p>
-        No siempre. Incluso con un procedimiento iniciado puede haber opciones, pero cuanto antes se analice la situación, más margen suele existir.
-       </p>
-      </details>
-      <details>
-       <summary>
-        ¿Puedo perder mi vivienda?
-       </summary>
-       <p>
-        Depende del caso. En algunos puede haber margen para mantenerla, en otros la mejor decisión es cerrar la situación de forma ordenada. Lo importante es entender qué es realista antes de decidir.
-       </p>
-      </details>
-      <details>
-       <summary>
-        ¿Qué papel tenéis exactamente en el proceso?
-       </summary>
-       <p>
-        Analizamos tu situación, ordenamos las opciones y te acompañamos para que tomes decisiones con claridad. No sustituimos a abogados ni entidades.
-       </p>
-      </details>
-      <details>
-       <summary>
-        ¿El diagnóstico es asesoramiento financiero?
-       </summary>
-       <p>
-        No. Es un análisis orientativo para valorar si puede existir una solución. No es asesoramiento financiero ni jurídico.
-       </p>
-      </details>
-      <details>
-       <summary>
-        ¿Y si mi caso no tiene solución?
-       </summary>
-       <p>
-        Te lo diremos con claridad. Preferimos ser honestos desde el principio y no generar expectativas irreales.
-       </p>
-      </details>
-     </div>
-    </div>
-   </div>
-  </section>
-  <section class="page-hero" id="contacto">
-   <div class="container">
-    <h1 style="font-size:38px; text-align:left; color:white; letter-spacing:4px;">Contacto</h1>
-    <p>
-     Estamos aquí para ayudarte.
-    </p>
-   </div>
-  </section>
-  <section class="section">
-   <div class="container split">
-    <div class="card" style="padding:22px">
-     <h2>
-      Déjanos tus datos y te contactaremos para resolver todas tus dudas.
-     </h2>
-    <form id="form-contacto-principal" class="form" onsubmit="event.preventDefault(); ">
-      <div class="field">
-       <label>
-        <b>
-         Nombre
-        </b>
-       </label>
-      <input name="nombre" required=""/>
-      </div>
-      <div class="field">
-       <label>
-        <b>
-         Teléfono
-        </b>
-       </label>
-       <input type="tel" id="contact-form-phone" name="phone" placeholder="opcional" autocomplete="tel"/>
-      </div>
-      <div class="field">
-       <label>
-        <b>
-         Email
-        </b>
-       </label>
-      <input name="email" type="email"/>
-      </div>
-      <div class="field">
-      <label>
-       <b>
-        Mensaje
-       </b>
-      </label>
-     <textarea name="mensaje" placeholder="Cuéntanos tu caso"></textarea>
-     </div>
-     
-      <button class="btn" type="submit">
-       <svg aria-hidden="true" class="icon" fill="none" viewBox="0 0 24 24">
-        <path d="M5 12h12" stroke="currentColor" stroke-linecap="round" stroke-width="2">
-        </path>
-        <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        </path>
-       </svg>
-       Enviar
-      </button>
-      <div class="helper">
-       Confidencialidad desde el primer contacto.
-      </div>
-     </form>
-    </div>
-    <div class="card contact-side" style="padding:22px">
-     <h2>
-      Otras vías de contacto:
-     </h2>
-     <div class="contact-ways">
-      <details class="contact-call">
-       <summary class="contact-call__summary">
-        <svg aria-hidden="true" class="icon" fill="none" viewBox="0 0 24 24">
-         <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
-        </svg>
-        ¿Prefieres que te llamemos?
-       </summary>
-       <form id="form-solicitud-llamada" class="form contact-call__form">
-        <div class="field">
-         <label>
-          <b>
-           Teléfono
-          </b>
-         </label>
-         <input type="tel" name="telefono" required="" autocomplete="tel" placeholder="Ej. 6XX XXX XXX"/>
+<!-- POR QUÉ INTERMEDIA -->
+<section id="por-que" class="bg-cream">
+  <div class="section-inner">
+    <div class="porque-grid">
+      <div class="porque-text fade-in">
+        <p class="section-label">Por qué Intermedia</p>
+        <h2 class="section-title">Aquí se baja el ruido</h2>
+        <p>Muchas personas que llegan hasta aquí ya han hablado con su banco, han pedido facilidades o han intentado negociar, pero sienten que no se les ofrecen alternativas claras.</p>
+        <p>En esos casos, nuestro papel es parar, entender la situación y acompañar en la toma de decisiones, con calma y sin juicios.</p>
+        <div class="porque-badges">
+          <span class="badge">Trato humano</span>
+          <span class="badge">Confidencial</span>
+          <span class="badge">Sin presión</span>
+          <span class="badge">Equipo independiente</span>
         </div>
-        <div class="field">
-         <label>
-          <b>
-           Nombre
-          </b>
-         </label>
-         <input type="text" name="nombre" autocomplete="name" placeholder="Opcional — cómo te llamamos"/>
+        <div class="porque-exito">
+          <p><strong>Trabajamos a éxito.</strong> No aplicamos honorarios por el análisis. Nuestra participación depende únicamente de que tu caso llegue a un acuerdo viable. Si tú ganas, nosotros ganamos.</p>
         </div>
-        <button class="btn" type="submit">
-         <svg aria-hidden="true" class="icon" fill="none" viewBox="0 0 24 24">
-          <path d="M5 12h12" stroke="currentColor" stroke-linecap="round" stroke-width="2">
-          </path>
-          <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-          </path>
-         </svg>
-         Enviar solicitud
-        </button>
-       </form>
-      </details>
-      <a class="pill" href="#test-diagnostico">
-       <svg aria-hidden="true" class="icon" fill="none" viewBox="0 0 24 24">
-        <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
-        <path d="M16.5 16.5L20 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
-       </svg>
-       Analizamos tu caso
-      </a>
-      <span class="pill">
-       <svg aria-hidden="true" class="icon" fill="none" viewBox="0 0 24 24">
-        <rect x="3" y="6" width="18" height="12" rx="2" ry="2" stroke="currentColor" stroke-width="1.8" fill="none"></rect>
-        <path d="M4 7.5l8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-       </svg>
-       <a href="mailto:contacto@somosintermedia.com" style="color:inherit;text-decoration:none;">contacto@somosintermedia.com</a>
-      </span>
-     </div>
-     <div aria-hidden="true" class="photo" style="margin-top:16px;min-height:240px">
-      <img alt="" src="assets/contact-photo.png"/>
-     </div>
+        <div style="margin-top:28px">
+          <a href="#test-diagnostico" class="btn btn-primary">Analizamos tu caso</a>
+        </div>
+      </div>
+      <div class="porque-img fade-in">
+        <img src="https://somosintermedia.com/assets/why.jpg" alt="Por qué Intermedia" loading="lazy">
+      </div>
     </div>
-   </div>
-  </section>
-  
-<footer>
-  <div class="container footer" style="padding-top:18px;padding-bottom:18px;">
-    <div class="footer-grid" style="grid-template-columns:1.6fr auto auto; gap:42px; justify-content:flex-end; align-items:center; padding-right:68px;">
-      
-      <div>
-        <h3 style="color:white;margin-bottom:10px;" style="font-size:18px;margin-bottom:6px;">INTERMEDIA</h3>
-        <p style="color:rgba(233,241,246,.9);margin-left:0;">
-        
-<div style="color:#ffffff;font-size:13px;display:flex;flex-direction:column;gap:6px;margin-left:0;">
-  <div style="display:flex;align-items:center;gap:6px;white-space:nowrap;font-size:14px;font-weight:500;"><span style="font-size:15px;display:inline-block;width:16px;text-align:center;position:relative;top:1px;">✓</span> Acompañamiento y soluciones hipotecarias</div>
-  <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:14px;display:inline-block;width:16px;text-align:center;position:relative;top:1px;">✓</span> Diagnóstico confidencial y gratuito</div>
-  <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:14px;display:inline-block;width:16px;text-align:center;position:relative;top:1px;">✓</span> Respondemos en menos de 24 hs</div>
-  <div style="display:flex;align-items:center;gap:6px;"><svg aria-hidden="true" style="width:16px;height:16px;flex-shrink:0;" fill="none" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M4 7.5l8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> <a href="mailto:contacto@somosintermedia.com" style="color:inherit;text-decoration:none;">contacto@somosintermedia.com</a></div>
+  </div>
+</section>
+
+<!-- FORMULARIO -->
+<section id="test-diagnostico">
+  <div class="section-inner">
+    <div class="form-wrap">
+      <div class="form-left fade-in">
+        <p class="section-label">Diagnóstico confidencial</p>
+        <h2 class="section-title">Empezar es sencillo</h2>
+        <p>Antes de hablar, entendamos tu situación. No es vinculante y no te compromete a nada. El análisis es confidencial y orientativo.</p>
+        <ul class="form-steps">
+          <li>
+            <div class="fs-num">1</div>
+            <div><strong>Revisamos lo esencial</strong><p>Si falta algún dato clave, lo pedimos por email o teléfono.</p></div>
+          </li>
+          <li>
+            <div class="fs-num">2</div>
+            <div><strong>Llamada tranquila</strong><p>Sin presión. Para entender el contexto y los objetivos.</p></div>
+          </li>
+          <li>
+            <div class="fs-num">3</div>
+            <div><strong>Te decimos si hay encaje</strong><p>Si no lo hay, también. Preferimos ser honestos.</p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="form-card fade-in">
+        <p class="form-title">Diagnóstico en 8 preguntas — menos de 1 minuto</p>
+        <form id="diagnostico-form" onsubmit="submitForm(event)">
+          <div class="form-group">
+            <label>1. ¿Cuál es tu situación actual con la hipoteca?</label>
+            <select required>
+              <option value="">Selecciona…</option>
+              <option>He dejado de pagar algunas cuotas recientemente</option>
+              <option>Llevo bastante tiempo sin poder pagar la hipoteca</option>
+              <option>Estoy recibiendo reclamaciones o requerimientos de pago</option>
+              <option>Estoy en proceso judicial (demanda, ejecución, monitorio)</option>
+              <option>Me han notificado subasta o desahucio</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>2. ¿Quién te está reclamando la deuda?</label>
+            <select required>
+              <option value="">Selecciona…</option>
+              <option>El banco</option>
+              <option>Un despacho o empresa de recobro</option>
+              <option>Un fondo</option>
+              <option>He recibido comunicaciones pero no sé exactamente de quién</option>
+              <option>No he recibido ninguna comunicación</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>3. ¿En qué situación se encuentra la vivienda?</label>
+            <select required>
+              <option value="">Selecciona…</option>
+              <option>Es mi residencia habitual</option>
+              <option>Es mi segunda residencia</option>
+              <option>Está viviendo un familiar</option>
+              <option>Está vacía</option>
+              <option>La tengo alquilada a un tercero</option>
+              <option>Está okupada</option>
+              <option>Es una herencia pendiente de resolver</option>
+              <option>Otra situación</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>4. ¿Qué te gustaría que pudiera ocurrir?</label>
+            <select required>
+              <option value="">Selecciona…</option>
+              <option>Poder mantener mi vivienda si existe alguna solución viable</option>
+              <option>Vender la vivienda para cancelar la deuda</option>
+              <option>Renunciar a la vivienda para cancelar mis deudas y empezar de nuevo</option>
+              <option>Valorar la dación en pago como salida</option>
+              <option>Entender bien todas las opciones antes de tomar una decisión</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>5. ¿Cuál es aproximadamente la deuda pendiente de tu hipoteca?</label>
+            <select required>
+              <option value="">Selecciona…</option>
+              <option>Menos de 50.000 €</option>
+              <option>Entre 50.000 y 100.000 €</option>
+              <option>Entre 100.000 y 200.000 €</option>
+              <option>Entre 200.000 y 400.000 €</option>
+              <option>Más de 400.000 €</option>
+              <option>No lo sé exactamente</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>6. ¿Cuál crees que podría ser el valor aproximado de tu vivienda hoy?</label>
+            <select required>
+              <option value="">Selecciona…</option>
+              <option>Menos de 100.000 €</option>
+              <option>Entre 100.000 y 200.000 €</option>
+              <option>Entre 200.000 y 300.000 €</option>
+              <option>Entre 300.000 y 500.000 €</option>
+              <option>Más de 500.000 €</option>
+              <option>No lo sé</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>7. ¿En qué ciudad o municipio se encuentra la vivienda?</label>
+            <input type="text" placeholder="Ciudad o municipio" required>
+          </div>
+          <div class="form-group">
+            <label>8. ¿Qué es lo que más necesitas en este momento?</label>
+            <select required>
+              <option value="">Selecciona…</option>
+              <option>Entender qué opciones tengo</option>
+              <option>Parar el proceso o ganar tiempo</option>
+              <option>Vender la vivienda de la mejor forma posible</option>
+              <option>Encontrar una solución para cancelar la deuda</option>
+              <option>Hablar con alguien que analice mi caso</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <label>Teléfono</label>
+              <div style="display:grid;grid-template-columns:90px 1fr;gap:8px">
+                <select id="tel-prefix" style="padding:11px 8px;border:1px solid var(--border);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);background:var(--white);appearance:none;-webkit-appearance:none">
+                  <option value="+34,9">+34 🇪🇸</option>
+                  <option value="+33,9">+33 🇫🇷</option>
+                  <option value="+44,10">+44 🇬🇧</option>
+                  <option value="+49,10">+49 🇩🇪</option>
+                  <option value="+39,10">+39 🇮🇹</option>
+                  <option value="+351,9">+351 🇵🇹</option>
+                  <option value="+1,10">+1 🇺🇸</option>
+                  <option value="+52,10">+52 🇲🇽</option>
+                  <option value="+54,10">+54 🇦🇷</option>
+                </select>
+                <input type="tel" id="tel-number" placeholder="600 000 000" required oninput="this.value=this.value.replace(/[^0-9\s]/g,'')">
+              </div>
+              <span id="tel-error" style="display:none;font-size:12px;color:#c0392b;margin-top:4px">Introduce un número de teléfono válido.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="tu@email.com" required>
+          </div>
+          <div class="form-group" style="display:flex;align-items:flex-start;gap:10px;margin-top:4px">
+            <input type="checkbox" id="privacy-check" required style="width:16px;height:16px;flex-shrink:0;margin-top:2px;accent-color:var(--green)">
+            <label for="privacy-check" style="font-size:12px;color:var(--muted);line-height:1.5;font-weight:400">He leído y acepto la <a href="#" style="color:var(--green)">política de privacidad</a>. La información que envíes será tratada de forma confidencial y utilizada únicamente para valorar tu consulta.</label>
+          </div>
+          <button type="submit" class="form-submit">Enviar para análisis confidencial</button>
+          <p class="form-note">Diagnóstico gratuito y sin compromiso · Respondemos en menos de 24h</p>
+        </form>
+        <div id="form-success" style="display:none;text-align:center;padding:24px 0">
+          <div style="font-size:40px;margin-bottom:16px">✓</div>
+          <h3 style="font-size:22px;margin-bottom:10px">Hemos recibido tu información.</h3>
+          <p style="font-size:15px;color:var(--muted);line-height:1.7">Gracias por compartir tu situación con nosotros.<br>Revisaremos tu caso y nos pondremos en contacto contigo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="bg-cream">
+  <div class="section-inner" style="max-width:800px">
+    <p class="section-label fade-in" style="text-align:center">Preguntas frecuentes</p>
+    <h2 class="section-title fade-in" style="text-align:center;margin-bottom:48px">Respuestas rápidas para reducir dudas</h2>
+    <div class="faq-list">
+      <p style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)">Antes de empezar</p>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿El diagnóstico me compromete? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>No. Es confidencial, gratuito y sin compromiso. Sirve para entender tu situación y valorar qué opciones existen para tu caso en concreto.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Cuánto cuesta vuestro servicio? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>En ningún momento del proceso recibirás una factura o cargo de Intermedia. Nuestro modelo nos permite trabajar sin coste para el deudor en cualquiera de las salidas que se planteen.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Qué papel tenéis exactamente en el proceso? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Analizamos tu situación, ordenamos las opciones y te acompañamos para que tomes decisiones con claridad y puedas cerrar la etapa. No sustituimos a abogados ni entidades financieras, y no prestamos asesoramiento jurídico ni financiero.</p></div>
+      </div>
+      <p style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin:28px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)">Sobre tu situación concreta</p>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Y si ya es demasiado tarde? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Incluso con un procedimiento judicial en curso o una subasta notificada puede existir margen. Cuanto antes se analice, más opciones suele haber, pero también se pueden trabajar casos en fases avanzadas. Lo que determina si hay salida no es el momento, sino las características del caso.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Qué pasa si mi vivienda vale menos de lo que debo? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Es una situación más habitual de lo que parece. Si el valor actual de la vivienda no cubre la deuda pendiente, existen vías para estudiar una salida que evite que el exceso de deuda recaiga sobre ti en el futuro. Lo analizamos caso a caso.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Qué ocurre si un fondo de inversión o empresa de recobro ha comprado mi deuda? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Cuando el banco vende la deuda a un tercero, las condiciones cambian y a menudo existe más margen de negociación del que el deudor cree. Es uno de los perfiles que mejor encaja con lo que hacemos: analizamos la situación con el nuevo acreedor y valoramos qué opciones existen para cerrar la deuda.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Podría quedarme en la vivienda si llego a un acuerdo? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Depende de la situación concreta y del margen que exista. Si hay cierta capacidad económica, una de las vías que podemos explorar es negociar una reducción de la deuda pendiente que haga viable que puedas quedarte la vivienda. No podemos garantizarlo sin analizar el caso, pero si es una prioridad para ti, es algo que tendremos en cuenta desde el principio.</p></div>
+      </div>
+      <p style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin:28px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)">Garantías</p>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Puedo perder mi vivienda? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Depende del caso. En algunos puede haber margen para mantenerla; en otros, la mejor decisión es cerrar la situación de forma ordenada antes de que el proceso judicial lo haga por ti. Lo importante es entender qué opciones realistas hay antes de decidir.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Y si mi caso no tiene solución? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Te lo diremos con claridad desde el principio. Preferimos ser honestos y no generar expectativas que luego no podemos cumplir.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP CTA -->
+<div class="strip">
+  <p>¿Reconoces tu situación? El primer paso es un análisis confidencial sin ningún compromiso.</p>
+  <a href="#test-diagnostico" class="btn">Analizamos tu caso gratis →</a>
 </div>
 
-        </p>
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="section-inner">
+    <div class="contacto-grid">
+      <div class="contacto-info fade-in">
+        <p class="section-label">Contacto</p>
+        <h2 class="section-title">Estamos aquí para ayudarte</h2>
+        <p>Puedes contactarnos directamente si prefieres hablar antes de rellenar el formulario. Respondemos en menos de 24 horas.</p>
+        <a href="mailto:contacto@somosintermedia.com" class="contacto-dato"><span>✉</span> contacto@somosintermedia.com</a>
+        <a href="tel:+34609080222" class="contacto-dato"><span>✆</span> Teléfono / WhatsApp: +34 XXXXXXXXX</a>
+        <p style="font-size:13px;color:var(--muted);margin-top:24px;line-height:1.6">Confidencialidad desde el primer contacto.<br>Barcelona · España</p>
       </div>
-
-      <div style="position:relative; left:-30px;">
-        <h4 style="font-size:15px;margin-bottom:6px;">Sobre nosotros</h4>
-        <p style="margin:4px 0;font-size:14px;line-height:1.3;"><a href="#quienes-somos">Quiénes somos</a></p>
-        <p style="margin:4px 0;font-size:14px;line-height:1.3;"><a href="#que-ofrecemos">Qué ofrecemos</a></p>
-        <p style="margin:4px 0;font-size:14px;line-height:1.3;"><a href="#como-funciona">Cómo funciona</a></p>
-        <p style="margin:4px 0;font-size:14px;line-height:1.3;"><a href="#por-que">Por qué Intermedia</a></p>
-        <p style="margin:4px 0;font-size:14px;line-height:1.3;"><a href="#test-diagnostico">Resolver dudas (FAQ)</a></p>
-      </div>
-
-      <div>
-        <h4 style="font-size:15px;margin-bottom:6px;">Legal</h4>
-        <p style="margin:4px 0;font-size:14px;line-height:1.3;"><a href="#contacto">Contacto</a></p>
-        <p style="margin:4px 0;font-size:14px;line-height:1.3;"><a href="aviso-legal.html">Aviso legal</a></p>
-        <p style="margin:4px 0;font-size:14px;line-height:1.3;"><a href="politica-privacidad.html">Política de privacidad</a></p>
-        <p style="margin:4px 0;font-size:14px;line-height:1.3;"><a href="politica-cookies.html">Política de cookies</a></p>
+      <div class="contact-form fade-in">
+        <p class="form-title" style="font-family:'Cormorant Garamond',serif;font-size:20px;margin-bottom:20px">Déjanos tus datos y te contactamos</p>
+        <div class="form-group"><label>Nombre</label><input type="text" placeholder="Tu nombre"></div>
+        <div class="form-group">
+          <label>Teléfono</label>
+          <div style="display:grid;grid-template-columns:90px 1fr;gap:8px">
+            <select id="contact-prefix" style="padding:11px 8px;border:1px solid var(--border);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);background:var(--white);appearance:none;-webkit-appearance:none">
+              <option value="+34,9">+34 🇪🇸</option>
+              <option value="+33,9">+33 🇫🇷</option>
+              <option value="+44,10">+44 🇬🇧</option>
+              <option value="+49,10">+49 🇩🇪</option>
+              <option value="+39,10">+39 🇮🇹</option>
+              <option value="+351,9">+351 🇵🇹</option>
+              <option value="+1,10">+1 🇺🇸</option>
+              <option value="+52,10">+52 🇲🇽</option>
+              <option value="+54,10">+54 🇦🇷</option>
+            </select>
+            <input type="tel" id="contact-tel-number" placeholder="600 000 000" oninput="this.value=this.value.replace(/[^0-9\s]/g,'')">
+          </div>
+          <span id="contact-tel-error" style="display:none;font-size:12px;color:#c0392b;margin-top:4px">Introduce un número de teléfono válido.</span>
+        </div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="tu@email.com"></div>
+        <div class="form-group"><label>Mensaje (opcional)</label><textarea rows="3" placeholder="Cuéntanos brevemente tu situación…" style="resize:vertical"></textarea></div>
+        <button class="form-submit" onclick="validateContactPhone()&&alert('Mensaje enviado. Nos ponemos en contacto en menos de 24 horas.')">Enviar</button>
       </div>
     </div>
   </div>
+</section>
 
-  <div style="width:100%;border-top:1px solid rgba(255,255,255,0.15);margin-top:18px;">
-    <div class="container footer" style="padding-top:10px;padding-bottom:0;text-align:left;font-size:13px;color:rgba(255,255,255,0.75);letter-spacing:.3px;">
-      © 2026 INTERMEDIA · Barcelona · Cataluña · España
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo-text">INTERMEDIA</span>
+        <p>Acompañamiento y soluciones hipotecarias.<br>Diagnóstico confidencial y gratuito.<br>Barcelona · España.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#quienes-somos">Quiénes somos</a></li>
+          <li><a href="#que-ofrecemos">Qué ofrecemos</a></li>
+          <li><a href="#como-funciona">Cómo funciona</a></li>
+          <li><a href="#por-que">Por qué Intermedia</a></li>
+          <li><a href="#faq">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Aviso legal</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+          <li><a href="#">Política de cookies</a></li>
+          <li><a href="mailto:contacto@somosintermedia.com">contacto@somosintermedia.com</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
+    <div class="footer-bottom">
+      <span>© 2026 INTERMEDIA · Todos los derechos reservados</span>
+      <span>Intermedia no presta asesoramiento financiero ni jurídico</span>
+    </div>
   </div>
 </footer>
 
-  <script>
-   (function(){
-    const btn = document.getElementById('menuBtn');
-    const panel = document.getElementById('mobilePanel');
-    if(!btn || !panel) return;
-    btn.addEventListener('click', ()=>{
-      const open = panel.style.display === 'block';
-      panel.style.display = open ? 'none' : 'block';
-    });
-  })();
-  </script>
-  <script>
-   (function(){
-  const btn = document.getElementById('menuBtn');
-  const panel = document.getElementById('mobilePanel');
-  if(!btn || !panel) return;
-  function close(){ panel.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
-  function toggle(){
-    const isOpen = panel.classList.toggle('open');
-    btn.setAttribute('aria-expanded', String(isOpen));
-  }
-  btn.addEventListener('click', function(e){ e.preventDefault(); toggle(); });
-  document.addEventListener('click', function(e){
-    if(!panel.classList.contains('open')) return;
-    const inside = panel.contains(e.target) || btn.contains(e.target);
-    if(!inside) close();
-  });
-  window.addEventListener('resize', function(){ if(window.innerWidth > 860) close(); });
-})();
-  </script>
-  <script src="assets/script.js">
-  </script>
- 
-  <!-- Cookie consent -->
-  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Consentimiento de cookies" style="display:none;">
-    <div class="cookie-row">
-      <p>
-        Usamos cookies técnicas necesarias para el funcionamiento de la web y, con tu permiso, cookies de analítica para mejorar la experiencia.
-        Puedes aceptar, rechazar o configurar tus preferencias. <a href="#contacto" style="color:rgba(255,255,255,0.95);text-decoration:underline;">Más información</a>
-      </p>
-      <div class="cookie-actions">
-        <button class="cookie-btn" id="cookieReject">Rechazar</button>
-        <button class="cookie-btn" id="cookieSettings">Configurar</button>
-        <button class="cookie-btn primary" id="cookieAccept">Aceptar</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="cookie-modal-backdrop" id="cookieModal">
-    <div class="cookie-modal" role="dialog" aria-modal="true" aria-label="Preferencias de cookies">
-      <h3>Preferencias de cookies</h3>
-      <div class="cookie-opt">
-        <div>
-          <b>Cookies necesarias</b><br/>
-          <small>Siempre activas. Permiten que la web funcione correctamente.</small>
-        </div>
-        <div class="cookie-toggle">
-          <input type="checkbox" checked disabled />
-        </div>
-      </div>
-      <div class="cookie-opt">
-        <div>
-          <b>Cookies de analítica</b><br/>
-          <small>Nos ayudan a mejorar la web. Solo se activan si las aceptas.</small>
-        </div>
-        <div class="cookie-toggle">
-          <input type="checkbox" id="cookieAnalyticsToggle" />
-        </div>
-      </div>
-      <div class="cookie-actions" style="justify-content:flex-end;margin-top:12px;">
-        <button class="cookie-btn link" id="cookieClose">Cerrar</button>
-        <button class="cookie-btn" id="cookieSave">Guardar</button>
-      </div>
-    </div>
-  </div>
-
-
-  <script>
-  (function(){
-    // Smooth anchor scroll with header offset (replaces CSS scroll-margin-top)
-    const header = document.querySelector('.site-header');
-    function headerOffset(){
-      if(!header) return 0;
-      const h = header.getBoundingClientRect().height || 0;
-      // small breathing room so it doesn't look "cut"
-      return Math.max(0, Math.round(h - 6));
-    }
-    document.addEventListener('click', function(e){
-      const a = e.target.closest && e.target.closest('a[href^="#"]');
-      if(!a) return;
-      const href = a.getAttribute('href');
-      if(!href || href === '#') return;
-      const id = href.slice(1);
-      const el = document.getElementById(id);
-      if(!el) return;
-      e.preventDefault();
-      const y = window.pageYOffset + el.getBoundingClientRect().top - headerOffset();
-      window.scrollTo({ top: y, behavior: 'smooth' });
-      history.pushState(null, '', href);
-    });
-  })();
-  </script>
-
-
-<div id="mensaje-envio" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9999;align-items:center;justify-content:center;">
-  <div style="background:#fff;padding:28px;border-radius:14px;max-width:520px;margin:auto;text-align:left;box-shadow:0 10px 30px rgba(0,0,0,.2);">
-    <p><strong>Hemos recibido tu información.</strong></p>
-    <p>Gracias por compartir tu situación con nosotros.<br>
-    Sabemos que hablar de estas situaciones no es fácil.</p>
-    <p>Revisaremos la información que nos has enviado para entender mejor tu caso y valorar si podría existir alguna opción viable.</p>
-    <p>Si necesitamos ampliar algún dato, nos pondremos en contacto contigo.</p>
-    <p><strong>Equipo Intermedia.</strong></p>
-    <button onclick="cerrarMensaje()" style="margin-top:14px;padding:10px 16px;border-radius:8px;border:none;background:#1f4f46;color:#fff;cursor:pointer;">Cerrar</button>
-  </div>
-</div>
-
-<div id="mensaje-envio-error" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9999;align-items:center;justify-content:center;">
-  <div style="background:#fff;padding:28px;border-radius:14px;max-width:520px;margin:auto;text-align:left;box-shadow:0 10px 30px rgba(0,0,0,.2);">
-    <p><strong>No se ha podido completar el envío.</strong></p>
-    <p id="mensaje-envio-error-texto"></p>
-    <button onclick="cerrarMensajeError()" style="margin-top:14px;padding:10px 16px;border-radius:8px;border:none;background:#1f4f46;color:#fff;cursor:pointer;">Cerrar</button>
-  </div>
-</div>
-
-
 <script>
-function cerrarMensaje(){
-document.getElementById('mensaje-envio').style.display='none';
-}
-function cerrarMensajeError(){
-var el=document.getElementById('mensaje-envio-error');
-if(el) el.style.display='none';
-}
-function configurarMensajeEnvio(tipo){
-var box=document.getElementById('mensaje-envio');
-if(!box) return;
-var panel=box.firstElementChild;
-if(!panel) return;
-var ps=panel.querySelectorAll('p');
-if(!ps || ps.length===0) return;
+  // Nav burger
+  function toggleMenu(){
+    document.getElementById('nav-links').classList.toggle('open');
+  }
+  // Close nav on link click
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.addEventListener('click',()=>document.getElementById('nav-links').classList.remove('open'));
+  });
 
-if(tipo==='diagnostico'){
-if(ps[0]) ps[0].style.display='';
-if(ps[1]) ps[1].style.display='';
-if(ps[2]) ps[2].style.display='';
-if(ps[3]) ps[3].style.display='';
-if(ps[4]) ps[4].style.display='';
-if(ps[1]) ps[1].textContent='Gracias por compartir tu situación con nosotros. Sabemos que hablar de estas situaciones no es fácil.';
-return;
-}
+  // FAQ accordion
+  function toggleFaq(btn){
+    const item=btn.closest('.faq-item');
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen)item.classList.add('open');
+  }
 
-if(ps[0]) ps[0].style.display='none';
-if(ps[2]) ps[2].style.display='none';
-if(ps[3]) ps[3].style.display='none';
-if(ps[4]) ps[4].style.display='none';
-if(ps[1]) ps[1].style.display='';
+  // Fade in on scroll
+  const observer=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
 
-if(tipo==='contacto'){
-ps[1].textContent='Gracias por escribirnos. Te responderemos lo antes posible.';
-}else if(tipo==='llamada'){
-ps[1].textContent='Gracias por ponerte en contacto. Te llamaremos lo antes posible.';
-}
-}
+  // Contact form phone validation
+  function validateContactPhone(){
+    const prefixSel=document.getElementById('contact-prefix');
+    const numInput=document.getElementById('contact-tel-number');
+    const err=document.getElementById('contact-tel-error');
+    if(!prefixSel||!numInput)return true;
+    const parts=prefixSel.value.split(',');
+    const expectedLen=parseInt(parts[1]||9);
+    const digits=numInput.value.replace(/\s/g,'');
+    const valid=/^\d+$/.test(digits)&&digits.length>=expectedLen-1&&digits.length<=expectedLen+1;
+    err.style.display=valid?'none':'block';
+    return valid;
+  }
+  function validatePhone(){
+    const prefixSel=document.getElementById('tel-prefix');
+    const numInput=document.getElementById('tel-number');
+    const err=document.getElementById('tel-error');
+    if(!prefixSel||!numInput)return true;
+    const parts=prefixSel.value.split(',');
+    const expectedLen=parseInt(parts[1]||9);
+    const digits=numInput.value.replace(/\s/g,'');
+    const valid=/^\d+$/.test(digits)&&digits.length>=expectedLen-1&&digits.length<=expectedLen+1;
+    err.style.display=valid?'none':'block';
+    return valid;
+  }
 
-document.addEventListener("DOMContentLoaded",function(){
-var form=document.getElementById('form-diagnostico');
-if(!form) return;
-form.addEventListener("submit",function(e){
-e.preventDefault();
-var btn=form.querySelector('button[type="submit"]');
-if(btn && btn.disabled) return;
-function field(name){
-var el=form.elements[name];
-if(!el) return '';
-return String(el.value||'').trim();
-}
-var payload={
-nombre: field('firstname'),
-email: field('email'),
-telefono: field('phone'),
-situacion_de_pago: field('situacion_de_pago'),
-has_recibido_alguna_comunicacion_formal_relacionada_con_la_deuda: field('has_recibido_alguna_comunicacion_formal_relacionada_con_la_deuda'),
-la_vivienda_relacionada_con_la_hipoteca_esesta: field('la_vivienda_relacionada_con_la_hipoteca_esesta'),
-que_te_gustaria_que_pudiera_ocurrir: field('que_te_gustaria_que_pudiera_ocurrir'),
-cual_es_aproximadamente_la_deuda_pendiente_de_tu_hipoteca: field('cual_es_aproximadamente_la_deuda_pendiente_de_tu_hipoteca'),
-cual_crees_que_podria_ser_el_valor_aproximado_de_tu_vivienda_hoy: field('cual_crees_que_podria_ser_el_valor_aproximado_de_tu_vivienda_hoy'),
-ciudad_o_municipio_de_la_vivienda: field('ciudad_o_municipio_de_la_vivienda'),
-que_es_lo_que_mas_necesitas_en_este_momento: field('que_es_lo_que_mas_necesitas_en_este_momento')
-};
-if(!payload.email){
-return;
-}
-if(btn){ btn.disabled=true; }
-fetch('/.netlify/functions/hubspot-contact',{
-method:'POST',
-headers:{'Content-Type':'application/json'},
-body:JSON.stringify(payload)
-}).then(function(res){
-return res.json().then(function(data){ return { res: res, data: data }; });
-}).then(function(r){
-if(r.res.ok){
-configurarMensajeEnvio('diagnostico');
-document.getElementById('mensaje-envio').style.display='flex';
-form.reset();
-}else{
-var t=document.getElementById('mensaje-envio-error-texto');
-if(t) t.textContent=(r.data && (r.data.error || r.data.message)) ? (r.data.error || r.data.message) : ('Error ' + r.res.status);
-var box=document.getElementById('mensaje-envio-error');
-if(box) box.style.display='flex';
-}
-}).catch(function(err){
-var t=document.getElementById('mensaje-envio-error-texto');
-if(t) t.textContent=err && err.message ? err.message : 'Error de conexión';
-var box=document.getElementById('mensaje-envio-error');
-if(box) box.style.display='flex';
-}).finally(function(){
-if(btn) btn.disabled=false;
-});
-});
-});
+  // Form submit
+  function submitForm(e){
+    e.preventDefault();
+    if(!validatePhone())return;
+    document.getElementById('diagnostico-form').style.display='none';
+    document.getElementById('form-success').style.display='block';
+  }
 
-document.addEventListener("DOMContentLoaded",function(){
-var formContacto=document.getElementById('form-contacto-principal');
-if(!formContacto) return;
-formContacto.addEventListener("submit",function(e){
-e.preventDefault();
-var btn=formContacto.querySelector('button[type="submit"]');
-if(btn && btn.disabled) return;
-function field(name){
-var el=formContacto.elements[name];
-if(!el) return '';
-return String(el.value||'').trim();
-}
-var payload={
-nombre: field('nombre'),
-email: field('email'),
-telefono: field('phone'),
-mensaje: field('mensaje')
-};
-if(!payload.email){
-var tReq=document.getElementById('mensaje-envio-error-texto');
-if(tReq) tReq.textContent='Indica un email válido.';
-var boxReq=document.getElementById('mensaje-envio-error');
-if(boxReq) boxReq.style.display='flex';
-return;
-}
-if(btn){ btn.disabled=true; }
-fetch('/.netlify/functions/hubspot-contact',{
-method:'POST',
-headers:{'Content-Type':'application/json'},
-body:JSON.stringify(payload)
-}).then(function(res){
-return res.json().then(function(data){ return { res: res, data: data }; });
-}).then(function(r){
-if(r.res.ok){
-configurarMensajeEnvio('contacto');
-document.getElementById('mensaje-envio').style.display='flex';
-formContacto.reset();
-}else{
-var t=document.getElementById('mensaje-envio-error-texto');
-if(t) t.textContent=(r.data && (r.data.error || r.data.message)) ? (r.data.error || r.data.message) : ('Error ' + r.res.status);
-var box=document.getElementById('mensaje-envio-error');
-if(box) box.style.display='flex';
-}
-}).catch(function(err){
-var t=document.getElementById('mensaje-envio-error-texto');
-if(t) t.textContent=err && err.message ? err.message : 'Error de conexión';
-var box=document.getElementById('mensaje-envio-error');
-if(box) box.style.display='flex';
-}).finally(function(){
-if(btn) btn.disabled=false;
-});
-});
-});
-
-document.addEventListener("DOMContentLoaded",function(){
-var formCall=document.getElementById('form-solicitud-llamada');
-if(!formCall) return;
-formCall.addEventListener("submit",function(e){
-e.preventDefault();
-var btn=formCall.querySelector('button[type="submit"]');
-if(btn && btn.disabled) return;
-function field(name){
-var el=formCall.elements[name];
-if(!el) return '';
-return String(el.value||'').trim();
-}
-var payload={
-nombre: field('nombre'),
-telefono: field('telefono')
-};
-if(!payload.telefono){
-return;
-}
-if(btn){ btn.disabled=true; }
-fetch('/.netlify/functions/hubspot-contact',{
-method:'POST',
-headers:{'Content-Type':'application/json'},
-body:JSON.stringify(payload)
-}).then(function(res){
-return res.json().then(function(data){ return { res: res, data: data }; });
-}).then(function(r){
-if(r.res.ok){
-configurarMensajeEnvio('llamada');
-document.getElementById('mensaje-envio').style.display='flex';
-formCall.reset();
-}else{
-var t=document.getElementById('mensaje-envio-error-texto');
-if(t) t.textContent=(r.data && (r.data.error || r.data.message)) ? (r.data.error || r.data.message) : ('Error ' + r.res.status);
-var box=document.getElementById('mensaje-envio-error');
-if(box) box.style.display='flex';
-}
-}).catch(function(err){
-var t=document.getElementById('mensaje-envio-error-texto');
-if(t) t.textContent=err && err.message ? err.message : 'Error de conexión';
-var box=document.getElementById('mensaje-envio-error');
-if(box) box.style.display='flex';
-}).finally(function(){
-if(btn) btn.disabled=false;
-});
-});
-});
+  // Smooth nav background
+  window.addEventListener('scroll',()=>{
+    const nav=document.getElementById('nav');
+    nav.style.boxShadow=window.scrollY>20?'0 1px 20px rgba(0,0,0,0.08)':'none';
+  });
 </script>
-
 </body>
-
-  <script>
-    (function(){
-      const KEY = "intermedia_cookie_consent_v1";
-      const banner = document.getElementById("cookieBanner");
-      const modal = document.getElementById("cookieModal");
-      const accept = document.getElementById("cookieAccept");
-      const reject = document.getElementById("cookieReject");
-      const settings = document.getElementById("cookieSettings");
-      const close = document.getElementById("cookieClose");
-      const save = document.getElementById("cookieSave");
-      const analyticsToggle = document.getElementById("cookieAnalyticsToggle");
-
-      function getConsent(){
-        try { return JSON.parse(localStorage.getItem(KEY) || "null"); } catch(e){ return null; }
-      }
-      function setConsent(value){
-        localStorage.setItem(KEY, JSON.stringify(value));
-      }
-      function applyConsent(consent){
-        // Aquí se activarían scripts de analítica SOLO si consent.analytics === true.
-        // En esta web (estática) no activamos nada por defecto.
-      }
-      function openModal(){
-        if(!modal) return;
-        const c = getConsent();
-        analyticsToggle.checked = !!(c && c.analytics);
-        modal.style.display = "flex";
-      }
-      function closeModal(){
-        if(!modal) return;
-        modal.style.display = "none";
-      }
-
-      const existing = getConsent();
-      if(!existing){
-        banner.style.display = "block";
-      } else {
-        applyConsent(existing);
-      }
-
-      accept && accept.addEventListener("click", function(){
-        const c = { necessary:true, analytics:true, ts: Date.now() };
-        setConsent(c); applyConsent(c);
-        banner.style.display = "none";
-      });
-      reject && reject.addEventListener("click", function(){
-        const c = { necessary:true, analytics:false, ts: Date.now() };
-        setConsent(c); applyConsent(c);
-        banner.style.display = "none";
-      });
-      settings && settings.addEventListener("click", function(){
-        openModal();
-      });
-      close && close.addEventListener("click", function(){ closeModal(); });
-      modal && modal.addEventListener("click", function(e){
-        if(e.target === modal) closeModal();
-      });
-      save && save.addEventListener("click", function(){
-        const c = { necessary:true, analytics: !!analyticsToggle.checked, ts: Date.now() };
-        setConsent(c); applyConsent(c);
-        closeModal();
-        banner.style.display = "none";
-      });
-
-      // Exponer un botón/función futura para reabrir preferencias si lo necesitáis:
-      window.IntermediaCookie = { openPreferences: openModal };
-    })();
-  </script>
-
 </html>
