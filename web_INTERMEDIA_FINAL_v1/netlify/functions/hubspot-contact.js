@@ -56,6 +56,8 @@ function buildContactProperties(payload, opts) {
   if (telefono) props.phone = telefono;
   const mensaje = str(payload.mensaje);
   if (mensaje) props.mensaje_contacto = mensaje;
+  const origen = str(payload.origen);
+  if (origen) props.origen = origen;
   for (const key of TEST_PROP_KEYS) {
     const val = str(payload[key]);
     if (val) props[key] = val;

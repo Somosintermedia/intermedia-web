@@ -694,29 +694,32 @@
         <p style="font-size:13px;color:var(--muted);margin-top:24px;line-height:1.6">Confidencialidad desde el primer contacto.<br>Barcelona · España</p>
       </div>
       <div class="contact-form fade-in">
-        <p class="form-title" style="font-family:'Cormorant Garamond',serif;font-size:20px;margin-bottom:20px">Déjanos tus datos y te contactamos</p>
-        <div class="form-group"><label>Nombre</label><input type="text" placeholder="Tu nombre"></div>
-        <div class="form-group">
-          <label>Teléfono</label>
-          <div style="display:grid;grid-template-columns:90px 1fr;gap:8px">
-            <select id="contact-prefix" style="padding:11px 8px;border:1px solid var(--border);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);background:var(--white);appearance:none;-webkit-appearance:none">
-              <option value="+34,9">+34 🇪🇸</option>
-              <option value="+33,9">+33 🇫🇷</option>
-              <option value="+44,10">+44 🇬🇧</option>
-              <option value="+49,10">+49 🇩🇪</option>
-              <option value="+39,10">+39 🇮🇹</option>
-              <option value="+351,9">+351 🇵🇹</option>
-              <option value="+1,10">+1 🇺🇸</option>
-              <option value="+52,10">+52 🇲🇽</option>
-              <option value="+54,10">+54 🇦🇷</option>
-            </select>
-            <input type="tel" id="contact-tel-number" placeholder="600 000 000" oninput="this.value=this.value.replace(/[^0-9\s]/g,'')">
+        <form id="form-contacto">
+          <p class="form-title" style="font-family:'Cormorant Garamond',serif;font-size:20px;margin-bottom:20px">Déjanos tus datos y te contactamos</p>
+          <input type="hidden" name="origen" value="contacto">
+          <div class="form-group"><label>Nombre</label><input type="text" name="nombre" id="contact-nombre" placeholder="Tu nombre"></div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <div style="display:grid;grid-template-columns:90px 1fr;gap:8px">
+              <select id="contact-prefix" name="contact_prefix" style="padding:11px 8px;border:1px solid var(--border);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);background:var(--white);appearance:none;-webkit-appearance:none">
+                <option value="+34,9">+34 🇪🇸</option>
+                <option value="+33,9">+33 🇫🇷</option>
+                <option value="+44,10">+44 🇬🇧</option>
+                <option value="+49,10">+49 🇩🇪</option>
+                <option value="+39,10">+39 🇮🇹</option>
+                <option value="+351,9">+351 🇵🇹</option>
+                <option value="+1,10">+1 🇺🇸</option>
+                <option value="+52,10">+52 🇲🇽</option>
+                <option value="+54,10">+54 🇦🇷</option>
+              </select>
+              <input type="tel" name="telefono_local" id="contact-tel-number" placeholder="600 000 000" oninput="this.value=this.value.replace(/[^0-9\s]/g,'')">
+            </div>
+            <span id="contact-tel-error" style="display:none;font-size:12px;color:#c0392b;margin-top:4px">Introduce un número de teléfono válido.</span>
           </div>
-          <span id="contact-tel-error" style="display:none;font-size:12px;color:#c0392b;margin-top:4px">Introduce un número de teléfono válido.</span>
-        </div>
-        <div class="form-group"><label>Email</label><input type="email" placeholder="tu@email.com"></div>
-        <div class="form-group"><label>Mensaje (opcional)</label><textarea rows="3" placeholder="Cuéntanos brevemente tu situación…" style="resize:vertical"></textarea></div>
-        <button class="form-submit" onclick="validateContactPhone()&&alert('Mensaje enviado. Nos ponemos en contacto en menos de 24 horas.')">Enviar</button>
+          <div class="form-group"><label>Email</label><input type="email" name="email" id="contact-email" placeholder="tu@email.com"></div>
+          <div class="form-group"><label>Mensaje (opcional)</label><textarea name="mensaje" id="contact-mensaje" rows="3" placeholder="Cuéntanos brevemente tu situación…" style="resize:vertical"></textarea></div>
+          <button type="submit" class="form-submit">Enviar</button>
+        </form>
       </div>
     </div>
   </div>
@@ -869,6 +872,57 @@
   const diagnosticoForm=document.getElementById('diagnostico-form');
   if(diagnosticoForm){
     diagnosticoForm.addEventListener('submit',submitForm);
+  }
+
+  async function submitContactForm(e){
+    e.preventDefault();
+    const form=document.getElementById('form-contacto');
+    if(!form)return;
+    const submitBtn=form.querySelector('button[type="submit"]');
+    const nombre=form.querySelector('#contact-nombre')?.value.trim()||'';
+    const email=form.querySelector('#contact-email')?.value.trim()||'';
+    const mensaje=form.querySelector('#contact-mensaje')?.value.trim()||'';
+    const telPrefix=document.getElementById('contact-prefix');
+    const telNumber=document.getElementById('contact-tel-number');
+    const prefix=telPrefix&&telPrefix.value?telPrefix.value.split(',')[0]:'';
+    const phoneDigits=telNumber&&telNumber.value?telNumber.value.trim():'';
+    const telefono=(prefix&&phoneDigits)?`${prefix} ${phoneDigits}`:phoneDigits;
+    if(!email&&!phoneDigits){
+      alert('Indica un email o un teléfono para poder responderte.');
+      return;
+    }
+    if(phoneDigits&&!validateContactPhone())return;
+    const payload={
+      nombre,
+      email,
+      telefono,
+      mensaje,
+      origen:'contacto',
+    };
+    submitBtn.disabled=true;
+    try{
+      const res=await fetch('/.netlify/functions/hubspot-contact',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(payload),
+      });
+      const data=await res.json().catch(()=>({}));
+      if(!res.ok){
+        const errMsg=data.error||data.message||`Error HTTP ${res.status}`;
+        throw new Error(errMsg);
+      }
+      form.reset();
+      alert('Mensaje enviado. Nos ponemos en contacto en menos de 24 horas.');
+    }catch(err){
+      alert(`No se pudo enviar el formulario. ${err.message||''}`.trim());
+    }finally{
+      submitBtn.disabled=false;
+    }
+  }
+
+  const contactoForm=document.getElementById('form-contacto');
+  if(contactoForm){
+    contactoForm.addEventListener('submit',submitContactForm);
   }
 
   // Smooth nav background
