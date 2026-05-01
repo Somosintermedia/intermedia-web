@@ -494,7 +494,7 @@
       </div>
       <div class="form-card fade-in">
         <p class="form-title">Diagnóstico en 8 preguntas — menos de 1 minuto</p>
-        <form id="diagnostico-form" onsubmit="submitForm(event)">
+        <form id="diagnostico-form">
           <div class="form-group">
             <label>1. ¿Cuál es tu situación actual con la hipoteca?</label>
             <select required>
@@ -810,17 +810,65 @@
   }
 
   // Form submit
-  function submitForm(e){
+  async function submitForm(e){
     e.preventDefault();
     if(!validatePhone())return;
-    document.getElementById('diagnostico-form').style.display='none';
-    const successBox=document.getElementById('form-success');
-    successBox.style.display='block';
-    const section=document.getElementById('test-diagnostico');
-    const nav=document.getElementById('nav');
-    const navHeight=nav?nav.offsetHeight:0;
-    const targetY=section.getBoundingClientRect().top+window.scrollY-navHeight-12;
-    window.scrollTo({top:Math.max(targetY,0),behavior:'smooth'});
+    const form=document.getElementById('diagnostico-form');
+    const submitBtn=form.querySelector('button[type="submit"]');
+    const questionSelects=form.querySelectorAll('.form-group > select[required]');
+    const cityInput=form.querySelector('input[placeholder="Ciudad o municipio"]');
+    const nameInput=form.querySelector('input[placeholder="Tu nombre"]');
+    const emailInput=form.querySelector('input[type="email"]');
+    const telPrefix=document.getElementById('tel-prefix');
+    const telNumber=document.getElementById('tel-number');
+    const prefix=telPrefix&&telPrefix.value?telPrefix.value.split(',')[0]:'';
+    const phoneDigits=telNumber&&telNumber.value?telNumber.value.trim():'';
+    const telefono=(prefix&&phoneDigits)?`${prefix} ${phoneDigits}`:phoneDigits;
+
+    const payload={
+      nombre:nameInput?nameInput.value.trim():'',
+      email:emailInput?emailInput.value.trim():'',
+      telefono,
+      situacion_de_pago:questionSelects[0]?questionSelects[0].value.trim():'',
+      has_recibido_alguna_comunicacion_formal_relacionada_con_la_deuda:questionSelects[1]?questionSelects[1].value.trim():'',
+      la_vivienda_relacionada_con_la_hipoteca_esesta:questionSelects[2]?questionSelects[2].value.trim():'',
+      que_te_gustaria_que_pudiera_ocurrir:questionSelects[3]?questionSelects[3].value.trim():'',
+      cual_es_aproximadamente_la_deuda_pendiente_de_tu_hipoteca:questionSelects[4]?questionSelects[4].value.trim():'',
+      cual_crees_que_podria_ser_el_valor_aproximado_de_tu_vivienda_hoy:questionSelects[5]?questionSelects[5].value.trim():'',
+      ciudad_o_municipio_de_la_vivienda:cityInput?cityInput.value.trim():'',
+      que_es_lo_que_mas_necesitas_en_este_momento:questionSelects[6]?questionSelects[6].value.trim():'',
+    };
+
+    submitBtn.disabled=true;
+    try{
+      const res=await fetch('/.netlify/functions/hubspot-contact',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(payload),
+      });
+      const data=await res.json().catch(()=>({}));
+      if(!res.ok){
+        const errMsg=data.error||data.message||`Error HTTP ${res.status}`;
+        throw new Error(errMsg);
+      }
+      form.style.display='none';
+      const successBox=document.getElementById('form-success');
+      successBox.style.display='block';
+      const section=document.getElementById('test-diagnostico');
+      const nav=document.getElementById('nav');
+      const navHeight=nav?nav.offsetHeight:0;
+      const targetY=section.getBoundingClientRect().top+window.scrollY-navHeight-12;
+      window.scrollTo({top:Math.max(targetY,0),behavior:'smooth'});
+    }catch(err){
+      alert(`No se pudo enviar el formulario. ${err.message||''}`.trim());
+    }finally{
+      submitBtn.disabled=false;
+    }
+  }
+
+  const diagnosticoForm=document.getElementById('diagnostico-form');
+  if(diagnosticoForm){
+    diagnosticoForm.addEventListener('submit',submitForm);
   }
 
   // Smooth nav background
