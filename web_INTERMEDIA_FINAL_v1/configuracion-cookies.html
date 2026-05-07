@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <title>Política de privacidad · Intermedia</title>
+  <title>Configuración de cookies · Intermedia</title>
 <style>
-    :root{--green:#2D5C45;--green-hover:#235039;--cream:#F7F4EE;--text:#1C1C1A;--muted:#6B6860;--border:rgba(28,28,26,0.1);--white:#fff}
+    :root{--green:#2D5C45;--green-hover:#235039;--cream:#F7F4EE;--warm:#EDE8DE;--text:#1C1C1A;--muted:#6B6860;--border:rgba(28,28,26,0.1);--white:#fff}
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-size:16px}
@@ -58,6 +58,30 @@
     .footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:13px}
     .footer-logo-text{font-family:'Cormorant Garamond',serif;font-size:22px;color:#fff;font-weight:500;letter-spacing:0.06em}
     @media(max-width:640px){.footer-top{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:8px;text-align:center}}
+    .cc-row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:16px 0;border-top:1px solid var(--border)}
+    .cc-prefs-rows{border:1px solid var(--border);border-radius:8px;padding:0 20px 8px;margin-top:12px}
+    .cc-prefs-rows .cc-row:first-child{border-top:none}
+    .cc-row-text h4{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px}
+    .cc-row-text p{font-size:12.5px;color:var(--muted);line-height:1.55;margin:0}
+    .cc-switch{position:relative;width:38px;height:22px;flex-shrink:0;margin-top:2px}
+    .cc-switch input{opacity:0;width:0;height:0;position:absolute;margin:0}
+    .cc-switch-track{position:absolute;inset:0;background:var(--warm);border-radius:22px;transition:background .2s;cursor:pointer}
+    .cc-switch-track::before{content:'';position:absolute;left:2px;top:2px;width:18px;height:18px;background:var(--white);border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,0.15)}
+    .cc-switch input:checked + .cc-switch-track{background:var(--green)}
+    .cc-switch input:checked + .cc-switch-track::before{transform:translateX(16px)}
+    .cc-switch input:disabled + .cc-switch-track{opacity:0.55;cursor:not-allowed}
+    .cc-btn{font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:500;padding:10px 20px;border-radius:6px;cursor:pointer;border:1px solid transparent;transition:background .2s,border-color .2s,color .2s;letter-spacing:0.01em;line-height:1.2}
+    .cc-btn-outline{background:var(--white);color:var(--text);border-color:var(--border)}
+    .cc-btn-outline:hover{border-color:var(--text)}
+    .cc-btn-primary{background:var(--green);color:var(--white);border-color:var(--green)}
+    .cc-btn-primary:hover{background:var(--green-hover);border-color:var(--green-hover)}
+    .cfg-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;align-items:center}
+    #cfg-feedback{display:none;margin-top:16px;font-size:14px;color:var(--green);font-weight:500}
+    #cfg-feedback.is-visible{display:block}
+    @media(max-width:480px){
+      .cfg-actions{flex-direction:column;align-items:stretch}
+      .cfg-actions .cc-btn{width:100%;text-align:center}
+    }
   </style>
 </head>
 <body>
@@ -79,90 +103,60 @@
 
 <div class="page-hero">
   <div class="page-hero-inner">
-    <p class="breadcrumb"><a href="index.html">Inicio</a><span>›</span>Política de privacidad</p>
-    <h1>Política de privacidad</h1>
-    <p>Cómo tratamos los datos personales que nos facilitas a través de este sitio web.</p>
+    <p class="breadcrumb"><a href="index.html">Inicio</a><span>›</span>Configuración de cookies</p>
+    <h1>Configuración de cookies</h1>
+    <p>Elige qué tipos de cookies permites. Podrás cambiar esta decisión cuando quieras.</p>
   </div>
 </div>
 
 <div class="legal-body">
 
       <div class="legal-section">
-        <p>En cumplimiento del Reglamento General de Protección de Datos (RGPD) y de la Ley Orgánica de Protección de Datos y Garantía de Derechos Digitales (LOPDGDD), te informamos sobre el tratamiento de tus datos personales.</p>
-        <div class="legal-note">
-          <strong>Titular 1:</strong> Marta Capella Elizalde · DNI: 36518458R<br>
-          <strong>Titular 2:</strong> Silvina Beatriz Manzotti Bordi · DNI: 60246605Z<br>
-          <br>
-          <strong>Domicilio profesional:</strong> Barcelona, España<br>
-          <strong>Contacto:</strong> <a href="mailto:contacto@somosintermedia.com">contacto@somosintermedia.com</a>
+        <p>Utilizamos cookies según lo descrito en nuestra <a href="politica-cookies.html">Política de cookies</a>. Aquí puedes activar o desactivar las categorías opcionales. Las cookies necesarias no se pueden desactivar porque permiten el funcionamiento básico del sitio.</p>
+        <div class="legal-note">Los cambios se guardan en tu navegador (clave localStorage <strong>cc-consent-v1</strong>). Al cargar de nuevo la página principal, se aplicarán junto con el consentimiento.</div>
+      </div>
+
+      <div class="legal-section">
+        <h2>Categorías</h2>
+        <p><strong>Necesarias</strong> — Imprescindibles para que la web funcione (por ejemplo, recordar tu configuración de cookies en este dispositivo).</p>
+        <p><strong>Analítica</strong> — Nos ayudan a entender de forma agregada cómo se usa el sitio (por ejemplo, páginas visitadas).</p>
+        <p><strong>Marketing</strong> — Permiten medir campañas y mostrar contenido relevante según tu navegación en otros sitios, cuando corresponda.</p>
+
+        <div class="cc-prefs-rows" aria-label="Preferencias por categoría">
+          <div class="cc-row">
+            <div class="cc-row-text">
+              <h4>Necesarias</h4>
+              <p>Siempre activas. No se pueden desactivar.</p>
+            </div>
+            <label class="cc-switch"><input type="checkbox" checked disabled><span class="cc-switch-track"></span></label>
+          </div>
+          <div class="cc-row">
+            <div class="cc-row-text">
+              <h4>Analítica</h4>
+              <p>Medición agregada del uso del sitio.</p>
+            </div>
+            <label class="cc-switch"><input type="checkbox" id="cfg-analytics"><span class="cc-switch-track"></span></label>
+          </div>
+          <div class="cc-row">
+            <div class="cc-row-text">
+              <h4>Marketing</h4>
+              <p>Campañas y personalización en otros entornos.</p>
+            </div>
+            <label class="cc-switch"><input type="checkbox" id="cfg-marketing"><span class="cc-switch-track"></span></label>
+          </div>
         </div>
+
+        <div class="cfg-actions">
+          <button type="button" class="cc-btn cc-btn-outline" id="cfg-reject-all">Rechazar todo</button>
+          <button type="button" class="cc-btn cc-btn-outline" id="cfg-accept-all">Aceptar todo</button>
+          <button type="button" class="cc-btn cc-btn-primary" id="cfg-save">Guardar preferencias</button>
+        </div>
+        <p id="cfg-feedback" role="status" aria-live="polite"></p>
       </div>
 
       <div class="legal-section">
-        <h2>Finalidad del tratamiento</h2>
-        <p>Los datos facilitados a través de los formularios de este sitio web se utilizarán exclusivamente para:</p>
-        <ul>
-          <li>Gestionar las consultas enviadas a través del formulario de contacto</li>
-          <li>Analizar de forma preliminar la situación planteada por el usuario</li>
-          <li>Valorar si puede existir una posible solución viable para el caso</li>
-          <li>Responder a las solicitudes de información realizadas</li>
-        </ul>
-        <p>Intermedia no utiliza los datos personales para el envío de comunicaciones comerciales ni para fines publicitarios.</p>
-      </div>
-
-      <div class="legal-section">
-        <h2>Datos que se recogen</h2>
-        <p>Podemos recoger los siguientes datos a través del sitio web:</p>
-        <ul>
-          <li>Nombre</li>
-          <li>Dirección de correo electrónico</li>
-          <li>Número de teléfono</li>
-          <li>Información proporcionada voluntariamente sobre la situación hipotecaria o patrimonial</li>
-        </ul>
-        <p>La información facilitada será tratada únicamente con el fin de analizar la consulta realizada.</p>
-      </div>
-
-      <div class="legal-section">
-        <h2>Base legal del tratamiento</h2>
-        <p>La base jurídica que legitima el tratamiento es el consentimiento del usuario, otorgado al enviar voluntariamente los formularios disponibles en el sitio web. El usuario puede retirar su consentimiento en cualquier momento.</p>
-      </div>
-
-      <div class="legal-section">
-        <h2>Naturaleza del análisis realizado</h2>
-        <div class="legal-note">La información proporcionada se utiliza únicamente para realizar un análisis preliminar y orientativo de la situación planteada. El análisis de Intermedia <strong>no constituye asesoramiento financiero, legal ni fiscal</strong>, ni implica garantía de que exista una solución viable para el caso concreto.</div>
-      </div>
-
-      <div class="legal-section">
-        <h2>Conservación de los datos</h2>
-        <p>Los datos personales se conservarán únicamente durante el tiempo necesario para gestionar la consulta y mantener la comunicación necesaria con el usuario. Posteriormente, los datos podrán ser eliminados de forma segura.</p>
-      </div>
-
-      <div class="legal-section">
-        <h2>Destinatarios de los datos</h2>
-        <p>Con carácter general, los datos personales no serán cedidos a terceros. En determinados casos y solo cuando resulte necesario para analizar posibles soluciones, y siempre con conocimiento del usuario, los datos podrán ser compartidos con profesionales o entidades implicadas en la posible solución del caso.</p>
-      </div>
-
-      <div class="legal-section">
-        <h2>Derechos de los usuarios</h2>
-        <p>En cualquier momento puedes ejercer los siguientes derechos:</p>
-        <ul>
-          <li>Acceso a tus datos personales</li>
-          <li>Rectificación de datos inexactos</li>
-          <li>Supresión de los datos</li>
-          <li>Limitación u oposición al tratamiento</li>
-          <li>Portabilidad de los datos</li>
-        </ul>
-        <p>Para ejercer estos derechos, envía una solicitud a <a href="mailto:contacto@somosintermedia.com">contacto@somosintermedia.com</a>. También tienes derecho a presentar una reclamación ante la <a href="https://www.aepd.es" target="_blank" rel="noopener">Agencia Española de Protección de Datos</a>.</p>
-      </div>
-
-      <div class="legal-section">
-        <h2>Confidencialidad y seguridad</h2>
-        <p>Intermedia se compromete a tratar la información facilitada con la máxima confidencialidad y a adoptar las medidas técnicas y organizativas necesarias para evitar su pérdida, alteración o acceso no autorizado.</p>
-      </div>
-
-      <div class="legal-section">
-        <h2>Cambios en la política</h2>
-        <p>Intermedia podrá actualizar esta Política de Privacidad cuando sea necesario para adaptarla a cambios legislativos o modificaciones en el funcionamiento del sitio web.</p>
+        <h2>Más información</h2>
+        <p>Para detalles sobre finalidades y responsables, consulta la <a href="politica-cookies.html">Política de cookies</a> y la <a href="politica-privacidad.html">Política de privacidad</a>.</p>
       </div>
 </div>
 
@@ -209,6 +203,54 @@
     const nav=document.getElementById('nav')
     nav.style.boxShadow=window.scrollY>20?'0 1px 20px rgba(0,0,0,0.08)':'none'
   })
+</script>
+<script>
+  (function(){
+    var KEY='cc-consent-v1';
+    var analyticsInput=document.getElementById('cfg-analytics');
+    var marketingInput=document.getElementById('cfg-marketing');
+    var feedback=document.getElementById('cfg-feedback');
+    function read(){
+      try{var v=localStorage.getItem(KEY);return v?JSON.parse(v):null;}catch(e){return null;}
+    }
+    function save(obj){
+      try{localStorage.setItem(KEY,JSON.stringify(obj));}catch(e){}
+    }
+    function applyFromStorage(){
+      var s=read();
+      if(!s)s={analytics:false,marketing:false};
+      if(analyticsInput)analyticsInput.checked=!!s.analytics;
+      if(marketingInput)marketingInput.checked=!!s.marketing;
+    }
+    function showFeedback(){
+      if(!feedback)return;
+      feedback.textContent='Preferencias guardadas. Se aplicarán al cargar la página principal.';
+      feedback.classList.add('is-visible');
+      clearTimeout(showFeedback._t);
+      showFeedback._t=setTimeout(function(){
+        feedback.classList.remove('is-visible');
+        feedback.textContent='';
+      },4000);
+    }
+    applyFromStorage();
+    document.getElementById('cfg-accept-all').addEventListener('click',function(){
+      save({analytics:true,marketing:true});
+      applyFromStorage();
+      showFeedback();
+    });
+    document.getElementById('cfg-reject-all').addEventListener('click',function(){
+      save({analytics:false,marketing:false});
+      applyFromStorage();
+      showFeedback();
+    });
+    document.getElementById('cfg-save').addEventListener('click',function(){
+      save({
+        analytics:!!(analyticsInput&&analyticsInput.checked),
+        marketing:!!(marketingInput&&marketingInput.checked)
+      });
+      showFeedback();
+    });
+  })();
 </script>
 </body>
 </html>

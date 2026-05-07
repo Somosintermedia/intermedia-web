@@ -207,6 +207,34 @@
     .strip .btn{background:var(--white);color:var(--green);font-weight:500}
     .strip .btn:hover{background:var(--cream)}
   </style>
+  <!-- Consent Mode v2 (defaults) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent','default',{
+      ad_storage:'denied',
+      ad_user_data:'denied',
+      ad_personalization:'denied',
+      analytics_storage:'denied',
+      personalization_storage:'denied',
+      functionality_storage:'denied',
+      security_storage:'granted',
+      wait_for_update:500
+    });
+    try{
+      var __cc=localStorage.getItem('cc-consent-v1');
+      if(__cc){
+        var __s=JSON.parse(__cc);
+        gtag('consent','update',{
+          ad_storage:__s.marketing?'granted':'denied',
+          ad_user_data:__s.marketing?'granted':'denied',
+          ad_personalization:__s.marketing?'granted':'denied',
+          analytics_storage:__s.analytics?'granted':'denied'
+        });
+      }
+    }catch(e){}
+  </script>
+  <!-- End Consent Mode v2 -->
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -760,6 +788,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><a href="aviso-legal.html">Aviso legal</a></li>
           <li><a href="politica-privacidad.html">Política de privacidad</a></li>
           <li><a href="politica-cookies.html">Política de cookies</a></li>
+          <li><a href="configuracion-cookies.html">Configuración de cookies</a></li>
           <li><a href="mailto:contacto@somosintermedia.com">contacto@somosintermedia.com</a></li>
         </ul>
       </div>
@@ -943,5 +972,167 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     nav.style.boxShadow=window.scrollY>20?'0 1px 20px rgba(0,0,0,0.08)':'none';
   });
 </script>
+
+<!-- ── COOKIE CONSENT ── -->
+<style>
+  .cc-banner{position:fixed;left:0;right:0;bottom:0;z-index:9000;background:var(--cream);border-top:1px solid var(--border);box-shadow:0 -4px 24px rgba(0,0,0,0.06);padding:20px 5%;transform:translateY(100%);opacity:0;transition:transform .35s ease,opacity .35s ease;pointer-events:none}
+  .cc-banner[data-state="open"]{transform:translateY(0);opacity:1;pointer-events:auto}
+  .cc-banner-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+  .cc-banner-text{flex:1;min-width:260px}
+  .cc-banner-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:var(--text);margin-bottom:6px;line-height:1.3}
+  .cc-banner-desc{font-size:13.5px;color:var(--muted);line-height:1.6;margin:0}
+  .cc-banner-desc a{color:var(--green);text-decoration:underline}
+  .cc-banner-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .cc-btn{font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:500;padding:10px 20px;border-radius:6px;cursor:pointer;border:1px solid transparent;transition:background .2s,border-color .2s,color .2s;letter-spacing:0.01em;line-height:1.2}
+  .cc-btn-ghost{background:transparent;color:var(--green);padding:10px 8px}
+  .cc-btn-ghost:hover{color:var(--green-hover);text-decoration:underline}
+  .cc-btn-outline{background:var(--white);color:var(--text);border-color:var(--border)}
+  .cc-btn-outline:hover{border-color:var(--text)}
+  .cc-btn-primary{background:var(--green);color:var(--white);border-color:var(--green)}
+  .cc-btn-primary:hover{background:var(--green-hover);border-color:var(--green-hover)}
+  @media(max-width:768px){
+    .cc-banner{padding:18px 5%}
+    .cc-banner-inner{gap:14px}
+    .cc-banner-actions{width:100%}
+    .cc-btn{flex:1;text-align:center;padding:11px 12px}
+    .cc-btn-ghost{flex-basis:100%;flex:0 0 100%;order:-1}
+  }
+  .cc-modal{position:fixed;inset:0;z-index:9100;background:rgba(28,28,26,0.55);display:none;align-items:center;justify-content:center;padding:20px}
+  .cc-modal[data-state="open"]{display:flex}
+  .cc-modal-card{background:var(--white);border-radius:10px;max-width:520px;width:100%;padding:32px;box-shadow:0 16px 48px rgba(0,0,0,0.18);max-height:90vh;overflow-y:auto}
+  .cc-modal-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;color:var(--text);margin-bottom:8px;line-height:1.25}
+  .cc-modal-desc{font-size:13.5px;color:var(--muted);line-height:1.6;margin-bottom:8px}
+  .cc-row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:16px 0;border-top:1px solid var(--border)}
+  .cc-row-text h4{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px}
+  .cc-row-text p{font-size:12.5px;color:var(--muted);line-height:1.55;margin:0}
+  .cc-switch{position:relative;width:38px;height:22px;flex-shrink:0;margin-top:2px}
+  .cc-switch input{opacity:0;width:0;height:0;position:absolute;margin:0}
+  .cc-switch-track{position:absolute;inset:0;background:var(--warm);border-radius:22px;transition:background .2s;cursor:pointer}
+  .cc-switch-track::before{content:'';position:absolute;left:2px;top:2px;width:18px;height:18px;background:var(--white);border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,0.15)}
+  .cc-switch input:checked + .cc-switch-track{background:var(--green)}
+  .cc-switch input:checked + .cc-switch-track::before{transform:translateX(16px)}
+  .cc-switch input:disabled + .cc-switch-track{opacity:0.55;cursor:not-allowed}
+  .cc-modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:24px;flex-wrap:wrap}
+  @media(max-width:480px){
+    .cc-modal-card{padding:24px}
+    .cc-modal-actions{flex-direction:column-reverse}
+    .cc-modal-actions .cc-btn{width:100%}
+  }
+</style>
+
+<div class="cc-banner" id="cc-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+  <div class="cc-banner-inner">
+    <div class="cc-banner-text">
+      <p class="cc-banner-title">Cookies y privacidad</p>
+      <p class="cc-banner-desc">Usamos cookies para entender cómo se usa la web y mejorarla. Tú decides qué se activa. <a href="politica-cookies.html">Más información</a>.</p>
+    </div>
+    <div class="cc-banner-actions">
+      <button type="button" class="cc-btn cc-btn-ghost" data-cc="configure">Configurar</button>
+      <button type="button" class="cc-btn cc-btn-outline" data-cc="reject">Rechazar</button>
+      <button type="button" class="cc-btn cc-btn-primary" data-cc="accept-all">Aceptar todo</button>
+    </div>
+  </div>
+</div>
+
+<div class="cc-modal" id="cc-modal" role="dialog" aria-modal="true" aria-labelledby="cc-modal-title">
+  <div class="cc-modal-card">
+    <h3 class="cc-modal-title" id="cc-modal-title">Configurar cookies</h3>
+    <p class="cc-modal-desc">Elige qué tipos de cookies quieres permitir. Puedes cambiar esta decisión en cualquier momento.</p>
+    <div class="cc-row">
+      <div class="cc-row-text">
+        <h4>Necesarias</h4>
+        <p>Imprescindibles para que la web funcione. Siempre activas.</p>
+      </div>
+      <label class="cc-switch"><input type="checkbox" checked disabled><span class="cc-switch-track"></span></label>
+    </div>
+    <div class="cc-row">
+      <div class="cc-row-text">
+        <h4>Analítica</h4>
+        <p>Nos ayudan a entender cómo se usa la web, de forma agregada y anónima.</p>
+      </div>
+      <label class="cc-switch"><input type="checkbox" id="cc-analytics"><span class="cc-switch-track"></span></label>
+    </div>
+    <div class="cc-row">
+      <div class="cc-row-text">
+        <h4>Marketing</h4>
+        <p>Permiten medir campañas y mostrar contenido relevante fuera de la web.</p>
+      </div>
+      <label class="cc-switch"><input type="checkbox" id="cc-marketing"><span class="cc-switch-track"></span></label>
+    </div>
+    <div class="cc-modal-actions">
+      <button type="button" class="cc-btn cc-btn-outline" data-cc="reject">Rechazar todo</button>
+      <button type="button" class="cc-btn cc-btn-primary" data-cc="save">Guardar preferencias</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    var KEY='cc-consent-v1';
+    var banner=document.getElementById('cc-banner');
+    var modal=document.getElementById('cc-modal');
+    var analyticsInput=document.getElementById('cc-analytics');
+    var marketingInput=document.getElementById('cc-marketing');
+    if(!banner||!modal)return;
+
+    function pushConsent(s){
+      window.dataLayer=window.dataLayer||[];
+      window.dataLayer.push(['consent','update',{
+        ad_storage:s.marketing?'granted':'denied',
+        ad_user_data:s.marketing?'granted':'denied',
+        ad_personalization:s.marketing?'granted':'denied',
+        analytics_storage:s.analytics?'granted':'denied'
+      }]);
+      if(typeof gtag==='function'){
+        gtag('consent','update',{
+          ad_storage:s.marketing?'granted':'denied',
+          ad_user_data:s.marketing?'granted':'denied',
+          ad_personalization:s.marketing?'granted':'denied',
+          analytics_storage:s.analytics?'granted':'denied'
+        });
+      }
+    }
+    function save(s){
+      try{localStorage.setItem(KEY,JSON.stringify(s));}catch(e){}
+      pushConsent(s);
+    }
+    function read(){
+      try{var v=localStorage.getItem(KEY);return v?JSON.parse(v):null;}catch(e){return null;}
+    }
+    function showBanner(){banner.setAttribute('data-state','open');}
+    function hideBanner(){banner.removeAttribute('data-state');}
+    function openModal(){
+      var s=read()||{analytics:false,marketing:false};
+      if(analyticsInput)analyticsInput.checked=!!s.analytics;
+      if(marketingInput)marketingInput.checked=!!s.marketing;
+      modal.setAttribute('data-state','open');
+    }
+    function closeModal(){modal.removeAttribute('data-state');}
+
+    document.addEventListener('click',function(e){
+      var t=e.target.closest('[data-cc]');
+      if(!t)return;
+      var act=t.getAttribute('data-cc');
+      if(act==='accept-all'){save({analytics:true,marketing:true});hideBanner();closeModal();}
+      else if(act==='reject'){save({analytics:false,marketing:false});hideBanner();closeModal();}
+      else if(act==='configure'){openModal();}
+      else if(act==='save'){
+        save({
+          analytics:!!(analyticsInput&&analyticsInput.checked),
+          marketing:!!(marketingInput&&marketingInput.checked)
+        });
+        hideBanner();closeModal();
+      }
+      else if(act==='open'){openModal();}
+    });
+    modal.addEventListener('click',function(e){if(e.target===modal)closeModal();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+
+    if(!read()){
+      setTimeout(showBanner,300);
+    }
+  })();
+</script>
+
 </body>
 </html>
