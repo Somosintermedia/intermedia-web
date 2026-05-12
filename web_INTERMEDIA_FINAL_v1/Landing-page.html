@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5RR27562');</script>
+  <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Intermedia — Hay una salida. Aunque ahora no la veas.</title>
@@ -393,6 +400,37 @@
 
     .priv-check a { color: var(--gold); text-decoration: none; }
 
+    .form-msg {
+      display: none;
+      font-size: .82rem;
+      color: var(--ink-3);
+      line-height: 1.55;
+      margin-bottom: 14px;
+      padding: 11px 13px;
+      background: var(--c1);
+      border-left: 3px solid var(--gold-mid);
+      border-radius: var(--r);
+      font-weight: 400;
+    }
+
+    .form-msg.is-visible {
+      display: block;
+      animation: up .35s ease both;
+    }
+
+    .c-field.has-err input {
+      border-color: var(--gold-mid);
+      box-shadow: 0 0 0 2px rgba(184, 144, 46, .12);
+    }
+
+    .priv-check.has-err {
+      padding: 10px 11px;
+      margin: -2px -11px 14px -11px;
+      border-radius: var(--r);
+      border: 1px solid rgba(184, 144, 46, .4);
+      background: rgba(232, 212, 158, .12);
+    }
+
     /* OR divider */
     .or-d {
       display: flex; align-items: center; gap: 12px;
@@ -762,6 +800,10 @@
   </style>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5RR27562"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
 <!-- ══════════════════════════════════════
      HERO — Dos columnas: copy | formulario
@@ -990,6 +1032,8 @@
           </div>
         </div>
 
+        <div class="form-msg" aria-live="polite"></div>
+
         <label class="priv-check">
           <input type="checkbox" id="priv" required>
           He leído y acepto la <a href="https://somosintermedia.com/politica-privacidad" target="_blank">política de privacidad</a>. Mi información se tratará de forma confidencial.
@@ -997,7 +1041,7 @@
 
         <div class="f-nav">
           <button type="button" class="btn-back" onclick="back()">← Atrás</button>
-          <button type="button" class="btn-next" onclick="submit()">Enviar para análisis</button>
+          <button type="button" class="btn-next" onclick="enviarDiagnostico()">Enviar para análisis</button>
         </div>
 
         <div class="or-d">o si prefieres contacto inmediato</div>
@@ -1022,8 +1066,8 @@
       <div class="s-icon">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
-      <h3>Hemos recibido tu información.</h3>
-      <p>Gracias por compartir tu situación con nosotros. Revisaremos tu caso y nos pondremos en contacto contigo.</p>
+      <h3>Tu diagnóstico se ha enviado correctamente.</h3>
+      <p>Gracias por confiar en nosotros. Revisaremos tu caso con calma y nos pondremos en contacto contigo.</p>
     </div>
 
   </div>
@@ -1171,6 +1215,23 @@
     document.getElementById('n7').disabled = this.value.trim().length < 2;
   });
 
+  (function () {
+    const step9 = document.querySelector('.f-step[data-s="9"]');
+    if (!step9) return;
+    const clearContactHints = () => {
+      step9.querySelectorAll('.c-field.has-err').forEach((el) => el.classList.remove('has-err'));
+      step9.querySelector('.priv-check')?.classList.remove('has-err');
+      const m = step9.querySelector('.form-msg');
+      if (m) {
+        m.textContent = '';
+        m.classList.remove('is-visible');
+      }
+    };
+    document.getElementById('nombre')?.addEventListener('input', clearContactHints);
+    document.getElementById('tel')?.addEventListener('input', clearContactHints);
+    document.getElementById('priv')?.addEventListener('change', clearContactHints);
+  })();
+
   function nextCity() {
     const v = document.getElementById('ciudad').value.trim();
     if (v.length < 2) return;
@@ -1205,13 +1266,39 @@
   }
 
   // ── Envío ─────────────────────────────
-  function submit() {
+  function enviarDiagnostico() {
     const nombre = document.getElementById('nombre').value.trim();
     const tel    = document.getElementById('tel').value.trim();
     const priv   = document.getElementById('priv').checked;
+    const step9  = document.querySelector('.f-step[data-s="9"]');
+    const msgEl  = step9?.querySelector('.form-msg');
 
-    if (!nombre || !tel) { alert('Por favor, introduce tu nombre y teléfono.'); return; }
-    if (!priv) { alert('Por favor, acepta la política de privacidad.'); return; }
+    step9?.querySelectorAll('.c-field.has-err').forEach((el) => el.classList.remove('has-err'));
+    step9?.querySelector('.priv-check')?.classList.remove('has-err');
+    if (msgEl) {
+      msgEl.textContent = '';
+      msgEl.classList.remove('is-visible');
+    }
+
+    if (!nombre || !tel) {
+      if (!nombre) document.getElementById('nombre')?.closest('.c-field')?.classList.add('has-err');
+      if (!tel) document.getElementById('tel')?.closest('.c-field')?.classList.add('has-err');
+      if (msgEl) {
+        msgEl.textContent =
+          'Para enviar tu diagnóstico, indica tu nombre y un teléfono de contacto.';
+        msgEl.classList.add('is-visible');
+      }
+      return;
+    }
+
+    if (!priv) {
+      document.getElementById('priv')?.closest('.priv-check')?.classList.add('has-err');
+      if (msgEl) {
+        msgEl.textContent = 'Para continuar, acepta la política de privacidad.';
+        msgEl.classList.add('is-visible');
+      }
+      return;
+    }
 
     data.nombre = nombre;
     data.tel    = tel;
