@@ -1485,7 +1485,7 @@
       nombre,
       email,
       telefono: tel,
-      origen: 'diagnostico',
+      origen: 'landing',
       situacion_de_pago:                                                  QUESTION_MAP.q1[data.q1] || '',
       has_recibido_alguna_comunicacion_formal_relacionada_con_la_deuda:   QUESTION_MAP.q2[data.q2] || '',
       la_vivienda_relacionada_con_la_hipoteca_esesta:                     QUESTION_MAP.q3[data.q3] || '',
@@ -1510,10 +1510,13 @@
         throw new Error(errMsg);
       }
 
-      document.getElementById('dform').style.display       = 'none';
-      document.getElementById('prog-wrap').style.display   = 'none';
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ 'event': 'form_submit' });
+
+      document.getElementById('dform').style.display   = 'none';
+      document.getElementById('prog-wrap').style.display = 'none';
       document.querySelector('.form-header').style.display = 'none';
-      document.getElementById('success').style.display     = 'block';
+      document.getElementById('success').style.display = 'block';
       document.getElementById('sticky').classList.remove('show');
     } catch (err) {
       if (msgEl) {
