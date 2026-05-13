@@ -967,9 +967,9 @@
         <p class="f-q">¿Cuál es tu situación actual con la hipoteca?</p>
         <div class="opts">
           <button type="button" class="opt" data-v="impago-reciente"><span class="odot"></span>He dejado de pagar algunas cuotas recientemente</button>
-          <button type="button" class="opt" data-v="impago-largo"><span class="odot"></span>Llevo bastante tiempo sin poder pagar</button>
-          <button type="button" class="opt" data-v="reclamaciones"><span class="odot"></span>Estoy recibiendo reclamaciones o requerimientos</button>
-          <button type="button" class="opt" data-v="proceso-judicial"><span class="odot"></span>Estoy en proceso judicial (demanda, ejecución…)</button>
+          <button type="button" class="opt" data-v="impago-largo"><span class="odot"></span>Llevo bastante tiempo sin poder pagar la hipoteca</button>
+          <button type="button" class="opt" data-v="reclamaciones"><span class="odot"></span>Estoy recibiendo reclamaciones o requerimientos de pago</button>
+          <button type="button" class="opt" data-v="proceso-judicial"><span class="odot"></span>Estoy en proceso judicial (demanda, ejecución, monitorio)</button>
           <button type="button" class="opt" data-v="subasta"><span class="odot"></span>Me han notificado subasta o desahucio</button>
         </div>
         <div class="f-nav">
@@ -1001,9 +1001,10 @@
           <button type="button" class="opt" data-v="segunda"><span class="odot"></span>Es mi segunda residencia</button>
           <button type="button" class="opt" data-v="familiar"><span class="odot"></span>Está viviendo un familiar</button>
           <button type="button" class="opt" data-v="vacia"><span class="odot"></span>Está vacía</button>
-          <button type="button" class="opt" data-v="alquilada"><span class="odot"></span>La tengo alquilada</button>
-          <button type="button" class="opt" data-v="ocupada"><span class="odot"></span>Está ocupada</button>
+          <button type="button" class="opt" data-v="alquilada"><span class="odot"></span>La tengo alquilada a un tercero</button>
+          <button type="button" class="opt" data-v="ocupada"><span class="odot"></span>Está okupada</button>
           <button type="button" class="opt" data-v="herencia"><span class="odot"></span>Es una herencia pendiente de resolver</button>
+          <button type="button" class="opt" data-v="otra"><span class="odot"></span>Otra situación</button>
         </div>
         <div class="f-nav">
           <button type="button" class="btn-back" onclick="back()">← Atrás</button>
@@ -1015,11 +1016,11 @@
       <div class="f-step" data-s="4">
         <p class="f-q">¿Qué te gustaría que pudiera ocurrir?</p>
         <div class="opts">
-          <button type="button" class="opt" data-v="mantener"><span class="odot"></span>Poder mantener mi vivienda si existe alguna solución</button>
+          <button type="button" class="opt" data-v="mantener"><span class="odot"></span>Poder mantener mi vivienda si existe alguna solución viable</button>
           <button type="button" class="opt" data-v="vender"><span class="odot"></span>Vender la vivienda para cancelar la deuda</button>
           <button type="button" class="opt" data-v="renunciar"><span class="odot"></span>Renunciar a la vivienda para cancelar mis deudas y empezar de nuevo</button>
           <button type="button" class="opt" data-v="dacion"><span class="odot"></span>Valorar la dación en pago como salida</button>
-          <button type="button" class="opt" data-v="entender"><span class="odot"></span>Entender bien todas las opciones antes de decidir</button>
+          <button type="button" class="opt" data-v="entender"><span class="odot"></span>Entender bien todas las opciones antes de tomar una decisión</button>
         </div>
         <div class="f-nav">
           <button type="button" class="btn-back" onclick="back()">← Atrás</button>
@@ -1296,6 +1297,7 @@
       'alquilada': 'La tengo alquilada a un tercero',
       'ocupada':   'Está okupada',
       'herencia':  'Es una herencia pendiente de resolver',
+      'otra':      'Otra situación',
     },
     q4: {
       'mantener':  'Poder mantener mi vivienda si existe alguna solución viable',
