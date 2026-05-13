@@ -1041,7 +1041,7 @@
 
         <div class="f-nav">
           <button type="button" class="btn-back" onclick="back()">← Atrás</button>
-          <button type="button" class="btn-next" onclick="enviarDiagnostico()">Enviar para análisis</button>
+          <button type="button" class="btn-next" id="enviar-btn" onclick="enviarDiagnostico()">Enviar para análisis</button>
         </div>
 
         <div class="or-d">o si prefieres contacto inmediato</div>
@@ -1196,6 +1196,65 @@
   let cur = 1;
   const data = {};
 
+  // ── Mapeo de slugs del wizard a los textos canónicos
+  //    que ya usa HubSpot (los mismos que envía index.html).
+  //    No tocar sin sincronizar con las propiedades del CRM.
+  const QUESTION_MAP = {
+    q1: {
+      'impago-reciente':  'He dejado de pagar algunas cuotas recientemente',
+      'impago-largo':     'Llevo bastante tiempo sin poder pagar la hipoteca',
+      'reclamaciones':    'Estoy recibiendo reclamaciones o requerimientos de pago',
+      'proceso-judicial': 'Estoy en proceso judicial (demanda, ejecución, monitorio)',
+      'subasta':          'Me han notificado subasta o desahucio',
+    },
+    q2: {
+      'banco':              'El banco',
+      'recobro':            'Un despacho o empresa de recobro',
+      'fondo':              'Un fondo',
+      'no-se-quien':        'He recibido comunicaciones pero no sé exactamente de quién',
+      'sin-comunicaciones': 'No he recibido ninguna comunicación',
+    },
+    q3: {
+      'habitual':  'Es mi residencia habitual',
+      'segunda':   'Es mi segunda residencia',
+      'familiar':  'Está viviendo un familiar',
+      'vacia':     'Está vacía',
+      'alquilada': 'La tengo alquilada a un tercero',
+      'ocupada':   'Está okupada',
+      'herencia':  'Es una herencia pendiente de resolver',
+    },
+    q4: {
+      'mantener':  'Poder mantener mi vivienda si existe alguna solución viable',
+      'vender':    'Vender la vivienda para cancelar la deuda',
+      'renunciar': 'Renunciar a la vivienda para cancelar mis deudas y empezar de nuevo',
+      'dacion':    'Valorar la dación en pago como salida',
+      'entender':  'Entender bien todas las opciones antes de tomar una decisión',
+    },
+    q5: {
+      'menos50':     'Menos de 50.000 €',
+      '50-100':      'Entre 50.000 y 100.000 €',
+      '100-200':     'Entre 100.000 y 200.000 €',
+      '200-400':     'Entre 200.000 y 400.000 €',
+      'mas400':      'Más de 400.000 €',
+      'no-se-deuda': 'No lo sé exactamente',
+    },
+    q6: {
+      'menos100':   'Menos de 100.000 €',
+      '100-200v':   'Entre 100.000 y 200.000 €',
+      '200-300v':   'Entre 200.000 y 300.000 €',
+      '300-500v':   'Entre 300.000 y 500.000 €',
+      'mas500':     'Más de 500.000 €',
+      'no-se-val':  'No lo sé',
+    },
+    q8: {
+      'entender-opciones': 'Entender qué opciones tengo',
+      'parar':             'Parar el proceso o ganar tiempo',
+      'vender-bien':       'Vender la vivienda de la mejor forma posible',
+      'cancelar-deuda':    'Encontrar una solución para cancelar la deuda',
+      'hablar':            'Hablar con alguien que analice mi caso',
+    },
+  };
+
   // ── Opciones ──────────────────────────
   document.querySelectorAll('.opts').forEach(list => {
     list.querySelectorAll('.opt').forEach(btn => {
@@ -1266,12 +1325,14 @@
   }
 
   // ── Envío ─────────────────────────────
-  function enviarDiagnostico() {
+  async function enviarDiagnostico() {
     const nombre = document.getElementById('nombre').value.trim();
     const tel    = document.getElementById('tel').value.trim();
+    const email  = document.getElementById('email').value.trim();
     const priv   = document.getElementById('priv').checked;
     const step9  = document.querySelector('.f-step[data-s="9"]');
     const msgEl  = step9?.querySelector('.form-msg');
+    const sendBtn = document.getElementById('enviar-btn');
 
     step9?.querySelectorAll('.c-field.has-err').forEach((el) => el.classList.remove('has-err'));
     step9?.querySelector('.priv-check')?.classList.remove('has-err');
@@ -1302,30 +1363,50 @@
 
     data.nombre = nombre;
     data.tel    = tel;
-    data.email  = document.getElementById('email').value.trim();
+    data.email  = email;
 
-    // ══════════════════════════════════════
-    // SILVINA: conecta aquí tu endpoint.
-    // Opción A — Formspree (gratis):
-    //   fetch('https://formspree.io/f/TU_ID', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(data)
-    //   })
-    //
-    // Opción B — Make/Zapier webhook:
-    //   fetch('https://hook.eu1.make.com/TU_WEBHOOK', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(data)
-    //   })
-    // ══════════════════════════════════════
+    // Payload con la MISMA forma y los MISMOS textos canónicos que envía index.html
+    const payload = {
+      nombre,
+      email,
+      telefono: tel,
+      origen: 'diagnostico',
+      situacion_de_pago:                                                  QUESTION_MAP.q1[data.q1] || '',
+      has_recibido_alguna_comunicacion_formal_relacionada_con_la_deuda:   QUESTION_MAP.q2[data.q2] || '',
+      la_vivienda_relacionada_con_la_hipoteca_esesta:                     QUESTION_MAP.q3[data.q3] || '',
+      que_te_gustaria_que_pudiera_ocurrir:                                QUESTION_MAP.q4[data.q4] || '',
+      cual_es_aproximadamente_la_deuda_pendiente_de_tu_hipoteca:          QUESTION_MAP.q5[data.q5] || '',
+      cual_crees_que_podria_ser_el_valor_aproximado_de_tu_vivienda_hoy:   QUESTION_MAP.q6[data.q6] || '',
+      ciudad_o_municipio_de_la_vivienda:                                  data.ciudad || '',
+      que_es_lo_que_mas_necesitas_en_este_momento:                        QUESTION_MAP.q8[data.q8] || '',
+    };
 
-    document.getElementById('dform').style.display   = 'none';
-    document.getElementById('prog-wrap').style.display = 'none';
-    document.querySelector('.form-header').style.display = 'none';
-    document.getElementById('success').style.display = 'block';
-    document.getElementById('sticky').classList.remove('show');
+    if (sendBtn) sendBtn.disabled = true;
+
+    try {
+      const res = await fetch('/.netlify/functions/hubspot-contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const respData = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        const errMsg = respData.error || respData.message || `Error HTTP ${res.status}`;
+        throw new Error(errMsg);
+      }
+
+      document.getElementById('dform').style.display       = 'none';
+      document.getElementById('prog-wrap').style.display   = 'none';
+      document.querySelector('.form-header').style.display = 'none';
+      document.getElementById('success').style.display     = 'block';
+      document.getElementById('sticky').classList.remove('show');
+    } catch (err) {
+      if (msgEl) {
+        msgEl.textContent = `No se pudo enviar el diagnóstico. ${err.message || 'Inténtalo de nuevo en unos segundos.'}`.trim();
+        msgEl.classList.add('is-visible');
+      }
+      if (sendBtn) sendBtn.disabled = false;
+    }
   }
 
   // ── Sticky bar ────────────────────────
